@@ -1,0 +1,78 @@
+companies:
+  - ticker: AAPL
+    name: Apple
+    pdf_path: "10-k forms/Apple_2025_annual_report.pdf"
+    label: 0
+    risk_category: low
+    risk_score: 15
+  - ticker: MSFT
+    name: Microsoft
+    pdf_path: "10-k forms/Microsoft_2024_annual_report.pdf"
+    label: 0
+    risk_category: low
+    risk_score: 10
+  - ticker: JNJ
+    name: Johnson & Johnson
+    pdf_path: "10-k forms/Johnson & Johnson_2024_annual_report.pdf"
+    label: 0
+    risk_category: low
+    risk_score: 20
+  - ticker: DAL
+    name: Delta Air Lines
+    pdf_path: "10-k forms/Delta Air Lines_2024_annual_report.pdf"
+    label: 0
+    risk_category: medium
+    risk_score: 45
+  - ticker: T
+    name: AT&T
+    pdf_path: "10-k forms/AT&T_2024_annual_report.pdf"
+    label: 0
+    risk_category: medium
+    risk_score: 55
+  - ticker: VZ
+    name: Verizon
+    pdf_path: "10-k forms/Verizon Communication_2025_annual_report.pdf"
+    label: 0
+    risk_category: medium
+    risk_score: 50
+  - ticker: F
+    name: Ford Motor Company
+    pdf_path: "10-k forms/Ford Motor Company_2024_annual_report.pdf"
+    label: 0
+    risk_category: medium
+    risk_score: 60
+  - ticker: AAL
+    name: American Airlines
+    pdf_path: "10-k forms/American Airlines_2024_annual_report.pdf"
+    label: 1
+    risk_category: high
+    risk_score: 80
+  - ticker: GME
+    name: GameStop
+    pdf_path: "10-k forms/GameStop_2024_annual_report.pdf"
+    label: 1
+    risk_category: high
+    risk_score: 75
+  - ticker: AMC
+    name: AMC Entertainment
+    pdf_path: "10-k forms/AMC Entertainment_2024_annual_report.pdf"
+    label: 1
+    risk_category: high
+    risk_score: 90
+
+sections:
+  primary:
+    - item_1a  # Risk Factors
+    - item_7   # MD&A
+  secondary:
+    - item_8   # Financial Statements
+
+chunking:
+  chunk_size: 512
+  overlap: 64
+  min_chunk_size: 100
+
+output_paths:
+  processed: "data/processed"
+  labels: "data/labels/company_labels.csv"
+  embeddings: "data/embeddings"

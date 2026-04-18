@@ -1,0 +1,22 @@
+thresholds:
+  risk_score_cutoff: 50  # above this = high risk prediction
+  auc_target: 0.75
+  f1_target: 0.65
+  citation_accuracy_target: 0.85
+  fabrication_rate_max: 0.10
+
+approaches:
+  - baseline
+  - rag
+  - lora
+  - altman_zscore
+
+output:
+  results_dir: "data/results"
+  predictions_file: "data/results/{approach}_predictions.csv"
+  metrics_file: "data/results/metrics_summary.csv"
+  roc_plot: "data/results/roc_curves.png"
+
+hallucination:
+  fuzzy_match_threshold: 85  # rapidfuzz score 0-100
+  min_sentence_length: 20

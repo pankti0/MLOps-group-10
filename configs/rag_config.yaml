@@ -1,0 +1,15 @@
+embedding:
+  model: "BAAI/bge-base-en-v1.5"
+  device: "cpu"  # change to "cuda" on cluster
+  batch_size: 32
+  normalize: true
+
+retrieval:
+  top_k: 10
+  index_type: "IndexFlatIP"
+  index_path: "data/embeddings/faiss.index"
+  metadata_path: "data/embeddings/chunk_metadata.json"
+
+chunking:
+  chunk_size: 512
+  overlap: 64
