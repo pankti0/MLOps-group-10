@@ -1,0 +1,11 @@
+ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
+AAPL,Apple,0.17,0,low,"['X1(WC/TA)=0.013', 'X2(RE/TA)=-0.608', 'X3(EBIT/TA)=0.324', 'X4(MC/TL)=11.379', 'X5(Rev/TA)=1.111']",[],Altman Z-Score: 8.1713 | Zone: safe,altman_zscore
+MSFT,Microsoft,0.03,0,low,"['X1(WC/TA)=0.078', 'X2(RE/TA)=0.231', 'X3(EBIT/TA)=0.213', 'X4(MC/TL)=13.778', 'X5(Rev/TA)=0.478']",[],Altman Z-Score: 9.8641 | Zone: safe,altman_zscore
+JNJ,Johnson & Johnson,9.12,0,low,"['X1(WC/TA)=0.092', 'X2(RE/TA)=0.521', 'X3(EBIT/TA)=0.092', 'X4(MC/TL)=4.043', 'X5(Rev/TA)=0.540']",[],Altman Z-Score: 4.1096 | Zone: safe,altman_zscore
+DAL,Delta Air Lines,69.18,1,high,"['X1(WC/TA)=-0.027', 'X2(RE/TA)=-0.164', 'X3(EBIT/TA)=0.069', 'X4(MC/TL)=0.406', 'X5(Rev/TA)=0.794']",[],Altman Z-Score: 1.0013 | Zone: distress,altman_zscore
+T,AT&T,75.14,1,high,"['X1(WC/TA)=-0.025', 'X2(RE/TA)=-0.040', 'X3(EBIT/TA)=0.042', 'X4(MC/TL)=0.573', 'X5(Rev/TA)=0.306']",[],Altman Z-Score: 0.7038 | Zone: distress,altman_zscore
+VZ,Verizon,71.71,1,high,"['X1(WC/TA)=-0.024', 'X2(RE/TA)=0.024', 'X3(EBIT/TA)=0.050', 'X4(MC/TL)=0.596', 'X5(Rev/TA)=0.353']",[],Altman Z-Score: 0.8798 | Zone: distress,altman_zscore
+F,Ford Motor Company,68.54,1,high,"['X1(WC/TA)=0.055', 'X2(RE/TA)=0.080', 'X3(EBIT/TA)=0.022', 'X4(MC/TL)=0.176', 'X5(Rev/TA)=0.675']",[],Altman Z-Score: 1.0313 | Zone: distress,altman_zscore
+AAL,American Airlines,76.83,1,high,"['X1(WC/TA)=-0.095', 'X2(RE/TA)=-0.222', 'X3(EBIT/TA)=0.032', 'X4(MC/TL)=0.151', 'X5(Rev/TA)=0.841']",[],Altman Z-Score: 0.6112 | Zone: distress,altman_zscore
+GME,GameStop,9.91,0,low,"['X1(WC/TA)=0.250', 'X2(RE/TA)=-0.750', 'X3(EBIT/TA)=-0.025', 'X4(MC/TL)=6.000', 'X5(Rev/TA)=1.250']",[],Altman Z-Score: 4.0175 | Zone: safe,altman_zscore
+AMC,AMC Entertainment,85.45,1,high,"['X1(WC/TA)=-0.043', 'X2(RE/TA)=-0.429', 'X3(EBIT/TA)=-0.029', 'X4(MC/TL)=0.167', 'X5(Rev/TA)=0.686']",[],Altman Z-Score: 0.0400 | Zone: distress,altman_zscore
