@@ -20,9 +20,8 @@ import json
 import logging
 import os
 import sys
-import time
-from typing import Dict, List
-
+import re
+from typing import List
 import yaml
 
 
@@ -42,18 +41,93 @@ logger = logging.getLogger("01_extract_sections")
 
 
 def _load_config(config_path: str) -> dict:
-    """Load and return the YAML config."""
     with open(config_path, "r", encoding="utf-8") as fh:
         return yaml.safe_load(fh)
 
 
-def _section_summary(sections: Dict[str, str]) -> Dict[str, int]:
-    """Return a dict mapping section key → character count."""
-    return {k: len(v) for k, v in sections.items() if k != "full_text"}
+# -------------------------
+# 🔥 STRONG VALIDATION
+# -------------------------
+def is_bad_item_1a(text: str) -> bool:
+    if not text:
+        return True
 
+    length = len(text)
+
+    if length < 2000:
+        return True
+
+    # 🔥 detect truncation
+    if length == 50000:
+        return True
+
+    # TOC pattern
+    if "..." in text[:200]:
+        return True
+
+    # 🔥 semantic signal
+    start = text[:1000].lower()
+    if "risk factors" not in start:
+        return True
+
+    return False
+
+
+# -------------------------
+# 🔥 ROBUST RECOVERY
+# -------------------------
+def recover_item_1a(full_text: str) -> str:
+    # 🔥 MUCH stronger header detection
+    ITEM_1A = re.compile(
+        r'(?:^|\n)\s*item\s*1a[\s\.\-:\n]*risk\s*factors',
+        re.IGNORECASE
+    )
+
+    # 🔥 stronger boundary detection
+    ITEM_BOUNDARY = re.compile(
+        r'item\s*1b[\s\.\-:\n]*|item\s*2[\s\.\-:\n]*',
+        re.IGNORECASE
+    )
+
+    matches_1a = list(ITEM_1A.finditer(full_text))
+    matches_boundaries = list(ITEM_BOUNDARY.finditer(full_text))
+
+    logger.info("Found %d Item 1A matches", len(matches_1a))
+
+    best_section = ""
+    best_len = 0
+
+    for m in matches_1a:
+        start = m.start()
+
+        # find next boundary AFTER this
+        end = None
+        for b in matches_boundaries:
+            if b.start() > start:
+                end = b.start()
+                break
+
+        if end is None:
+            continue
+
+        candidate = full_text[start:end]
+
+        # 🔥 REMOVE OVER-FILTERING (this was killing MSFT)
+        if len(candidate) < 3000:
+            continue
+
+        # 🔥 IMPORTANT: allow risk factors anywhere in first 3000 chars
+        start_text = candidate[:3000].lower()
+        if "risk factors" not in start_text:
+            continue
+
+        if len(candidate) > best_len:
+            best_section = candidate
+            best_len = len(candidate)
+
+    return best_section
 
 def _print_summary_table(results: List[dict]) -> None:
-    """Print a formatted summary table to stdout."""
     col_widths = {"company": 25, "ticker": 6, "item_1a": 10, "item_7": 10, "item_8": 10, "status": 10}
 
     header = (
@@ -88,9 +162,11 @@ def main(config_path: str) -> None:
     logger.info("Loading config from: %s", config_path)
     config = _load_config(config_path)
 
-    processed_dir = os.path.join(REPO_ROOT, config.get("output_paths", {}).get("processed", "data/processed"))
+    processed_dir = os.path.join(
+        REPO_ROOT,
+        config.get("output_paths", {}).get("processed", "data/processed")
+    )
     os.makedirs(processed_dir, exist_ok=True)
-    logger.info("Output directory: %s", processed_dir)
 
     companies = config.get("companies", [])
     if not companies:
@@ -98,121 +174,84 @@ def main(config_path: str) -> None:
         sys.exit(1)
 
     results = []
-    failures = []
 
     for company in companies:
         ticker = company["ticker"]
         name = company["name"]
-        pdf_rel_path = company["pdf_path"]
-        pdf_abs_path = os.path.join(REPO_ROOT, pdf_rel_path)
+        pdf_abs_path = os.path.join(REPO_ROOT, company["pdf_path"])
 
         logger.info("[%s] Processing: %s", ticker, name)
-        t_start = time.time()
 
         result = {"company": name, "ticker": ticker, "sections": {}, "status": "OK"}
 
-        #  1. Extract PDF text 
         if not os.path.isfile(pdf_abs_path):
-            msg = f"PDF not found: {pdf_abs_path}"
-            logger.error("[%s] %s", ticker, msg)
             result["status"] = "MISSING_PDF"
-            failures.append({"ticker": ticker, "company": name, "error": msg})
             results.append(result)
             continue
 
         raw_text = extract_text(pdf_abs_path)
         if not raw_text:
-            msg = "PDF extraction returned empty text"
-            logger.warning("[%s] %s", ticker, msg)
             result["status"] = "EMPTY_TEXT"
-            failures.append({"ticker": ticker, "company": name, "error": msg})
             results.append(result)
             continue
 
-        logger.info("[%s] Extracted %d characters from PDF", ticker, len(raw_text))
-
-        #  2. Extract sections
-        try:
-            sections = extract_sections(raw_text)
-        except Exception as exc:
-            msg = f"section_extractor raised: {exc}"
-            logger.error("[%s] %s", ticker, msg)
-            result["status"] = "SECTION_ERROR"
-            failures.append({"ticker": ticker, "company": name, "error": msg})
-            results.append(result)
-            continue
-
-       
+        sections = extract_sections(raw_text)
         full_text = sections.get("full_text", "")
-        any_missing = False
-        for key in ("item_1a", "item_7"):
-            if not sections.get(key):
-                logger.warning("[%s] Section '%s' could not be extracted.", ticker, key)
-                any_missing = True
-        if any_missing and full_text and not any(sections.get(k) for k in ("item_1a", "item_7", "item_8")):
-           
-            third = len(full_text) // 3
-            sections["item_1a"] = full_text[third: 2 * third][:50000]
-            sections["item_7"] = full_text[2 * third:][:50000]
-            logger.info("[%s] No sections found — using full_text thirds as fallback.", ticker)
+
+        # -------------------------
+        # 🔥 VALIDATION + FORCE FIX
+        # -------------------------
+        item_1a_text = sections.get("item_1a", "")
+        length = len(item_1a_text)
+
+        logger.info("[%s] item_1a BEFORE recovery: %d chars", ticker, length)
+
+        bad_1a = is_bad_item_1a(item_1a_text)
+
+        # 🔥 FORCE recovery if suspicious
+        if length == 50000:
+            logger.warning("[%s] item_1a = 50000 → forcing recovery", ticker)
+            bad_1a = True
+
+        if bad_1a:
+            logger.warning("[%s] Recovering item_1a...", ticker)
+
+            recovered = recover_item_1a(full_text)
+
+            if recovered:
+                sections["item_1a"] = recovered
+                logger.info("[%s] SUCCESS → %d chars", ticker, len(recovered))
+            else:
+                logger.warning("[%s] Recovery failed → fallback", ticker)
+                third = len(full_text) // 3
+                sections["item_1a"] = full_text[third: 2 * third]
+
         result["sections"] = sections
 
-        
-        for key in ("item_1a", "item_7"):
-            if not sections.get(key):
-                result["status"] = "PARTIAL"
-
-        #  3. Save to JSON
+        # save
         output_path = os.path.join(processed_dir, f"{ticker}_sections.json")
-        try:
-            with open(output_path, "w", encoding="utf-8") as fh:
-                json.dump(
-                    {
-                        "ticker": ticker,
-                        "company": name,
-                        "pdf_path": pdf_rel_path,
-                        "label": company["label"],
-                        "risk_category": company["risk_category"],
-                        "risk_score": company["risk_score"],
-                        "sections": sections,
-                    },
-                    fh,
-                    ensure_ascii=False,
-                    indent=2,
-                )
-            elapsed = time.time() - t_start
-            logger.info("[%s] Saved to %s (%.1fs)", ticker, output_path, elapsed)
-        except OSError as exc:
-            msg = f"Failed to write JSON: {exc}"
-            logger.error("[%s] %s", ticker, msg)
-            result["status"] = "WRITE_ERROR"
-            failures.append({"ticker": ticker, "company": name, "error": msg})
+        with open(output_path, "w", encoding="utf-8") as fh:
+            json.dump(
+                {
+                    "ticker": ticker,
+                    "company": name,
+                    "sections": sections,
+                },
+                fh,
+                ensure_ascii=False,
+                indent=2,
+            )
 
         results.append(result)
 
-    # 4. Summary 
     _print_summary_table(results)
-
-    ok_count = sum(1 for r in results if r["status"] == "OK")
-    partial_count = sum(1 for r in results if r["status"] == "PARTIAL")
-    fail_count = len(failures)
-
-    print(f"Completed: {ok_count} OK, {partial_count} partial, {fail_count} failed "
-          f"out of {len(companies)} companies.\n")
-
-    if failures:
-        print("FAILURES:")
-        for f in failures:
-            print(f"  [{f['ticker']}] {f['company']}: {f['error']}")
-        print()
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Extract 10-K sections from PDF files.")
+    parser = argparse.ArgumentParser()
     parser.add_argument(
         "--config",
         default=os.path.join(REPO_ROOT, "configs", "data_config.yaml"),
-        help="Path to data_config.yaml (default: configs/data_config.yaml)",
     )
     args = parser.parse_args()
     main(config_path=args.config)
