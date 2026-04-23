@@ -31,10 +31,14 @@ _CSV_COLUMNS = [
     "approach",
 ]
 
-_RAG_QUERY_SUFFIX = " credit risk financial health debt liquidity going concern"
-_MIN_CHUNKS = 3
-_RETRIEVE_K = 20
+# 🔥 Improved query
+_RAG_QUERY_SUFFIX = (
+    " debt leverage liquidity cash flow going concern risk factors "
+    "covenant breach financial distress revenue decline"
+)
 
+_MIN_CHUNKS = 3
+_RETRIEVE_K = 5   # 🔥 reduced for better signal
 
 def _score_to_label(score: float) -> int:
     return 1 if score >= 50 else 0
@@ -65,22 +69,23 @@ class RAGAgent:
 
         logger.info("[rag] Retrieved %d raw candidates for %s.", len(candidates), ticker)
 
+        # 1. Filter by ticker
         company_chunks = [
             c for c in candidates
             if c.get("metadata", {}).get("ticker") == ticker
         ]
-
         logger.info("[rag] %d chunks after ticker filter.", len(company_chunks))
 
+        # 2. Filter by section
         VALID_SECTIONS = {"item_1a", "item_7"}
 
         company_chunks = [
             c for c in company_chunks
             if c.get("metadata", {}).get("section", "").lower() in VALID_SECTIONS
         ]
-
         logger.info("[rag] %d chunks after section filter.", len(company_chunks))
 
+        # 3. Filter numeric-heavy chunks
         def is_text_heavy(text: str) -> bool:
             words = text.split()
             if not words:
@@ -92,12 +97,12 @@ class RAGAgent:
             c for c in company_chunks
             if is_text_heavy(c.get("text", ""))
         ]
-
         logger.info("[rag] %d chunks after text filter.", len(company_chunks))
 
+        # 4. Fallback if too few
         if len(company_chunks) < _MIN_CHUNKS:
             logger.warning(
-                "[rag] Too few filtered chunks (%d) for %s, falling back to all company chunks.",
+                "[rag] Too few filtered chunks (%d) for %s, falling back.",
                 len(company_chunks),
                 ticker,
             )
@@ -111,6 +116,13 @@ class RAGAgent:
         if not company_chunks:
             logger.error("[rag] No chunks found for %s at all.", ticker)
             return candidates[:_MIN_CHUNKS] if candidates else []
+
+        # 🔥 5. Re-rank by similarity score
+        company_chunks = sorted(
+            company_chunks,
+            key=lambda c: c.get("score", 0),
+            reverse=True
+        )
 
         return company_chunks[:_RETRIEVE_K]
 
@@ -137,7 +149,7 @@ class RAGAgent:
         # 🚨 No data guard
         if not retrieved_chunks or len(retrieved_chunks) < 3:
             logger.error(
-                "[rag] No usable data for %s (%s). Likely extraction failure.",
+                "[rag] No usable data for %s (%s).",
                 company_name,
                 ticker,
             )
@@ -166,8 +178,11 @@ class RAGAgent:
             prompt=prompt,
         )
 
-        # 🔥 HARD FALLBACK: if model ignores JSON, coerce output
-        if not re.search(r"\{.*\}", raw_output, re.DOTALL):
+        # 🔍 Debug (optional but recommended)
+        logger.debug("\n=== RAW MODEL OUTPUT ===\n%s\n========================\n", raw_output)
+
+        # 🔥 Improved JSON detection (non-greedy)
+        if not re.search(r"\{.*?\}", raw_output, re.DOTALL):
             logger.warning("[rag] Model did not return JSON. Forcing fallback output.")
 
             return {
@@ -176,7 +191,10 @@ class RAGAgent:
                 "predicted_score": 50.0,
                 "predicted_label": 0,
                 "risk_level": "medium",
-                "key_signals": json.dumps([raw_output[:200]]),
+                "key_signals": json.dumps([
+                    "Model failed to produce structured output",
+                    raw_output[:200]
+                ]),
                 "citations": json.dumps([]),
                 "raw_output": raw_output,
                 "approach": "rag",

@@ -34,8 +34,6 @@ STRICT RULES:
 - You MUST output ONLY valid JSON.
 - You MUST NOT continue or repeat the passages.
 - You MUST extract only relevant risk signals.
-
-If you cannot find sufficient evidence, return a neutral (medium risk) assessment.
 """
 
 _ANALYSIS_TASK = """\
@@ -43,7 +41,7 @@ Analyse the credit risk of {company_name} ({ticker}) using ONLY the passages bel
 
 IMPORTANT:
 - Only extract signals related to THIS company.
-- Ignore any irrelevant or generic text.
+- Ignore irrelevant or generic text.
 - Be concise and evidence-driven.
 
 Focus ONLY on:
@@ -54,15 +52,17 @@ Focus ONLY on:
 5. Covenant breaches
 6. Severe risk factors impacting repayment
 
-OUTPUT REQUIREMENTS:
-- Return ONLY valid JSON
-- No explanations before or after
-- No markdown
-- No text outside JSON
+DATA TYPES:
+- risk_score MUST be an integer (0-100)
+- risk_level MUST be one of: low, medium, high
+- key_signals MUST be a list of strings
+- citations MUST be a list of strings
+- cited_chunk_ids MUST be a list of strings
+- reasoning MUST be a string
 
 JSON FORMAT:
 {{
-  "risk_score": <0-100>,
+  "risk_score": <integer 0-100>,
   "risk_level": "<low|medium|high>",
   "key_signals": ["..."],
   "citations": ["..."],
@@ -80,9 +80,10 @@ def _format_chunks(chunks: List[Dict[str, Any]]) -> str:
         text = chunk.get("text", "").strip()
 
         # truncate long chunks
-        text = text[:1200]
+        text = text[:800]  # 🔥 reduced to improve model focus
 
         lines.append(f"[{chunk_id}] (section: {section})\n{text}")
+
     return "\n\n".join(lines)
 
 
@@ -112,18 +113,25 @@ PASSAGES:
 END OF PASSAGES
 =====================
 
-You are NOT allowed to continue the text above.
+FINAL INSTRUCTION:
 
-You MUST now produce a JSON answer.
+You MUST return EXACTLY ONE JSON object.
 
-CRITICAL RULES:
-- Output MUST start with "{{"
-- Output MUST be valid JSON
-- Do NOT include any text before or after JSON
-- Do NOT repeat any passage text
+DO NOT:
+- add explanations
+- add text before or after
+- repeat passages
+- include markdown
 
-START JSON NOW:
-{{"""
+If you do not follow this format, the output will be discarded.
+
+Your response MUST:
+- start with "{{"
+- end with "}}"
+- be valid JSON
+
+Return ONLY JSON.
+"""
 
     return prompt
 
@@ -139,7 +147,8 @@ def parse_rag_output(raw_output: str) -> Dict[str, Any]:
         logger.warning("parse_rag_output received empty string.")
         return result
 
-    json_match = re.search(r"\{.*\}", raw_output, re.DOTALL)
+    # 🔥 Non-greedy JSON extraction (important fix)
+    json_match = re.search(r"\{.*?\}", raw_output, re.DOTALL)
 
     if not json_match:
         logger.warning("No JSON found. Raw output: %s", raw_output[:200])
@@ -156,6 +165,10 @@ def parse_rag_output(raw_output: str) -> Dict[str, Any]:
             raw_output[:200],
         )
         return result
+
+    # ------------------------------------------------------------------
+    # Safe extraction + validation
+    # ------------------------------------------------------------------
 
     score = parsed.get("risk_score", result["risk_score"])
     if isinstance(score, (int, float)):
