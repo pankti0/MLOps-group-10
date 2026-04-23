@@ -4,8 +4,8 @@ RAG-based credit-risk inference agent (IMPROVED VERSION).
 Enhancements:
 - BGE query prefix for better embeddings
 - Metadata-aware reranking (company + section boosting)
-- Better query formulation
-- Retrieval → rerank → select pipeline
+- STRICT company filtering (FIXED)
+- Retrieval → filter → rerank → select pipeline
 """
 
 import json
@@ -36,8 +36,7 @@ _CSV_COLUMNS = [
     "approach",
 ]
 
-_MIN_CHUNKS = 3
-_RETRIEVE_K = 20  # broad retrieval
+_RETRIEVE_K = 20  # you can increase to 40 if needed
 
 
 def _score_to_label(score: float) -> int:
@@ -52,7 +51,7 @@ class RAGAgent:
         self.embedder = embedder
 
     # -----------------------------------------------------------
-    # 🔥 NEW: Metadata-aware reranking
+    # Metadata-aware reranking
     # -----------------------------------------------------------
     def _rerank_results(
         self,
@@ -67,7 +66,7 @@ class RAGAgent:
 
             bonus = 0.0
 
-            # Boost same company
+            # Boost same company (redundant now but still good)
             if meta.get("ticker") == target_ticker:
                 bonus += 0.25
 
@@ -83,7 +82,7 @@ class RAGAgent:
         return [r for _, r in scored]
 
     # -----------------------------------------------------------
-    # 🔥 PATCHED retrieval pipeline
+    # 🔥 FIXED retrieval pipeline
     # -----------------------------------------------------------
     def _retrieve_chunks_for_company(
         self,
@@ -91,7 +90,7 @@ class RAGAgent:
         query: str,
     ) -> List[Dict[str, Any]]:
 
-        # ✅ BGE BEST PRACTICE
+        # BGE best practice
         query = "Represent this sentence for searching relevant passages: " + query
 
         # Step 1: Broad retrieval
@@ -105,25 +104,22 @@ class RAGAgent:
             logger.warning("[rag] No candidates retrieved for %s.", ticker)
             return []
 
-        # Step 2: Rerank
-        reranked = self._rerank_results(candidates, target_ticker=ticker)
-
-        # Step 3: Prefer same-company chunks
-        company_chunks = [
-            c for c in reranked
+        # -----------------------------------------------------------
+        # 🔥 STRICT company filtering BEFORE reranking
+        # -----------------------------------------------------------
+        company_candidates = [
+            c for c in candidates
             if c.get("metadata", {}).get("ticker") == ticker
         ]
 
-        # Step 4: If enough, use them
-        if len(company_chunks) >= _MIN_CHUNKS:
-            return company_chunks[:10]
+        if not company_candidates:
+            logger.warning("[rag] No company-specific chunks found for %s.", ticker)
+            return []
 
-        # Step 5: Fallback to best mixed results
-        logger.warning(
-            "[rag] Only %d company chunks found for %s; mixing global results.",
-            len(company_chunks),
-            ticker,
-        )
+        # -----------------------------------------------------------
+        # Rerank ONLY within same company
+        # -----------------------------------------------------------
+        reranked = self._rerank_results(company_candidates, target_ticker=ticker)
 
         return reranked[:10]
 
@@ -134,13 +130,12 @@ class RAGAgent:
         self,
         ticker: str,
         company_name: str,
-        sections: Dict[str, Any],  # unused
+        sections: Dict[str, Any],
     ) -> Dict[str, Any]:
 
         from src.models.base_loader import generate_response
         from src.prompts.rag_prompt import build_rag_prompt, parse_rag_output
 
-        # ✅ Improved query formulation
         query = f"{company_name} financial risks liquidity debt going concern risk factors"
 
         logger.info("[rag] Retrieving chunks for %s (%s).", company_name, ticker)
@@ -149,7 +144,7 @@ class RAGAgent:
 
         logger.info("[rag] Using %d chunks for %s.", len(retrieved_chunks), ticker)
 
-        # ✅ Debug preview
+        # Debug preview
         logger.info("[rag] Top retrieved chunks preview:")
         for c in retrieved_chunks[:3]:
             meta = c.get("metadata", {})

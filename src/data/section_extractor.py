@@ -31,8 +31,8 @@ _MIN_CONTENT_CHARS = 500
 # Matches "Item 7." / "ITEM 7A." / "Part II" etc. at the start of a line.
 _NEXT_ITEM_PATTERN = re.compile(
     r"(?m)^[ \t]*(?:ITEM|Item)\s+\d+[A-Z]?\.?\s*$"
-    r"|(?m)^[ \t]*(?:ITEM|Item)\s+\d+[A-Z]?\.\s+\S"
-    r"|(?m)^[ \t]*(?:PART|Part)\s+[IVX]+\.?\s*$",
+    r"|^[ \t]*(?:ITEM|Item)\s+\d+[A-Z]?\.\s+\S"
+    r"|^[ \t]*(?:PART|Part)\s+[IVX]+\.?\s*$",
 )
 
 
