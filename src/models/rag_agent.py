@@ -1,9 +1,5 @@
 """
 RAG-based credit-risk inference agent.
-
-Exports:
-    RAGAgent — retrieves relevant passages per company from a FAISS index,
-    then prompts Mistral 7B with those passages and saves predictions to CSV.
 """
 
 import json
@@ -36,24 +32,14 @@ _CSV_COLUMNS = [
 
 _RAG_QUERY_SUFFIX = " credit risk financial health debt liquidity going concern"
 _MIN_CHUNKS = 3
-_RETRIEVE_K = 20  # retrieve broadly, then filter to this company
+_RETRIEVE_K = 20
 
 
 def _score_to_label(score: float) -> int:
-    """Convert a 0-100 risk score to a binary label (1 = high risk)."""
     return 1 if score >= 50 else 0
 
 
 class RAGAgent:
-    """Retrieval-augmented credit-risk analyser using Mistral 7B Instruct.
-
-    Args:
-        model: A loaded causal LM (from ``base_loader.load_model``).
-        tokenizer: The corresponding tokenizer.
-        faiss_store: A built/loaded ``FAISSStore`` instance.
-        embedder: The ``Embedder`` instance used to build the FAISS store.
-    """
-
     def __init__(self, model, tokenizer, faiss_store, embedder) -> None:
         self.model = model
         self.tokenizer = tokenizer
@@ -61,7 +47,7 @@ class RAGAgent:
         self.embedder = embedder
 
     # ------------------------------------------------------------------
-    # Internal helpers
+    # 🔥 FIXED RETRIEVAL
     # ------------------------------------------------------------------
 
     def _retrieve_chunks_for_company(
@@ -69,79 +55,84 @@ class RAGAgent:
         ticker: str,
         query: str,
     ) -> List[Dict[str, Any]]:
-        """Return relevant chunks belonging to ``ticker``.
 
-        Retrieves ``_RETRIEVE_K`` candidates, filters to those whose metadata
-        matches the ticker, and falls back to all chunks for this company if
-        fewer than ``_MIN_CHUNKS`` are found.
-
-        Args:
-            ticker: Ticker symbol used to filter chunks.
-            query: Natural-language query for vector retrieval.
-
-        Returns:
-            List of chunk dicts (subset of the FAISS store's metadata).
-        """
+        # Step 1: Over-retrieve
         candidates = self.faiss_store.query(
             query_text=query,
             embedder=self.embedder,
-            k=_RETRIEVE_K,
+            k=100,
         )
 
-        # Filter to this company
+        logger.info("[rag] Retrieved %d raw candidates for %s.", len(candidates), ticker)
+
+        # Step 2: Strict ticker filter
         company_chunks = [
             c for c in candidates
-            if c.get("metadata", {}).get("ticker", "") == ticker
-            or c.get("ticker", "") == ticker
+            if c.get("metadata", {}).get("ticker") == ticker
         ]
 
-        if len(company_chunks) >= _MIN_CHUNKS:
-            return company_chunks
+        logger.info("[rag] %d chunks after ticker filter.", len(company_chunks))
 
-        # Fallback: pull ALL stored chunks for this ticker
-        all_company_chunks = [
-            dict(c)
-            for c in self.faiss_store._chunks  # type: ignore[attr-defined]
-            if c.get("metadata", {}).get("ticker", "") == ticker
-            or c.get("ticker", "") == ticker
+        # Step 3: Section filter
+        VALID_SECTIONS = {"item_1a", "item_7"}
+
+        company_chunks = [
+            c for c in company_chunks
+            if c.get("metadata", {}).get("section", "").lower() in VALID_SECTIONS
         ]
 
-        if all_company_chunks:
+        logger.info("[rag] %d chunks after section filter.", len(company_chunks))
+
+        # Step 4: Remove numeric/table junk
+        def is_text_heavy(text: str) -> bool:
+            words = text.split()
+            if not words:
+                return False
+
+            digit_words = sum(1 for w in words if any(c.isdigit() for c in w))
+            return (digit_words / len(words)) < 0.3
+
+        company_chunks = [
+            c for c in company_chunks
+            if is_text_heavy(c.get("text", ""))
+        ]
+
+        logger.info("[rag] %d chunks after text filter.", len(company_chunks))
+
+        # Step 5: Fallback to all company chunks
+        if len(company_chunks) < _MIN_CHUNKS:
             logger.warning(
-                "[rag] Only %d relevant chunks found for %s via query; "
-                "using all %d chunks for this company.",
+                "[rag] Too few filtered chunks (%d) for %s, falling back to all company chunks.",
                 len(company_chunks),
                 ticker,
-                len(all_company_chunks),
             )
-            return all_company_chunks
 
-        logger.warning("[rag] No chunks found at all for ticker '%s'.", ticker)
-        return candidates[:_MIN_CHUNKS] if candidates else []
+            all_company_chunks = [
+                dict(c)
+                for c in self.faiss_store._chunks  # type: ignore
+                if c.get("metadata", {}).get("ticker") == ticker
+            ]
+
+            company_chunks = all_company_chunks
+
+        # Step 6: Final fallback
+        if not company_chunks:
+            logger.error("[rag] No chunks found for %s at all.", ticker)
+            return candidates[:_MIN_CHUNKS] if candidates else []
+
+        return company_chunks[:_RETRIEVE_K]
 
     # ------------------------------------------------------------------
-    # Single-company analysis
+    # 🔥 ANALYZE (with NO_DATA guard)
     # ------------------------------------------------------------------
 
     def analyze(
         self,
         ticker: str,
         company_name: str,
-        sections: Dict[str, Any],  # noqa: ARG002 — kept for API consistency
+        sections: Dict[str, Any],
     ) -> Dict[str, Any]:
-        """Analyse a single company using RAG and return a prediction row.
 
-        ``sections`` is accepted for interface parity with ``BaselineAgent``
-        but is not used — the retrieved chunks serve as context.
-
-        Args:
-            ticker: Stock ticker symbol.
-            company_name: Full company name.
-            sections: Dict of 10-K sections (ignored; kept for interface parity).
-
-        Returns:
-            Dict matching the prediction CSV schema.
-        """
         from src.models.base_loader import generate_response
         from src.prompts.rag_prompt import build_rag_prompt, parse_rag_output
 
@@ -150,6 +141,26 @@ class RAGAgent:
 
         retrieved_chunks = self._retrieve_chunks_for_company(ticker, query)
         logger.info("[rag] Using %d chunks for %s.", len(retrieved_chunks), ticker)
+
+        # 🚨 HANDLE EXTRACTION FAILURES
+        if not retrieved_chunks or len(retrieved_chunks) < 3:
+            logger.error(
+                "[rag] No usable data for %s (%s). Likely extraction failure.",
+                company_name,
+                ticker,
+            )
+
+            return {
+                "ticker": ticker,
+                "company_name": company_name,
+                "predicted_score": -1,
+                "predicted_label": 0,
+                "risk_level": "unknown",
+                "key_signals": json.dumps([]),
+                "citations": json.dumps([]),
+                "raw_output": "NO_DATA",
+                "approach": "rag",
+            }
 
         prompt = build_rag_prompt(
             company_name=company_name,
@@ -198,28 +209,17 @@ class RAGAgent:
     def analyze_all(
         self,
         companies_df: pd.DataFrame,
-        sections_dir: str,  # noqa: ARG002 — kept for interface parity
+        sections_dir: str,
     ) -> pd.DataFrame:
-        """Analyse every company and save predictions CSV.
 
-        ``sections_dir`` is accepted for interface parity with
-        ``BaselineAgent`` but is not required for RAG inference.
-
-        Args:
-            companies_df: DataFrame with at minimum ``ticker`` and
-                ``company_name`` columns.
-            sections_dir: Path to processed sections (not used by RAG).
-
-        Returns:
-            DataFrame of predictions with columns matching the output CSV schema.
-        """
         try:
             from tqdm import tqdm
         except ImportError:
-            tqdm = None  # type: ignore
+            tqdm = None
 
         rows = []
         iterable = companies_df.iterrows()
+
         if tqdm is not None:
             iterable = tqdm(
                 list(iterable),
@@ -233,7 +233,7 @@ class RAGAgent:
 
             try:
                 result = self.analyze(ticker, company_name, sections={})
-            except Exception as exc:  # noqa: BLE001
+            except Exception as exc:
                 logger.error(
                     "[rag] Analysis failed for %s (%s): %s",
                     ticker,
