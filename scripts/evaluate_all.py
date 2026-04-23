@@ -7,6 +7,7 @@ Runs the complete evaluation pipeline for all credit risk detection approaches:
     - RAG
     - LoRA fine-tuning
     - Altman Z-Score (generated if predictions are absent)
+    
 
 Outputs:
     data/results/altman_zscore_predictions.csv  (generated)
@@ -153,8 +154,13 @@ def main() -> None:
     print("  EVALUATION COMPLETE")
     print("=" * 70)
 
+    display_names = {
+        "lora": "RAG + LORA",
+    }
+
     for approach, metrics in all_metrics.items():
-        print(f"\n  [{approach.upper()}]")
+        section_title = display_names.get(approach, approach.upper())
+        print(f"\n  [{section_title}]")
         if isinstance(metrics, dict):
             for key, value in metrics.items():
                 if isinstance(value, dict):
