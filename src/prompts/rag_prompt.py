@@ -31,8 +31,8 @@ You are a highly disciplined credit risk analyst.
 STRICT RULES:
 - You MUST use ONLY the provided passages.
 - You MUST NOT use prior knowledge.
-- You MUST NOT output anything except valid JSON.
-- You MUST NOT summarize entire passages.
+- You MUST output ONLY valid JSON.
+- You MUST NOT continue or repeat the passages.
 - You MUST extract only relevant risk signals.
 
 If you cannot find sufficient evidence, return a neutral (medium risk) assessment.
@@ -79,11 +79,12 @@ def _format_chunks(chunks: List[Dict[str, Any]]) -> str:
         section = metadata.get("section", "unknown") if isinstance(metadata, dict) else "unknown"
         text = chunk.get("text", "").strip()
 
-        # 🔥 truncate long chunks (prevents model rambling)
+        # 🔥 truncate long chunks
         text = text[:1200]
 
         lines.append(f"[{chunk_id}] (section: {section})\n{text}")
     return "\n\n".join(lines)
+
 
 def build_rag_prompt(
     company_name: str,
@@ -107,11 +108,18 @@ def build_rag_prompt(
 PASSAGES:
 {passages_text}
 
-REMEMBER:
-- Output ONLY JSON
-- Do NOT repeat passages
-- Do NOT explain outside JSON
+=====================
+END OF PASSAGES
+=====================
 
+You MUST now produce your FINAL ANSWER.
+
+CRITICAL:
+- Do NOT continue the passages
+- Do NOT repeat any text above
+- Output ONLY JSON
+
+BEGIN JSON:
 [/INST]"""
 
     return prompt
@@ -128,7 +136,7 @@ def parse_rag_output(raw_output: str) -> Dict[str, Any]:
         logger.warning("parse_rag_output received empty string.")
         return result
 
-    # 🔥 HARD JSON extraction (fixes your parsing issue)
+    # Extract JSON block
     json_match = re.search(r"\{.*\}", raw_output, re.DOTALL)
 
     if not json_match:
