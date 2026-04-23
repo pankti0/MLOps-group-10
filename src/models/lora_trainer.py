@@ -181,8 +181,7 @@ def train(
         ImportError: If trl or transformers are not installed.
     """
     try:
-        from transformers import TrainingArguments  # type: ignore
-        from trl import SFTTrainer  # type: ignore
+        from trl import SFTConfig, SFTTrainer  # type: ignore
     except ImportError as exc:
         raise ImportError(
             "Required libraries missing. Install with: pip install trl transformers"
@@ -190,13 +189,28 @@ def train(
 
     os.makedirs(output_dir, exist_ok=True)
 
-    training_args = TrainingArguments(
+    # Compute warmup_steps from warmup_ratio to avoid transformers v5.2 removal.
+    warmup_ratio = training_config.get("warmup_ratio", 0.03)
+    num_epochs = training_config.get("num_epochs", 3)
+    batch_size = training_config.get("per_device_train_batch_size", 2)
+    grad_accum = training_config.get("gradient_accumulation_steps", 4)
+    num_samples = len(train_dataset)
+    steps_per_epoch = max(1, num_samples // (batch_size * grad_accum))
+    total_steps = steps_per_epoch * num_epochs
+    warmup_steps = max(1, int(total_steps * warmup_ratio))
+    logger.debug("warmup_steps computed as %d (ratio=%.2f, total_steps=%d)", warmup_steps, warmup_ratio, total_steps)
+
+    # SFTConfig extends TrainingArguments and owns max_seq_length / dataset_text_field
+    # (those params were removed from SFTTrainer.__init__ in TRL ≥ 0.9).
+    # load_best_model_at_end must be False for PEFT/LoRA models — the checkpoint
+    # reload logic is incompatible with adapter-only checkpoints and will crash.
+    training_args = SFTConfig(
         output_dir=output_dir,
-        num_train_epochs=training_config.get("num_epochs", 3),
-        per_device_train_batch_size=training_config.get("per_device_train_batch_size", 2),
-        gradient_accumulation_steps=training_config.get("gradient_accumulation_steps", 4),
+        num_train_epochs=num_epochs,
+        per_device_train_batch_size=batch_size,
+        gradient_accumulation_steps=grad_accum,
         learning_rate=training_config.get("learning_rate", 2e-4),
-        warmup_ratio=training_config.get("warmup_ratio", 0.03),
+        warmup_steps=warmup_steps,
         lr_scheduler_type=training_config.get("lr_scheduler_type", "cosine"),
         fp16=training_config.get("fp16", False),
         bf16=training_config.get("bf16", True),
@@ -205,11 +219,13 @@ def train(
         save_steps=training_config.get("save_steps", 100),
         eval_strategy="steps",
         save_strategy="steps",
-        load_best_model_at_end=training_config.get("load_best_model_at_end", True),
+        load_best_model_at_end=False,  # must be False for PEFT/LoRA adapter checkpoints
         report_to="wandb",
         run_name=training_config.get("run_name", "lora-sft"),
         dataloader_num_workers=0,
         group_by_length=True,
+        max_seq_length=training_config.get("max_seq_length", 2048),
+        dataset_text_field="text",
     )
 
     logger.info(
@@ -222,11 +238,9 @@ def train(
 
     trainer = SFTTrainer(
         model=model,
-        tokenizer=tokenizer,
+        processing_class=tokenizer,
         train_dataset=train_dataset,
         eval_dataset=val_dataset,
-        dataset_text_field="text",
-        max_seq_length=training_config.get("max_seq_length", 2048),
         args=training_args,
     )
 
