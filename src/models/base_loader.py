@@ -66,7 +66,7 @@ def load_model(
             ``ollama pull mistral`` as a local alternative.
     """
     try:
-        from transformers import AutoModelForCausalLM, AutoTokenizer  # type: ignore
+        from transformers import AutoConfig, AutoModelForCausalLM, AutoTokenizer  # type: ignore
     except ImportError as exc:
         raise ImportError(
             "transformers is not installed. Run: pip install transformers"
@@ -104,8 +104,14 @@ def load_model(
 
     logger.info("Loading model '%s' (device_map='%s').", model_name, device_map)
     try:
+        config = AutoConfig.from_pretrained(model_name, token=hf_token)
+        # Some model configs (e.g. certain Phi variants) omit pad_token_id.
+        if getattr(config, "pad_token_id", None) is None:
+            config.pad_token_id = tokenizer.pad_token_id
+
         model = AutoModelForCausalLM.from_pretrained(
             model_name,
+            config=config,
             device_map=device_map,
             torch_dtype=torch.bfloat16 if not quantize else None,
             trust_remote_code=False,
