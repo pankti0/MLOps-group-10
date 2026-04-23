@@ -1,48 +1,86 @@
-import os
-import sys
+import json
+import re
 
-_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if _REPO_ROOT not in sys.path:
-    sys.path.insert(0, _REPO_ROOT)
+def parse_rag_output(raw_output: str) -> dict:
+    """
+    Robust parser for RAG outputs.
 
-from src.models.rag_agent import RAGAgent
-from src.embeddings.embedder import Embedder
-from src.embeddings.faiss_store import FAISSStore
+    Handles:
+    - JSON outputs
+    - Plain text with "Risk Score: X"
+    - Fallback safely
+    """
 
-INDEX_PATH = os.path.join(_REPO_ROOT, "data", "embeddings", "faiss.index")
-METADATA_PATH = os.path.join(_REPO_ROOT, "data", "embeddings", "chunk_metadata.json")
+    if not raw_output or len(raw_output.strip()) == 0:
+        return _fallback("Empty model output")
 
-embedder = Embedder()
-faiss_store = FAISSStore(dimension=embedder.get_dimension())
-faiss_store.load(INDEX_PATH, METADATA_PATH)
+    raw_output = raw_output.strip()
 
-agent = RAGAgent(None, None, faiss_store, embedder)
+    # -----------------------------
+    # 1. Try JSON parse
+    # -----------------------------
+    try:
+        data = json.loads(raw_output)
+        return {
+            "risk_score": _normalize_score(data.get("risk_score")),
+            "risk_level": data.get("risk_level", "medium"),
+            "key_signals": data.get("key_signals", []),
+            "citations": data.get("citations", []),
+        }
+    except Exception:
+        pass
 
-test_cases = [
-    ("AAPL", "Apple"),
-    ("T", "AT&T"),
-    ("DAL", "Delta Air Lines"),
-]
+    # -----------------------------
+    # 2. Extract score via regex
+    # -----------------------------
+    score_match = re.search(
+        r"risk[_\s-]*score\s*[:=]\s*([0-9]+(?:\.[0-9]+)?)",
+        raw_output,
+        re.IGNORECASE
+    )
 
-for ticker, name in test_cases:
-    print(f"\n===== {name} ({ticker}) =====")
+    if score_match:
+        score = _normalize_score(score_match.group(1))
+    else:
+        # fallback: any number
+        generic_match = re.search(r"([0-9]{1,3})", raw_output)
+        score = _normalize_score(generic_match.group(1)) if generic_match else 50
 
-    query = f"{name} financial risks liquidity debt going concern risk factors"
-    chunks = agent._retrieve_chunks_for_company(ticker, query)
+    # -----------------------------
+    # 3. Extract risk level
+    # -----------------------------
+    text = raw_output.lower()
 
-    correct = 0
+    if "high" in text:
+        level = "high"
+    elif "low" in text:
+        level = "low"
+    else:
+        level = "medium"
 
-    for i, c in enumerate(chunks[:5]):
-        meta = c.get("metadata", {})
+    return {
+        "risk_score": score,
+        "risk_level": level,
+        "key_signals": [],
+        "citations": [],
+    }
 
-        if meta.get("ticker") == ticker:
-            correct += 1
 
-        print(f"\nRank {i + 1}")
-        print("Ticker:", meta.get("ticker"))
-        print("Section:", meta.get("section"))
-        print("Score:", round(c.get("score", 0), 3))
-        print("Text:", c.get("text", "")[:200])
+def _normalize_score(value):
+    try:
+        val = float(value)
+        if val <= 1:
+            val *= 100
+        return round(min(max(val, 0), 100), 2)
+    except:
+        return 50
 
-    precision = correct / len(chunks) if chunks else 0.0
-    print(f"\nCompany precision: {precision:.2f}")
+
+def _fallback(reason: str):
+    return {
+        "risk_score": 50,
+        "risk_level": "medium",
+        "key_signals": [],
+        "citations": [],
+        "reasoning": reason,
+    }

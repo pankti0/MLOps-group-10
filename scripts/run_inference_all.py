@@ -45,7 +45,7 @@ RESULTS_DIR = os.path.join(_REPO_ROOT, "data", "results")
 INDEX_PATH = os.path.join(_REPO_ROOT, "data", "embeddings", "faiss.index")
 METADATA_PATH = os.path.join(_REPO_ROOT, "data", "embeddings", "chunk_metadata.json")
 
-_DEFAULT_MODEL = "microsoft/phi-2"
+_DEFAULT_MODEL = "mistralai/Mistral-7B-Instruct-v0.2"
 
 _CSV_COLUMNS = [
     "ticker",
