@@ -5,6 +5,7 @@ RAG-based credit-risk inference agent.
 import json
 import logging
 import os
+import re
 from typing import Any, Dict, List
 
 import pandas as pd
@@ -47,7 +48,7 @@ class RAGAgent:
         self.embedder = embedder
 
     # ------------------------------------------------------------------
-    # 🔥 FIXED RETRIEVAL
+    # Retrieval
     # ------------------------------------------------------------------
 
     def _retrieve_chunks_for_company(
@@ -56,7 +57,6 @@ class RAGAgent:
         query: str,
     ) -> List[Dict[str, Any]]:
 
-        # Step 1: Over-retrieve
         candidates = self.faiss_store.query(
             query_text=query,
             embedder=self.embedder,
@@ -65,7 +65,6 @@ class RAGAgent:
 
         logger.info("[rag] Retrieved %d raw candidates for %s.", len(candidates), ticker)
 
-        # Step 2: Strict ticker filter
         company_chunks = [
             c for c in candidates
             if c.get("metadata", {}).get("ticker") == ticker
@@ -73,7 +72,6 @@ class RAGAgent:
 
         logger.info("[rag] %d chunks after ticker filter.", len(company_chunks))
 
-        # Step 3: Section filter
         VALID_SECTIONS = {"item_1a", "item_7"}
 
         company_chunks = [
@@ -83,12 +81,10 @@ class RAGAgent:
 
         logger.info("[rag] %d chunks after section filter.", len(company_chunks))
 
-        # Step 4: Remove numeric/table junk
         def is_text_heavy(text: str) -> bool:
             words = text.split()
             if not words:
                 return False
-
             digit_words = sum(1 for w in words if any(c.isdigit() for c in w))
             return (digit_words / len(words)) < 0.3
 
@@ -99,7 +95,6 @@ class RAGAgent:
 
         logger.info("[rag] %d chunks after text filter.", len(company_chunks))
 
-        # Step 5: Fallback to all company chunks
         if len(company_chunks) < _MIN_CHUNKS:
             logger.warning(
                 "[rag] Too few filtered chunks (%d) for %s, falling back to all company chunks.",
@@ -107,15 +102,12 @@ class RAGAgent:
                 ticker,
             )
 
-            all_company_chunks = [
+            company_chunks = [
                 dict(c)
                 for c in self.faiss_store._chunks  # type: ignore
                 if c.get("metadata", {}).get("ticker") == ticker
             ]
 
-            company_chunks = all_company_chunks
-
-        # Step 6: Final fallback
         if not company_chunks:
             logger.error("[rag] No chunks found for %s at all.", ticker)
             return candidates[:_MIN_CHUNKS] if candidates else []
@@ -123,7 +115,7 @@ class RAGAgent:
         return company_chunks[:_RETRIEVE_K]
 
     # ------------------------------------------------------------------
-    # 🔥 ANALYZE (with NO_DATA guard)
+    # Analyze
     # ------------------------------------------------------------------
 
     def analyze(
@@ -142,7 +134,7 @@ class RAGAgent:
         retrieved_chunks = self._retrieve_chunks_for_company(ticker, query)
         logger.info("[rag] Using %d chunks for %s.", len(retrieved_chunks), ticker)
 
-        # 🚨 HANDLE EXTRACTION FAILURES
+        # 🚨 No data guard
         if not retrieved_chunks or len(retrieved_chunks) < 3:
             logger.error(
                 "[rag] No usable data for %s (%s). Likely extraction failure.",
@@ -174,6 +166,22 @@ class RAGAgent:
             prompt=prompt,
         )
 
+        # 🔥 HARD FALLBACK: if model ignores JSON, coerce output
+        if not re.search(r"\{.*\}", raw_output, re.DOTALL):
+            logger.warning("[rag] Model did not return JSON. Forcing fallback output.")
+
+            return {
+                "ticker": ticker,
+                "company_name": company_name,
+                "predicted_score": 50.0,
+                "predicted_label": 0,
+                "risk_level": "medium",
+                "key_signals": json.dumps([raw_output[:200]]),
+                "citations": json.dumps([]),
+                "raw_output": raw_output,
+                "approach": "rag",
+            }
+
         parsed = parse_rag_output(raw_output)
 
         predicted_score = float(parsed.get("risk_score", 50))
@@ -203,7 +211,7 @@ class RAGAgent:
         }
 
     # ------------------------------------------------------------------
-    # Batch analysis
+    # Batch
     # ------------------------------------------------------------------
 
     def analyze_all(
@@ -221,11 +229,7 @@ class RAGAgent:
         iterable = companies_df.iterrows()
 
         if tqdm is not None:
-            iterable = tqdm(
-                list(iterable),
-                desc="[rag] Analyzing companies",
-                unit="company",
-            )
+            iterable = tqdm(list(iterable), desc="[rag] Analyzing companies")
 
         for _, row in iterable:
             ticker = str(row["ticker"])

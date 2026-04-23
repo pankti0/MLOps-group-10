@@ -79,7 +79,7 @@ def _format_chunks(chunks: List[Dict[str, Any]]) -> str:
         section = metadata.get("section", "unknown") if isinstance(metadata, dict) else "unknown"
         text = chunk.get("text", "").strip()
 
-        # 🔥 truncate long chunks
+        # truncate long chunks
         text = text[:1200]
 
         lines.append(f"[{chunk_id}] (section: {section})\n{text}")
@@ -112,15 +112,18 @@ PASSAGES:
 END OF PASSAGES
 =====================
 
-You MUST now produce your FINAL ANSWER.
+You are NOT allowed to continue the text above.
 
-CRITICAL:
-- Do NOT continue the passages
-- Do NOT repeat any text above
-- Output ONLY JSON
+You MUST now produce a JSON answer.
 
-BEGIN JSON:
-[/INST]"""
+CRITICAL RULES:
+- Output MUST start with "{{"
+- Output MUST be valid JSON
+- Do NOT include any text before or after JSON
+- Do NOT repeat any passage text
+
+START JSON NOW:
+{{"""
 
     return prompt
 
@@ -136,7 +139,6 @@ def parse_rag_output(raw_output: str) -> Dict[str, Any]:
         logger.warning("parse_rag_output received empty string.")
         return result
 
-    # Extract JSON block
     json_match = re.search(r"\{.*\}", raw_output, re.DOTALL)
 
     if not json_match:
@@ -155,7 +157,6 @@ def parse_rag_output(raw_output: str) -> Dict[str, Any]:
         )
         return result
 
-    # Validate fields
     score = parsed.get("risk_score", result["risk_score"])
     if isinstance(score, (int, float)):
         result["risk_score"] = max(0, min(100, int(score)))
