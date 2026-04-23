@@ -1,11 +1,11 @@
 ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
-AAPL,Apple,43.4,0,medium,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=43.4,baseline
-MSFT,Microsoft,27.7,0,low,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=27.7,baseline
-JNJ,Johnson & Johnson,54.0,1,medium,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=54.0,baseline
-DAL,Delta Air Lines,69.8,1,high,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=69.8,baseline
-T,AT&T,83.3,1,high,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=83.3,baseline
-VZ,Verizon,20.5,0,low,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=20.5,baseline
-F,Ford Motor Company,17.4,0,low,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=17.4,baseline
-AAL,American Airlines,81.4,1,high,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=81.4,baseline
-GME,GameStop,18.3,0,low,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=18.3,baseline
-AMC,AMC Entertainment,79.0,1,high,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=79.0,baseline
+AAPL,Apple,23.4,0,low,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=23.4,baseline
+MSFT,Microsoft,5.0,0,low,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=5.0,baseline
+JNJ,Johnson & Johnson,16.4,0,low,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=16.4,baseline
+DAL,Delta Air Lines,34.6,0,low,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=34.6,baseline
+T,AT&T,35.2,0,medium,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=35.2,baseline
+VZ,Verizon,22.9,0,low,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=22.9,baseline
+F,Ford Motor Company,75.5,1,high,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=75.5,baseline
+AAL,American Airlines,50.7,1,medium,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=50.7,baseline
+GME,GameStop,95.0,1,high,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=95.0,baseline
+AMC,AMC Entertainment,69.7,1,high,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=69.7,baseline
