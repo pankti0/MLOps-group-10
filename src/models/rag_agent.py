@@ -31,14 +31,15 @@ _CSV_COLUMNS = [
     "approach",
 ]
 
-# 🔥 Improved query
+# 🔥 STRONGER QUERY (fixes weak signal issue)
 _RAG_QUERY_SUFFIX = (
-    " debt leverage liquidity cash flow going concern risk factors "
-    "covenant breach financial distress revenue decline"
+    " debt leverage high debt liquidity cash flow going concern "
+    "financial distress covenant breach losses revenue decline"
 )
 
 _MIN_CHUNKS = 3
-_RETRIEVE_K = 5   # 🔥 reduced for better signal
+_RETRIEVE_K = 5
+
 
 def _score_to_label(score: float) -> int:
     return 1 if score >= 50 else 0
@@ -69,15 +70,15 @@ class RAGAgent:
 
         logger.info("[rag] Retrieved %d raw candidates for %s.", len(candidates), ticker)
 
-        # 1. Filter by ticker
+        # 🔥 CASE-ROBUST ticker filter
         company_chunks = [
             c for c in candidates
-            if c.get("metadata", {}).get("ticker") == ticker
+            if c.get("metadata", {}).get("ticker", "").upper() == ticker.upper()
         ]
         logger.info("[rag] %d chunks after ticker filter.", len(company_chunks))
 
-        # 2. Filter by section
-        VALID_SECTIONS = {"item_1a", "item_7"}
+        # 🔥 RELAXED section filter (fixes DAL/JNJ issues)
+        VALID_SECTIONS = {"item_1a", "item_7", "item_8"}
 
         company_chunks = [
             c for c in company_chunks
@@ -85,13 +86,13 @@ class RAGAgent:
         ]
         logger.info("[rag] %d chunks after section filter.", len(company_chunks))
 
-        # 3. Filter numeric-heavy chunks
+        # 🔥 RELAXED numeric filter
         def is_text_heavy(text: str) -> bool:
             words = text.split()
             if not words:
                 return False
             digit_words = sum(1 for w in words if any(c.isdigit() for c in w))
-            return (digit_words / len(words)) < 0.3
+            return (digit_words / len(words)) < 0.5
 
         company_chunks = [
             c for c in company_chunks
@@ -99,29 +100,21 @@ class RAGAgent:
         ]
         logger.info("[rag] %d chunks after text filter.", len(company_chunks))
 
-        # 4. Fallback if too few
+        # 🔥 BETTER fallback (CRITICAL FIX)
         if len(company_chunks) < _MIN_CHUNKS:
             logger.warning(
-                "[rag] Too few filtered chunks (%d) for %s, falling back.",
+                "[rag] Too few filtered chunks (%d) for %s, using top FAISS results.",
                 len(company_chunks),
                 ticker,
             )
+            # fallback to top FAISS candidates (NOT full company dump)
+            return candidates[:_RETRIEVE_K]
 
-            company_chunks = [
-                dict(c)
-                for c in self.faiss_store._chunks  # type: ignore
-                if c.get("metadata", {}).get("ticker") == ticker
-            ]
-
-        if not company_chunks:
-            logger.error("[rag] No chunks found for %s at all.", ticker)
-            return candidates[:_MIN_CHUNKS] if candidates else []
-
-        # 🔥 5. Re-rank by similarity score
+        # 🔥 Re-rank by similarity score
         company_chunks = sorted(
             company_chunks,
             key=lambda c: c.get("score", 0),
-            reverse=True
+            reverse=True,
         )
 
         return company_chunks[:_RETRIEVE_K]
@@ -146,13 +139,8 @@ class RAGAgent:
         retrieved_chunks = self._retrieve_chunks_for_company(ticker, query)
         logger.info("[rag] Using %d chunks for %s.", len(retrieved_chunks), ticker)
 
-        # 🚨 No data guard
-        if not retrieved_chunks or len(retrieved_chunks) < 3:
-            logger.error(
-                "[rag] No usable data for %s (%s).",
-                company_name,
-                ticker,
-            )
+        if not retrieved_chunks:
+            logger.error("[rag] No usable data for %s (%s).", company_name, ticker)
 
             return {
                 "ticker": ticker,
@@ -178,12 +166,11 @@ class RAGAgent:
             prompt=prompt,
         )
 
-        # 🔍 Debug (optional but recommended)
         logger.debug("\n=== RAW MODEL OUTPUT ===\n%s\n========================\n", raw_output)
 
-        # 🔥 Improved JSON detection (non-greedy)
+        # 🔥 safer JSON detection
         if not re.search(r"\{.*?\}", raw_output, re.DOTALL):
-            logger.warning("[rag] Model did not return JSON. Forcing fallback output.")
+            logger.warning("[rag] Model did not return JSON. Using fallback.")
 
             return {
                 "ticker": ticker,
@@ -203,10 +190,24 @@ class RAGAgent:
         parsed = parse_rag_output(raw_output)
 
         predicted_score = float(parsed.get("risk_score", 50))
+
+        # 🔥 FORCE CONSISTENT LABEL (fix mismatch bug)
         predicted_label = _score_to_label(predicted_score)
-        risk_level = parsed.get("risk_level", "medium")
+
+        # 🔥 FORCE consistent risk level
+        if predicted_score < 35:
+            risk_level = "low"
+        elif predicted_score >= 65:
+            risk_level = "high"
+        else:
+            risk_level = "medium"
+
         key_signals = parsed.get("key_signals", [])
         citations = parsed.get("citations", [])
+
+        # 🔥 detect weak predictions
+        if predicted_score == 50:
+            logger.warning("[rag] %s likely weak prediction (default-like score).", ticker)
 
         logger.info(
             "[rag] %s -> score=%.1f, label=%d, level=%s",

@@ -32,7 +32,7 @@ STRICT RULES:
 - You MUST use ONLY the provided passages.
 - You MUST NOT use prior knowledge.
 - You MUST output ONLY valid JSON.
-- You MUST NOT continue or repeat the passages.
+- You MUST NOT repeat passages.
 - You MUST extract only relevant risk signals.
 """
 
@@ -43,6 +43,8 @@ IMPORTANT:
 - Only extract signals related to THIS company.
 - Ignore irrelevant or generic text.
 - Be concise and evidence-driven.
+- DO NOT default to "medium" unless there is NO signal at all.
+- Make a BEST estimate from available evidence.
 
 Focus ONLY on:
 1. Debt and leverage
@@ -73,14 +75,15 @@ JSON FORMAT:
 
 def _format_chunks(chunks: List[Dict[str, Any]]) -> str:
     lines: List[str] = []
+
     for i, chunk in enumerate(chunks, start=1):
         chunk_id = chunk.get("chunk_id", f"chunk_{i}")
         metadata = chunk.get("metadata", {})
         section = metadata.get("section", "unknown") if isinstance(metadata, dict) else "unknown"
         text = chunk.get("text", "").strip()
 
-        # truncate long chunks
-        text = text[:800]  # 🔥 reduced to improve model focus
+        # 🔥 tighter truncation for better model focus
+        text = text[:600]
 
         lines.append(f"[{chunk_id}] (section: {section})\n{text}")
 
@@ -115,15 +118,13 @@ END OF PASSAGES
 
 FINAL INSTRUCTION:
 
-You MUST return EXACTLY ONE JSON object.
+Return EXACTLY ONE JSON object.
 
-DO NOT:
-- add explanations
-- add text before or after
-- repeat passages
-- include markdown
-
-If you do not follow this format, the output will be discarded.
+STRICT:
+- No explanation
+- No extra text
+- No markdown
+- No repetition
 
 Your response MUST:
 - start with "{{"
@@ -147,7 +148,7 @@ def parse_rag_output(raw_output: str) -> Dict[str, Any]:
         logger.warning("parse_rag_output received empty string.")
         return result
 
-    # 🔥 Non-greedy JSON extraction (important fix)
+    # 🔥 safer JSON extraction
     json_match = re.search(r"\{.*?\}", raw_output, re.DOTALL)
 
     if not json_match:
@@ -167,19 +168,23 @@ def parse_rag_output(raw_output: str) -> Dict[str, Any]:
         return result
 
     # ------------------------------------------------------------------
-    # Safe extraction + validation
+    # Extract + enforce correctness
     # ------------------------------------------------------------------
 
     score = parsed.get("risk_score", result["risk_score"])
     if isinstance(score, (int, float)):
-        result["risk_score"] = max(0, min(100, int(score)))
-
-    level = parsed.get("risk_level", result["risk_level"])
-    if isinstance(level, str) and level.lower() in {"low", "medium", "high"}:
-        result["risk_level"] = level.lower()
+        score = max(0, min(100, int(score)))
+        result["risk_score"] = score
     else:
-        s = result["risk_score"]
-        result["risk_level"] = "low" if s < 35 else ("high" if s >= 65 else "medium")
+        score = result["risk_score"]
+
+    # 🔥 FORCE consistency (ignore model mistakes)
+    if score < 35:
+        result["risk_level"] = "low"
+    elif score >= 65:
+        result["risk_level"] = "high"
+    else:
+        result["risk_level"] = "medium"
 
     result["key_signals"] = [str(x) for x in parsed.get("key_signals", [])]
     result["citations"] = [str(x) for x in parsed.get("citations", [])]
@@ -188,5 +193,9 @@ def parse_rag_output(raw_output: str) -> Dict[str, Any]:
     reasoning = parsed.get("reasoning", "")
     if isinstance(reasoning, str) and reasoning:
         result["reasoning"] = reasoning
+
+    # 🔥 flag weak outputs
+    if result["risk_score"] == 50:
+        logger.warning("Weak prediction (score=50) — likely low signal.")
 
     return result
