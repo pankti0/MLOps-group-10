@@ -31,14 +31,15 @@ _CSV_COLUMNS = [
     "approach",
 ]
 
-# 🔥 STRONGER QUERY
+# 🔥 STRONGER QUERY (KEY FIX)
 _RAG_QUERY_SUFFIX = (
-    " high debt leverage liquidity crisis financial distress "
-    "going concern warning covenant breach losses negative cash flow"
+    " HIGH RISK debt leverage liquidity crisis financial distress "
+    "going concern warning covenant breach losses negative cash flow "
+    "refinancing risk bankruptcy risk debt obligations"
 )
 
 _MIN_CHUNKS = 3
-_RETRIEVE_K = 5
+_RETRIEVE_K = 7   # 🔥 increased from 5 → 7 for better signal
 
 
 # ------------------------------------------------------------------
