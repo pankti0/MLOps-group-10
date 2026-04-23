@@ -31,18 +31,32 @@ _CSV_COLUMNS = [
     "approach",
 ]
 
-# 🔥 STRONGER QUERY (fixes weak signal issue)
+# 🔥 STRONGER QUERY
 _RAG_QUERY_SUFFIX = (
-    " debt leverage high debt liquidity cash flow going concern "
-    "financial distress covenant breach losses revenue decline"
+    " high debt leverage liquidity crisis financial distress "
+    "going concern warning covenant breach losses negative cash flow"
 )
 
 _MIN_CHUNKS = 3
 _RETRIEVE_K = 5
 
 
+# ------------------------------------------------------------------
+# 🔥 FIXED THRESHOLDS (aligned with your dataset)
+# ------------------------------------------------------------------
+
 def _score_to_label(score: float) -> int:
-    return 1 if score >= 50 else 0
+    # label=1 only for HIGH risk
+    return 1 if score >= 70 else 0
+
+
+def _score_to_risk_level(score: float) -> str:
+    if score < 35:
+        return "low"
+    elif score < 70:
+        return "medium"
+    else:
+        return "high"
 
 
 class RAGAgent:
@@ -70,14 +84,14 @@ class RAGAgent:
 
         logger.info("[rag] Retrieved %d raw candidates for %s.", len(candidates), ticker)
 
-        # 🔥 CASE-ROBUST ticker filter
+        # Case-robust ticker filter
         company_chunks = [
             c for c in candidates
             if c.get("metadata", {}).get("ticker", "").upper() == ticker.upper()
         ]
         logger.info("[rag] %d chunks after ticker filter.", len(company_chunks))
 
-        # 🔥 RELAXED section filter (fixes DAL/JNJ issues)
+        # Section filter
         VALID_SECTIONS = {"item_1a", "item_7", "item_8"}
 
         company_chunks = [
@@ -86,7 +100,7 @@ class RAGAgent:
         ]
         logger.info("[rag] %d chunks after section filter.", len(company_chunks))
 
-        # 🔥 RELAXED numeric filter
+        # Numeric filter
         def is_text_heavy(text: str) -> bool:
             words = text.split()
             if not words:
@@ -100,17 +114,16 @@ class RAGAgent:
         ]
         logger.info("[rag] %d chunks after text filter.", len(company_chunks))
 
-        # 🔥 BETTER fallback (CRITICAL FIX)
+        # Fallback
         if len(company_chunks) < _MIN_CHUNKS:
             logger.warning(
                 "[rag] Too few filtered chunks (%d) for %s, using top FAISS results.",
                 len(company_chunks),
                 ticker,
             )
-            # fallback to top FAISS candidates (NOT full company dump)
             return candidates[:_RETRIEVE_K]
 
-        # 🔥 Re-rank by similarity score
+        # Re-rank
         company_chunks = sorted(
             company_chunks,
             key=lambda c: c.get("score", 0),
@@ -168,7 +181,6 @@ class RAGAgent:
 
         logger.debug("\n=== RAW MODEL OUTPUT ===\n%s\n========================\n", raw_output)
 
-        # 🔥 safer JSON detection
         if not re.search(r"\{.*?\}", raw_output, re.DOTALL):
             logger.warning("[rag] Model did not return JSON. Using fallback.")
 
@@ -191,21 +203,13 @@ class RAGAgent:
 
         predicted_score = float(parsed.get("risk_score", 50))
 
-        # 🔥 FORCE CONSISTENT LABEL (fix mismatch bug)
+        # 🔥 FIXED: correct thresholds
         predicted_label = _score_to_label(predicted_score)
-
-        # 🔥 FORCE consistent risk level
-        if predicted_score < 35:
-            risk_level = "low"
-        elif predicted_score >= 65:
-            risk_level = "high"
-        else:
-            risk_level = "medium"
+        risk_level = _score_to_risk_level(predicted_score)
 
         key_signals = parsed.get("key_signals", [])
         citations = parsed.get("citations", [])
 
-        # 🔥 detect weak predictions
         if predicted_score == 50:
             logger.warning("[rag] %s likely weak prediction (default-like score).", ticker)
 

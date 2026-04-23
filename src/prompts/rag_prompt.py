@@ -22,6 +22,19 @@ _DEFAULT_OUTPUT: Dict[str, Any] = {
 }
 
 # ---------------------------------------------------------------------------
+# Thresholds aligned with dataset
+# ---------------------------------------------------------------------------
+
+def _score_to_risk_level(score: int) -> str:
+    if score < 35:
+        return "low"
+    elif score < 70:
+        return "medium"
+    else:
+        return "high"
+
+
+# ---------------------------------------------------------------------------
 # Prompt construction
 # ---------------------------------------------------------------------------
 
@@ -45,6 +58,11 @@ IMPORTANT:
 - Be concise and evidence-driven.
 - DO NOT default to "medium" unless there is NO signal at all.
 - Make a BEST estimate from available evidence.
+
+SCORING GUIDELINES (IMPORTANT):
+- Low risk (0–34): strong balance sheet, low debt, strong liquidity
+- Medium risk (35–69): moderate debt, stable but some risk signals
+- High risk (70–100): high debt, liquidity concerns, losses, distress signals
 
 Focus ONLY on:
 1. Debt and leverage
@@ -73,6 +91,7 @@ JSON FORMAT:
 }}
 """
 
+
 def _format_chunks(chunks: List[Dict[str, Any]]) -> str:
     lines: List[str] = []
 
@@ -82,7 +101,6 @@ def _format_chunks(chunks: List[Dict[str, Any]]) -> str:
         section = metadata.get("section", "unknown") if isinstance(metadata, dict) else "unknown"
         text = chunk.get("text", "").strip()
 
-        # 🔥 tighter truncation for better model focus
         text = text[:600]
 
         lines.append(f"[{chunk_id}] (section: {section})\n{text}")
@@ -98,10 +116,7 @@ def build_rag_prompt(
 
     task = _ANALYSIS_TASK.format(company_name=company_name, ticker=ticker)
 
-    if retrieved_chunks:
-        passages_text = _format_chunks(retrieved_chunks)
-    else:
-        passages_text = "[No relevant passages retrieved]"
+    passages_text = _format_chunks(retrieved_chunks) if retrieved_chunks else "[No relevant passages retrieved]"
 
     prompt = f"""<s>[INST] <<SYS>>
 {_SYSTEM_INSTRUCTION}
@@ -148,7 +163,6 @@ def parse_rag_output(raw_output: str) -> Dict[str, Any]:
         logger.warning("parse_rag_output received empty string.")
         return result
 
-    # 🔥 safer JSON extraction
     json_match = re.search(r"\{.*?\}", raw_output, re.DOTALL)
 
     if not json_match:
@@ -167,25 +181,23 @@ def parse_rag_output(raw_output: str) -> Dict[str, Any]:
         )
         return result
 
-    # ------------------------------------------------------------------
-    # Extract + enforce correctness
-    # ------------------------------------------------------------------
-
+    # ------------------------
+    # Extract score
+    # ------------------------
     score = parsed.get("risk_score", result["risk_score"])
     if isinstance(score, (int, float)):
         score = max(0, min(100, int(score)))
-        result["risk_score"] = score
     else:
         score = result["risk_score"]
 
-    # 🔥 FORCE consistency (ignore model mistakes)
-    if score < 35:
-        result["risk_level"] = "low"
-    elif score >= 65:
-        result["risk_level"] = "high"
-    else:
-        result["risk_level"] = "medium"
+    result["risk_score"] = score
 
+    # 🔥 FIXED: align with dataset thresholds
+    result["risk_level"] = _score_to_risk_level(score)
+
+    # ------------------------
+    # Other fields
+    # ------------------------
     result["key_signals"] = [str(x) for x in parsed.get("key_signals", [])]
     result["citations"] = [str(x) for x in parsed.get("citations", [])]
     result["cited_chunk_ids"] = [str(x) for x in parsed.get("cited_chunk_ids", [])]
@@ -194,8 +206,8 @@ def parse_rag_output(raw_output: str) -> Dict[str, Any]:
     if isinstance(reasoning, str) and reasoning:
         result["reasoning"] = reasoning
 
-    # 🔥 flag weak outputs
-    if result["risk_score"] == 50:
+    # 🔥 Debug weak outputs
+    if score == 50:
         logger.warning("Weak prediction (score=50) — likely low signal.")
 
     return result
