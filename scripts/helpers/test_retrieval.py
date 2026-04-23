@@ -17,7 +17,7 @@ print("Loading FAISS index...")
 index = faiss.read_index("data/embeddings/faiss.index")
 
 # -----------------------------
-# 3. Load metadata (FIXED UTF-8)
+# 3. Load metadata
 # -----------------------------
 print("Loading metadata...")
 with open("data/embeddings/chunk_metadata.json", "r", encoding="utf-8") as f:
@@ -25,14 +25,16 @@ with open("data/embeddings/chunk_metadata.json", "r", encoding="utf-8") as f:
 
 print(f"Loaded {len(metadata)} chunks")
 
-# 🔥 NEW: Inspect metadata structure (runs once)
+# -----------------------------
+# 4. (Optional) Inspect metadata once
+# -----------------------------
 print("\n--- METADATA SAMPLE ---")
 pprint.pprint(metadata[0])
-print("\nKeys:", metadata[0].keys())
+print("Keys:", metadata[0].keys())
 print("-----------------------\n")
 
 # -----------------------------
-# 4. Query loop (interactive)
+# 5. Query loop
 # -----------------------------
 while True:
     query = input("\nEnter query (or 'exit'): ")
@@ -47,39 +49,41 @@ while True:
     query_embedding = np.array(query_embedding).astype("float32")
 
     # -----------------------------
-    # 5. Search FAISS
+    # 6. Search FAISS
     # -----------------------------
-    k = 10  # 🔥 increased for better recall
+    k = 10  # slightly higher for better recall
     print("Searching...")
     distances, indices = index.search(query_embedding, k)
 
     # -----------------------------
-    # 6. Display results (with filtering)
+    # 7. Display filtered results
     # -----------------------------
-    print("\nTop results:\n")
+    print("\nTop results (Filtered to Apple + Item 1A):\n")
 
     shown = 0
+
     for i, idx in enumerate(indices[0]):
         chunk = metadata[idx]
         text = chunk.get("text", "")
+        meta = chunk.get("metadata", {})
 
-        # 🔥 FILTER 1: Only Apple (edit as needed)
-        if "Apple" not in text:
+        # ✅ Proper filtering using metadata
+        if meta.get("company_name") != "Apple":
             continue
 
-        # 🔥 FILTER 2: Skip useless boilerplate
-        if "Item 1A" in text or "The following discussion" in text:
+        if meta.get("section") != "item_1a":
             continue
 
         print(f"Result {shown+1}")
         print("Score:", distances[0][i])
-        print("Text:", text[:500])
+        print("Chunk ID:", chunk.get("chunk_id"))
+        print("Text:", text[:500])  # truncate for readability
         print("-" * 60)
 
         shown += 1
 
-        if shown == 5:  # show top 5 AFTER filtering
+        if shown == 5:
             break
 
     if shown == 0:
-        print("No relevant filtered results found.")
+        print("No relevant results found after filtering.")

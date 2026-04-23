@@ -2,7 +2,7 @@
 run_inference_all.py — Run credit-risk inference for all companies.
 
 Usage:
-    # Real inference (requires GPU + downloaded model):
+    # Real inference (CPU-compatible, model must be downloaded):
     python scripts/run_inference_all.py --approach baseline
     python scripts/run_inference_all.py --approach rag
     python scripts/run_inference_all.py --approach lora --adapter-path data/finetune/lora_adapter
@@ -16,7 +16,6 @@ Flags:
     --mock       Skip model loading; return random scores (for testing)
     --model-name Override the HuggingFace model identifier
     --adapter-path  Path to LoRA adapter dir (lora approach only)
-    --no-quantize   Disable 4-bit quantisation
 """
 
 import argparse
@@ -45,7 +44,7 @@ RESULTS_DIR = os.path.join(_REPO_ROOT, "data", "results")
 INDEX_PATH = os.path.join(_REPO_ROOT, "data", "embeddings", "faiss.index")
 METADATA_PATH = os.path.join(_REPO_ROOT, "data", "embeddings", "chunk_metadata.json")
 
-_DEFAULT_MODEL = "mistralai/Mistral-7B-Instruct-v0.2"
+_DEFAULT_MODEL = "microsoft/phi-2"
 
 _CSV_COLUMNS = [
     "ticker",
@@ -127,11 +126,6 @@ def parse_args() -> argparse.Namespace:
         default="",
         help="Path to LoRA adapter directory (required for --approach lora).",
     )
-    parser.add_argument(
-        "--no-quantize",
-        action="store_true",
-        help="Disable 4-bit quantisation (higher VRAM usage).",
-    )
     return parser.parse_args()
 
 # Model loading
@@ -147,24 +141,25 @@ def load_model_for_approach(args: argparse.Namespace):
     """
     from src.models.base_loader import load_model, load_model_with_adapter
 
-    quantize = not args.no_quantize
-
     if args.approach == "lora":
         if not args.adapter_path:
             logger.error("--adapter-path is required for --approach lora.")
             sys.exit(1)
-        logger.info("Loading base model + LoRA adapter from '%s'.", args.adapter_path)
+        logger.info(
+            "Loading base model + LoRA adapter from '%s' on CPU.",
+            args.adapter_path,
+        )
         return load_model_with_adapter(
             base_model_name=args.model_name,
             adapter_path=args.adapter_path,
-            quantize=quantize,
+            quantize=False,
         )
     else:
-        logger.info("Loading model '%s' (quantize=%s).", args.model_name, quantize)
+        logger.info("Loading model '%s' on CPU.", args.model_name)
         return load_model(
             model_name=args.model_name,
-            quantize=quantize,
-            device_map="auto",
+            quantize=False,
+            device_map="cpu",
         )
 
 
