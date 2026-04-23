@@ -1,6 +1,4 @@
 data/raw/
-data/processed/
-data/embeddings/
 *.pyc
 __pycache__/
 .env
