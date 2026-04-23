@@ -203,7 +203,7 @@ def train(
         logging_steps=training_config.get("logging_steps", 10),
         eval_steps=training_config.get("eval_steps", 50),
         save_steps=training_config.get("save_steps", 100),
-        evaluation_strategy="steps",
+        eval_strategy="steps",
         save_strategy="steps",
         load_best_model_at_end=training_config.get("load_best_model_at_end", True),
         report_to="wandb",
@@ -276,3 +276,4 @@ if __name__ == "__main__":
         training_config=config["training"],
         output_dir=output_dir,
     )
+
