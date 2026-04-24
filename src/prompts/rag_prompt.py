@@ -59,25 +59,32 @@ IMPORTANT:
 - DO NOT default to "medium" unless there is NO signal at all.
 - Make a BEST estimate from available evidence.
 
-CRITICAL SCORING RULE:
-If the company has ANY of the following:
-- high debt levels
-- large upcoming debt maturities
-- refinancing pressure
-- liquidity concerns
+CRITICAL SCORING RULE (STRICT):
+
+If the company shows ANY of the following:
+- substantial indebtedness
+- liquidity constraints
+- inability to fund operations for the next 12 months
 - negative cash flow
-- losses or distress signals
+- financial distress or losses
 
-You MUST increase the risk_score accordingly.
+You MUST assign a HIGH risk score (70–100).
 
-Debt maturity within one year is a STRONG risk signal and should increase the score significantly.
+These are SEVERE credit risk indicators and MUST NOT be classified as medium.
 
-Do NOT treat these signals as neutral.
+If MULTIPLE strong risk signals are present:
+→ risk_score MUST be between 75–90.
 
-SCORING GUIDELINES (IMPORTANT):
+Only use MEDIUM risk (35–69) when:
+- signals are moderate
+- and do NOT threaten solvency
+
+DO NOT be conservative when strong risk signals are present.
+
+SCORING GUIDELINES:
 - Low risk (0–34): strong balance sheet, low debt, strong liquidity
-- Medium risk (35–69): moderate debt, stable but some risk signals
-- High risk (70–100): high debt, liquidity concerns, losses, distress signals
+- Medium risk (35–69): moderate risk, stable
+- High risk (70–100): distress, liquidity issues, high leverage
 
 Focus ONLY on:
 1. Debt and leverage
@@ -89,7 +96,7 @@ Focus ONLY on:
 
 IMPORTANT SIGNAL HANDLING:
 - Do NOT rely on isolated numerical values unless they clearly indicate financial risk.
-- Prefer interpreting the financial meaning (e.g., high leverage, short-term obligations, refinancing needs).
+- Prefer interpreting the financial meaning (e.g., high leverage, refinancing pressure, inability to meet obligations).
 
 DATA TYPES:
 - risk_score MUST be an integer (0-100)
@@ -216,7 +223,7 @@ def parse_rag_output(raw_output: str) -> Dict[str, Any]:
 
     result["risk_score"] = score
 
-    # 🔥 FIXED: align with dataset thresholds
+    # Align with dataset thresholds
     result["risk_level"] = _score_to_risk_level(score)
 
     # ------------------------
@@ -230,7 +237,6 @@ def parse_rag_output(raw_output: str) -> Dict[str, Any]:
     if isinstance(reasoning, str) and reasoning:
         result["reasoning"] = reasoning
 
-    # 🔥 Debug weak outputs
     if score == 50:
         logger.warning("Weak prediction (score=50) — likely low signal.")
 
