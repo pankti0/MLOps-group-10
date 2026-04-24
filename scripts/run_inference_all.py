@@ -262,6 +262,10 @@ def main() -> None:
         # Fix approach column for lora
         if approach_label == "lora":
             predictions_df["approach"] = "lora"
+            predictions_df.to_csv(
+                os.path.join(RESULTS_DIR, "lora_predictions.csv"),
+                index=False,
+            )
             _rag_mod._OUTPUT_CSV = _original_csv  
     else:
         logger.error("Unknown approach: %s", args.approach)
