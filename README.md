@@ -107,7 +107,7 @@ SEC 10-K PDFs
 ### Setup
 
 ```bash
-git clone https://github.com/YOUR_ORG/MLOps-group-10
+git clone https://github.com/pankti0/MLOps-group-10
 cd MLOps-group-10
 
 pip install -r requirements.txt
