@@ -59,6 +59,21 @@ IMPORTANT:
 - DO NOT default to "medium" unless there is NO signal at all.
 - Make a BEST estimate from available evidence.
 
+CRITICAL SCORING RULE:
+If the company has ANY of the following:
+- high debt levels
+- large upcoming debt maturities
+- refinancing pressure
+- liquidity concerns
+- negative cash flow
+- losses or distress signals
+
+You MUST increase the risk_score accordingly.
+
+Debt maturity within one year is a STRONG risk signal and should increase the score significantly.
+
+Do NOT treat these signals as neutral.
+
 SCORING GUIDELINES (IMPORTANT):
 - Low risk (0–34): strong balance sheet, low debt, strong liquidity
 - Medium risk (35–69): moderate debt, stable but some risk signals
@@ -72,13 +87,22 @@ Focus ONLY on:
 5. Covenant breaches
 6. Severe risk factors impacting repayment
 
+IMPORTANT SIGNAL HANDLING:
+- Do NOT rely on isolated numerical values unless they clearly indicate financial risk.
+- Prefer interpreting the financial meaning (e.g., high leverage, short-term obligations, refinancing needs).
+
 DATA TYPES:
 - risk_score MUST be an integer (0-100)
 - risk_level MUST be one of: low, medium, high
 - key_signals MUST be a list of strings
 - citations MUST be a list of strings
 - cited_chunk_ids MUST be a list of strings
-- reasoning MUST be a string
+
+REASONING REQUIREMENT:
+reasoning MUST clearly explain:
+- what risk signals were found
+- why they increase or decrease risk
+- how they affect the final risk_score
 
 JSON FORMAT:
 {{
