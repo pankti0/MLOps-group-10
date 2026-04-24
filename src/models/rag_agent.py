@@ -204,6 +204,22 @@ class RAGAgent:
 
         predicted_score = float(parsed.get("risk_score", 50))
 
+        # 🔥 HARD RULE FIX (force correct calibration)
+        strong_risk_keywords = [
+            "indebtedness",
+            "liquidity",
+            "not be sufficient",
+            "unable to fund",
+            "financial distress",
+            "loss",
+            "going concern"
+        ]
+
+        text_blob = " ".join(parsed.get("key_signals", [])).lower() + " " + parsed.get("reasoning", "").lower()
+
+        # If strong risk signals present → bump score
+        if any(keyword in text_blob for keyword in strong_risk_keywords):
+            predicted_score = max(predicted_score, 75)
         # 🔥 FIXED: correct thresholds
         predicted_label = _score_to_label(predicted_score)
         risk_level = _score_to_risk_level(predicted_score)
