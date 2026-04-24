@@ -272,7 +272,9 @@ def main() -> None:
         sys.exit(1)
 
     print_summary(predictions_df)
+    os.makedirs(RESULTS_DIR, exist_ok=True)
     out_path = os.path.join(RESULTS_DIR, f"{args.approach}_predictions.csv")
+    predictions_df.to_csv(out_path, index=False)
     print(f"Results saved to: {out_path}\n")
 
 

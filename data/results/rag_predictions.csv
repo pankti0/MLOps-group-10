@@ -1,11 +1,167 @@
 ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
-AAPL,Apple,5.0,0,low,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=5.0,rag
-MSFT,Microsoft,5.0,0,low,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=5.0,rag
-JNJ,Johnson & Johnson,19.9,0,low,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=19.9,rag
-DAL,Delta Air Lines,26.9,0,low,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=26.9,rag
-T,AT&T,75.5,1,high,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=75.5,rag
-VZ,Verizon,17.8,0,low,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=17.8,rag
-F,Ford Motor Company,19.6,0,low,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=19.6,rag
-AAL,American Airlines,95.0,1,high,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=95.0,rag
-GME,GameStop,95.0,1,high,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=95.0,rag
-AMC,AMC Entertainment,95.0,1,high,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=95.0,rag
+AAPL,Apple,50.0,0,medium,"[""Exposure to foreign exchange rate fluctuations through hedging instruments"", ""Economic conditions may adversely impact demand for Apple's products and services"", ""Restricted cash and cash equivalents and marketable securities to settle obligations""]","[""AAPL_item_8_14"", ""AAPL_item_1a_1"", ""AAPL_item_8_22"", ""AAPL_item_8_12""]","{
+  ""risk_score"": 50,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Exposure to foreign exchange rate fluctuations through hedging instruments"",
+    ""Economic conditions may adversely impact demand for Apple's products and services"",
+    ""Restricted cash and cash equivalents and marketable securities to settle obligations""
+  ],
+  ""citations"": [
+    ""AAPL_item_8_14"",
+    ""AAPL_item_1a_1"",
+    ""AAPL_item_8_22"",
+    ""AAPL_item_8_12""
+  ],
+  ""cited_chunk_ids"": [
+    ""item_8:14"",
+    ""item_1a:1"",
+    ""item_8:22"",
+    ""item_8:12""
+  ],
+  ""reasoning"": ""Apple uses hedging instruments to protect against foreign exchange rate fluctuations, which can impact revenue and inventory purchases. Economic conditions, including slow growth, high unemployment, inflation, and other factors, can adversely impact consumer confidence and spending, affecting demand for Apple's products and services. Restricted cash and cash equivalents and marketable securities are designated to settle obligations related to the State Aid Decision.""
+}",rag
+MSFT,Microsoft,75.0,1,high,"[""substantial indebtedness"", ""liquidity constraints"", ""potential for increased financial covenants""]","[""AMC_item_1a_7"", ""AAL_item_1a_4"", ""AAL_item_1a_5""]","{
+  ""risk_score"": 65,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""substantial indebtedness"",
+    ""liquidity constraints"",
+    ""potential for increased financial covenants""
+  ],
+  ""citations"": [
+    ""AMC_item_1a_7"",
+    ""AAL_item_1a_4"",
+    ""AAL_item_1a_5""
+  ],
+  ""cited_chunk_ids"": [
+    ""item_1a_7"",
+    ""item_1a_4"",
+    ""item_1a_5""
+  ],
+  ""reasoning"": ""Microsoft shows substantial indebtedness and liquidity constraints, which could negatively impact its ability to service its debt and recover investor investments. Additionally, the potential for increased financial covenants could further limit its flexibility and increase the risk of cross-default and cross-acceleration.""
+}",rag
+JNJ,Johnson & Johnson,50.0,0,medium,"[""Legal proceedings resulting in significant expenses, fines and reputational damage"", ""Creation of new entities and assumption of talc-related liabilities""]","[""JNJ_item_1a_7"", ""JNJ_item_8_79""]","{
+  ""risk_score"": 50,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Legal proceedings resulting in significant expenses, fines and reputational damage"",
+    ""Creation of new entities and assumption of talc-related liabilities""
+  ],
+  ""citations"": [
+    ""JNJ_item_1a_7"",
+    ""JNJ_item_8_79""
+  ],
+  ""cited_chunk_ids"": [
+    ""item_1a"",
+    ""item_8""
+  ],
+  ""reasoning"": ""Johnson & Johnson is subject to numerous legal proceedings that can result in significant expenses, fines and reputational damage. Additionally, the creation of new entities and assumption of talc-related liabilities may impact the company's financial position.""
+}",rag
+DAL,Delta Air Lines,50.0,0,medium,"[""Debt restrictions from debt agreements"", ""Exposure to significant liability from legal proceedings""]","[""DAL_item_8_37"", ""DAL_item_1a_0""]","{
+  ""risk_score"": 50,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Debt restrictions from debt agreements"",
+    ""Exposure to significant liability from legal proceedings""
+  ],
+  ""citations"": [
+    ""DAL_item_8_37"",
+    ""DAL_item_1a_0""
+  ],
+  ""cited_chunk_ids"": [
+    ""item_8"",
+    ""item_1a""
+  ],
+  ""reasoning"": ""Delta Air Lines has debt restrictions from debt agreements that limit its ability to incur liens, dispose of collateral, and engage in mergers and consolidations or transfer assets. Additionally, the company is exposed to significant liability from various legal proceedings. These factors contribute to a medium risk level.""
+}",rag
+T,AT&T,50.0,0,medium,"[""Debt level: 4.2% long-term debt portfolio"", ""Maturity of debt: $9,477 within one year""]","[""T_item_8_39"", ""T_item_8_47""]","{
+  ""risk_score"": 50,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Debt level: 4.2% long-term debt portfolio"",
+    ""Maturity of debt: $9,477 within one year""
+  ],
+  ""citations"": [
+    ""T_item_8_39"",
+    ""T_item_8_47""
+  ],
+  ""cited_chunk_ids"": [
+    ""item_8:39"",
+    ""item_8:47""
+  ],
+  ""reasoning"": ""AT&T has a debt level of 4.2% and has $9,477 of debt maturing within one year. These factors increase the short-term debt burden and refinancing risk.""
+}",rag
+VZ,Verizon,55.0,0,medium,"[""Substantial debt"", ""Refinancing pressure""]","[""VZ_item_1a_16"", ""VZ_item_1a_17""]","{
+  ""risk_score"": 55,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Substantial debt"",
+    ""Refinancing pressure""
+  ],
+  ""citations"": [
+    ""VZ_item_1a_16"",
+    ""VZ_item_1a_17""
+  ],
+  ""cited_chunk_ids"": [
+    ""VZ_item_1a_16"",
+    ""VZ_item_1a_17""
+  ],
+  ""reasoning"": ""Verizon has a significant amount of debt and may need to refinance existing debt at higher rates due to adverse market conditions. This increases the risk of higher borrowing costs and reduced availability of financing, potentially impacting the company's ability to fund operations and growth.""
+}",rag
+F,Ford Motor Company,75.0,1,high,"[""Leverage: Ford Credit uses leverage to make business decisions and assess it worthiness, and may need to obtain appropriate credit ratings for securitized funding."", ""Funding and Liquidity Risks: Ford Credit's funding plan is subject to risks and uncertainties, including disruption in the capital markets and regulatory changes.""]","[""F_item_7_50"", ""F_item_1a_37"", ""F_item_7_43"", ""F_item_7_49"", ""F_item_7_59""]","{
+  ""risk_score"": 50,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Leverage: Ford Credit uses leverage to make business decisions and assess it worthiness, and may need to obtain appropriate credit ratings for securitized funding."",
+    ""Funding and Liquidity Risks: Ford Credit's funding plan is subject to risks and uncertainties, including disruption in the capital markets and regulatory changes.""
+  ],
+  ""citations"": [
+    ""F_item_7_50"",
+    ""F_item_1a_37"",
+    ""F_item_7_43"",
+    ""F_item_7_49"",
+    ""F_item_7_59""
+  ],
+  ""cited_chunk_ids"": [
+    ""item_7:67-73"",
+    ""item_1a:36-41"",
+    ""item_7:42-48"",
+    ""item_7:48-50"",
+    ""item_7:57-59""
+  ],
+  ""reasoning"": ""Ford Credit uses leverage to make business decisions and assess its worthiness, and may need to obtain appropriate credit ratings for securitized funding. Ford Credit's funding plan is subject to risks and uncertainties, including disruption in the capital markets and regulatory changes. These factors increase the medium risk level for Ford Credit.""
+}",rag
+AAL,American Airlines,75.0,1,high,"[""substantial indebtedness""]","[""AAL_item_1a_3""]","{
+  ""risk_score"": 55,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [""substantial indebtedness""],
+  ""citations"": [""AAL_item_1a_3""],
+  ""cited_chunk_ids"": [""AAL_item_1a_3""],
+  ""reasoning"": ""American Airlines has substantial indebtedness, which is a medium risk signal. The company's debt and other obligations are greater than those of its competitors, and this could have important consequences, such as the need to maintain certain cash levels and meet loan covenants. This increases the company's financial leverage and could limit its ability to respond to unexpected events or changes in market conditions.""
+}",rag
+GME,GameStop,35.0,0,medium,[],"[""GME_item_8_27"", ""GME_item_8_10"", ""GME_item_8_7"", ""GME_item_8_26"", ""GME_item_8_9"", ""GME_item_8_33""]","{
+  ""risk_score"": 35,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [],
+  ""citations"": [""GME_item_8_27"", ""GME_item_8_10"", ""GME_item_8_7"", ""GME_item_8_26"", ""GME_item_8_9"", ""GME_item_8_33""],
+  ""cited_chunk_ids"": [""item_8_27"", ""item_8_10"", ""item_8_7"", ""item_8_26"", ""item_8_9"", ""item_8_33""],
+  ""reasoning"": """"
+}",rag
+AMC,AMC Entertainment,75.0,1,high,"[""substantial indebtedness"", ""liquidity constraints""]","[""AMC_item_1a_0"", ""AMC_item_8_13""]","{
+  ""risk_score"": 55,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""substantial indebtedness"",
+    ""liquidity constraints""
+  ],
+  ""citations"": [
+    ""AMC_item_1a_0"",
+    ""AMC_item_8_13""
+  ],
+  ""cited_chunk_ids"": [
+    ""19"",
+    ""AMC_item_8_13""
+  ],
+  ""reasoning"": ""The company has substantial indebtedness and liquidity constraints as indicated in the risk factors section and the note on debt extinguishments. These factors increase the risk level to medium.""
+}",rag
