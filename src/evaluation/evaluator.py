@@ -30,8 +30,8 @@ from src.utils.wandb_logger import log_metrics, log_predictions, log_roc_curve
 
 logger = logging.getLogger(__name__)
 
-_LLM_APPROACHES: List[str] = ["baseline", "rag", "lora"]
-_ALL_APPROACHES: List[str] = ["baseline", "rag", "lora", "altman_zscore"]
+_LLM_APPROACHES: List[str] = ["baseline", "rag", "lora_r8", "lora_r16", "lora_r32"]
+_ALL_APPROACHES: List[str] = ["baseline", "rag", "lora_r8", "lora_r16", "lora_r32", "altman_zscore"]
 
 
 def load_predictions(approach: str, results_dir: str) -> pd.DataFrame:

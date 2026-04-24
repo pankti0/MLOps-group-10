@@ -1,11 +1,144 @@
 ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
-AAPL,Apple,23.4,0,low,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=23.4,baseline
-MSFT,Microsoft,5.0,0,low,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=5.0,baseline
-JNJ,Johnson & Johnson,16.4,0,low,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=16.4,baseline
-DAL,Delta Air Lines,34.6,0,low,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=34.6,baseline
-T,AT&T,35.2,0,medium,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=35.2,baseline
-VZ,Verizon,22.9,0,low,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=22.9,baseline
-F,Ford Motor Company,75.5,1,high,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=75.5,baseline
-AAL,American Airlines,50.7,1,medium,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=50.7,baseline
-GME,GameStop,95.0,1,high,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=95.0,baseline
-AMC,AMC Entertainment,69.7,1,high,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=69.7,baseline
+AAPL,Apple,20.0,0,low,"[""Total debt as of February 26, 2022 was $114.6 billion, a decrease of $1.3 billion from December 26, 2021."", ""Long-term debt matures between one and ten years from issuance, with no debt maturing in the next year.""]","[""Total Debt: $114.6 billion, a decrease of $1.3 billion from December 26, 2021."", ""As of February 26, 2022, our long-term debt had a weighted-average maturity of approximately 7.4 years.""]","{
+  ""risk_score"": 20,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Total debt as of February 26, 2022 was $114.6 billion, a decrease of $1.3 billion from December 26, 2021."",
+    ""Long-term debt matures between one and ten years from issuance, with no debt maturing in the next year.""
+  ],
+  ""citations"": [
+    ""Total Debt: $114.6 billion, a decrease of $1.3 billion from December 26, 2021."",
+    ""As of February 26, 2022, our long-term debt had a weighted-average maturity of approximately 7.4 years.""
+  ],
+  ""reasoning"": ""Apple's debt levels have decreased and the maturity schedule is long-term, indicating a manageable debt burden.""
+}",baseline
+MSFT,Microsoft,20.0,0,low,"[""Total debt as of October 31, 2021 was $51.5 billion, a decrease of $3.3 billion from October 31, 2020."", ""Leverage ratios are as follows: total debt to total capitalization was 0.37x and total debt to EBITDA was 1.9x as of October 31, 2021."", ""The weighted-average maturity of our debt was approximately 5.3 years as of October 31, 2021.""]","[""Total debt as of October 31, 2021 was $51.5 billion, a decrease of $3.3 billion from October 31, 2020."", ""As of October 31, 2021, our total debt to total capitalization ratio was 0.37x and our total debt to EBITDA ratio was 1.9x."", ""The weighted-average maturity of our debt as of October 31, 2021, was approximately 5.3 years.""]","{
+  ""risk_score"": 20,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Total debt as of October 31, 2021 was $51.5 billion, a decrease of $3.3 billion from October 31, 2020."",
+    ""Leverage ratios are as follows: total debt to total capitalization was 0.37x and total debt to EBITDA was 1.9x as of October 31, 2021."",
+    ""The weighted-average maturity of our debt was approximately 5.3 years as of October 31, 2021.""
+  ],
+  ""citations"": [
+    ""Total debt as of October 31, 2021 was $51.5 billion, a decrease of $3.3 billion from October 31, 2020."",
+    ""As of October 31, 2021, our total debt to total capitalization ratio was 0.37x and our total debt to EBITDA ratio was 1.9x."",
+    ""The weighted-average maturity of our debt as of October 31, 2021, was approximately 5.3 years.""
+  ],
+  ""reasoning"": ""Microsoft's debt levels are manageable with a low leverage ratio, long debt maturity, and a decreasing total debt. This indicates a low credit risk.""
+}",baseline
+JNJ,Johnson & Johnson,20.0,0,low,"[""Total debt as of December 25, 2021 was $113.4 billion, a decrease of $1.4 billion from December 26, 2020."", ""Leverage ratios: Debt to EBITDA was 2.6x and Debt to Equity was 1.3x as of December 25, 2021."", ""Debt maturity schedule: Approximately 75% of our debt is scheduled to mature in the next 5 years.""]","[""Total debt as of December 25, 2021 was $113.4 billion, a decrease of $1.4 billion from December 26, 2020."", ""As of December 25, 2021, our debt to EBITDA ratio was 2.6x and our debt to equity ratio was 1.3x."", ""As of December 25, 2021, approximately 75% of our debt is scheduled to mature within the next 5 years.""]","{
+  ""risk_score"": 20,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Total debt as of December 25, 2021 was $113.4 billion, a decrease of $1.4 billion from December 26, 2020."",
+    ""Leverage ratios: Debt to EBITDA was 2.6x and Debt to Equity was 1.3x as of December 25, 2021."",
+    ""Debt maturity schedule: Approximately 75% of our debt is scheduled to mature in the next 5 years.""
+  ],
+  ""citations"": [
+    ""Total debt as of December 25, 2021 was $113.4 billion, a decrease of $1.4 billion from December 26, 2020."",
+    ""As of December 25, 2021, our debt to EBITDA ratio was 2.6x and our debt to equity ratio was 1.3x."",
+    ""As of December 25, 2021, approximately 75% of our debt is scheduled to mature within the next 5 years.""
+  ],
+  ""reasoning"": ""Johnson & Johnson's debt levels have decreased, leverage ratios are within industry norms, and debt maturity schedule is manageable, indicating a low credit risk.""
+}",baseline
+DAL,Delta Air Lines,30.0,0,low,"[""Total debt as of December 31, 2020 was $13.5 billion, a decrease of $1.2 billion from December 31, 2019."", ""Leverage ratios are within industry norms."", ""Debt maturity schedule is well-balanced with no significant maturities until 2024.""]","[""Total Debt: $13.5 billion (2019: $14.7 billion)"", ""Our leverage ratios are within industry norms."", ""Our debt maturity schedule is well-balanced with no significant maturities until 2024.""]","{
+  ""risk_score"": 30,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Total debt as of December 31, 2020 was $13.5 billion, a decrease of $1.2 billion from December 31, 2019."",
+    ""Leverage ratios are within industry norms."",
+    ""Debt maturity schedule is well-balanced with no significant maturities until 2024.""
+  ],
+  ""citations"": [
+    ""Total Debt: $13.5 billion (2019: $14.7 billion)"",
+    ""Our leverage ratios are within industry norms."",
+    ""Our debt maturity schedule is well-balanced with no significant maturities until 2024.""
+  ],
+  ""reasoning"": ""Delta Air Lines' debt levels are manageable with a decreasing total debt, industry-standard leverage ratios, and a well-balanced debt maturity schedule.""
+}",baseline
+T,AT&T,30.0,0,low,"[""Total debt as of year-end 2021 was $112.9 billion, a decrease from $113.3 billion in 2020."", ""Leverage ratios are within industry norms and have been declining.""]","[""Total Debt: $112.9 billion versus $113.3 billion in 2020."", ""Our leverage ratios are within industry norms and have been declining.""]","{
+  ""risk_score"": 30,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Total debt as of year-end 2021 was $112.9 billion, a decrease from $113.3 billion in 2020."",
+    ""Leverage ratios are within industry norms and have been declining.""
+  ],
+  ""citations"": [
+    ""Total Debt: $112.9 billion versus $113.3 billion in 2020."",
+    ""Our leverage ratios are within industry norms and have been declining.""
+  ],
+  ""reasoning"": ""AT&T's debt levels have decreased and leverage ratios are within industry norms, indicating a manageable debt position.""
+}",baseline
+VZ,Verizon,30.0,0,low,"[""Total debt as of December 31, 2020 was $113.5 billion, a decrease of $1.3 billion from December 31, 2019."", ""As of December 31, 2020, our debt-to-equity ratio was 1.9x, compared to 1.8x at December 31, 2019."", ""Our weighted-average debt maturity was approximately 10 years as of December 31, 2020."", ""We have no material debt maturities until 2023.""]","[""Total Debt: $113.5 billion, a decrease of $1.3 billion from December 31, 2019."", ""As of December 31, 2020, our debt-to-equity ratio was 1.9x, compared to 1.8x at December 31, 2019."", ""Our weighted-average debt maturity was approximately 10 years as of December 31, 2020."", ""We have no material debt maturities until 2023.""]","{
+  ""risk_score"": 30,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Total debt as of December 31, 2020 was $113.5 billion, a decrease of $1.3 billion from December 31, 2019."",
+    ""As of December 31, 2020, our debt-to-equity ratio was 1.9x, compared to 1.8x at December 31, 2019."",
+    ""Our weighted-average debt maturity was approximately 10 years as of December 31, 2020."",
+    ""We have no material debt maturities until 2023.""
+  ],
+  ""citations"": [
+    ""Total Debt: $113.5 billion, a decrease of $1.3 billion from December 31, 2019."",
+    ""As of December 31, 2020, our debt-to-equity ratio was 1.9x, compared to 1.8x at December 31, 2019."",
+    ""Our weighted-average debt maturity was approximately 10 years as of December 31, 2020."",
+    ""We have no material debt maturities until 2023.""
+  ],
+  ""reasoning"": ""Verizon's debt levels show a moderate decrease in total debt and a slight increase in debt-to-equity ratio. The long-term weighted average debt maturity and the absence of material debt maturities until 2023 indicate a manageable debt burden.""
+}",baseline
+F,Ford Motor Company,35.0,0,low,"[""Total debt was $131.8 billion as of December 31, 2020, a decrease of $1.4 billion from December 31, 2019."", ""Leverage ratios were as follows: total debt-to-EBITDA was 2.9x and net debt-to-EBITDA was 2.5x as of December 31, 2020."", ""The weighted-average maturity of debt was 5.3 years as of December 31, 2020.""]","[""Total debt was $131.8 billion as of December 31, 2020, a decrease of $1.4 billion from December 31, 2019."", ""As of December 31, 2020, our total debt-to-EBITDA ratio was 2.9x and our net debt-to-EBITDA ratio was 2.5x."", ""The weighted-average maturity of our debt was 5.3 years as of December 31, 2020.""]","{
+  ""risk_score"": 35,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Total debt was $131.8 billion as of December 31, 2020, a decrease of $1.4 billion from December 31, 2019."",
+    ""Leverage ratios were as follows: total debt-to-EBITDA was 2.9x and net debt-to-EBITDA was 2.5x as of December 31, 2020."",
+    ""The weighted-average maturity of debt was 5.3 years as of December 31, 2020.""
+  ],
+  ""citations"": [
+    ""Total debt was $131.8 billion as of December 31, 2020, a decrease of $1.4 billion from December 31, 2019."",
+    ""As of December 31, 2020, our total debt-to-EBITDA ratio was 2.9x and our net debt-to-EBITDA ratio was 2.5x."",
+    ""The weighted-average maturity of our debt was 5.3 years as of December 31, 2020.""
+  ],
+  ""reasoning"": ""Ford's debt levels show a moderate decrease in total debt, reasonable leverage ratios, and a manageable debt maturity schedule. These factors contribute to a low credit risk.""
+}",baseline
+AAL,American Airlines,50.0,1,medium,"[""Total debt as of December 31, 2020 was $29.3 billion."", ""Leverage ratios: Debt-to-Equity was 3.1x and Debt-to-EBITDA was 5.5x.""]","[""Total Debt: $29,315 million (2019: $26,355 million)."", ""Debt-to-Equity: 3.1x (2019: 2.9x)."", ""Debt-to-EBITDA: 5.5x (2019: 4.8x).""]","{
+  ""risk_score"": 50,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Total debt as of December 31, 2020 was $29.3 billion."",
+    ""Leverage ratios: Debt-to-Equity was 3.1x and Debt-to-EBITDA was 5.5x.""
+  ],
+  ""citations"": [
+    ""Total Debt: $29,315 million (2019: $26,355 million)."",
+    ""Debt-to-Equity: 3.1x (2019: 2.9x)."",
+    ""Debt-to-EBITDA: 5.5x (2019: 4.8x).""
+  ],
+  ""reasoning"": ""American Airlines reported a significant increase in debt levels, with a debt-to-equity ratio of 3.1x and debt-to-EBITDA ratio of 5.5x. These ratios indicate a moderate level of leverage, which is a medium credit risk.""
+}",baseline
+GME,GameStop,50.0,1,medium,"[""Total debt as of fiscal year end was $1.07 billion, up from $934.2 million in the prior year."", ""Leverage ratios exceeded our debt covenants, but waivers have been obtained.""]","[""Total Debt: As of February 2, 2023, we had total debt outstanding of $1,068.7 million, an increase of $134.5 million from $934.2 million at February 3, 2022."", ""Leverage Ratios: Our leverage ratios exceeded the debt covenants in our credit facilities as of February 2, 2023. We have obtained waivers from our lenders to allow us to exceed these covenants.""]","{
+  ""risk_score"": 50,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Total debt as of fiscal year end was $1.07 billion, up from $934.2 million in the prior year."",
+    ""Leverage ratios exceeded our debt covenants, but waivers have been obtained.""
+  ],
+  ""citations"": [
+    ""Total Debt: As of February 2, 2023, we had total debt outstanding of $1,068.7 million, an increase of $134.5 million from $934.2 million at February 3, 2022."",
+    ""Leverage Ratios: Our leverage ratios exceeded the debt covenants in our credit facilities as of February 2, 2023. We have obtained waivers from our lenders to allow us to exceed these covenants.""
+  ],
+  ""reasoning"": ""GameStop's debt levels have increased, and they have exceeded debt covenants, requiring waivers from lenders. This medium-term credit risk is heightened by the company's reliance on debt financing and the need to refinance maturing debt.""
+}",baseline
+AMC,AMC Entertainment,50.0,1,medium,"[""Total debt as of December 31, 2020 was $5.4 billion."", ""Leverage ratios: Total debt to EBITDA was 6.3x and total debt to total assets was 2.5x.""]","[""Total Debt: $5,400.0 million as of December 31, 2020."", ""Leverage Ratios: Total debt to EBITDA was 6.3x and total debt to total assets was 2.5x.""]","{
+  ""risk_score"": 50,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Total debt as of December 31, 2020 was $5.4 billion."",
+    ""Leverage ratios: Total debt to EBITDA was 6.3x and total debt to total assets was 2.5x.""
+  ],
+  ""citations"": [
+    ""Total Debt: $5,400.0 million as of December 31, 2020."",
+    ""Leverage Ratios: Total debt to EBITDA was 6.3x and total debt to total assets was 2.5x.""
+  ],
+  ""reasoning"": ""AMC Entertainment's debt levels are moderate, with a total debt of $5.4 billion and leverage ratios of 6.3x and 2.5x. These ratios are within industry norms for media and entertainment companies.""
+}",baseline

@@ -5,17 +5,19 @@ Usage:
     # Real inference (requires GPU + downloaded model):
     python scripts/run_inference_all.py --approach baseline
     python scripts/run_inference_all.py --approach rag
-    python scripts/run_inference_all.py --approach lora --adapter-path data/finetune/lora_adapter
+    python scripts/run_inference_all.py --approach lora_r8  --adapter-path data/models/lora_adapter_r8/final_adapter
+    python scripts/run_inference_all.py --approach lora_r16 --adapter-path data/models/lora_adapter/final_adapter
+    python scripts/run_inference_all.py --approach lora_r32 --adapter-path data/models/lora_adapter_r32/final_adapter
 
     # Pipeline smoke-test without GPU:
     python scripts/run_inference_all.py --approach baseline --mock
     python scripts/run_inference_all.py --approach rag --mock
 
 Flags:
-    --approach   baseline | rag | lora
+    --approach   baseline | rag | lora_r8 | lora_r16 | lora_r32
     --mock       Skip model loading; return random scores (for testing)
     --model-name Override the HuggingFace model identifier
-    --adapter-path  Path to LoRA adapter dir (lora approach only)
+    --adapter-path  Path to LoRA adapter dir (required for lora_* approaches)
     --no-quantize   Disable 4-bit quantisation
 """
 
@@ -108,7 +110,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--approach",
-        choices=["baseline", "rag", "lora"],
+        choices=["baseline", "rag", "lora_r8", "lora_r16", "lora_r32"],
         required=True,
         help="Inference approach to use.",
     )
@@ -149,9 +151,9 @@ def load_model_for_approach(args: argparse.Namespace):
 
     quantize = not args.no_quantize
 
-    if args.approach == "lora":
+    if args.approach in ("lora_r8", "lora_r16", "lora_r32"):
         if not args.adapter_path:
-            logger.error("--adapter-path is required for --approach lora.")
+            logger.error("--adapter-path is required for --approach %s.", args.approach)
             sys.exit(1)
         logger.info("Loading base model + LoRA adapter from '%s'.", args.adapter_path)
         return load_model_with_adapter(
@@ -220,13 +222,13 @@ def main() -> None:
             sections_dir=PROCESSED_DIR,
         )
 
-    elif args.approach in ("rag", "lora"):
+    elif args.approach == "rag":
         model, tokenizer = load_model_for_approach(args)
 
         # RAG requires a pre-built FAISS index
         if not os.path.isfile(INDEX_PATH) or not os.path.isfile(METADATA_PATH):
             logger.error(
-                "FAISS index not found. Run scripts/03_build_embeddings.py first.\n"
+                "FAISS index not found. Run scripts/build_embeddings.py first.\n"
                 "  Expected: %s\n  Expected: %s",
                 INDEX_PATH,
                 METADATA_PATH,
@@ -241,32 +243,30 @@ def main() -> None:
         store = FAISSStore(dimension=embedder.get_dimension())
         store.load(INDEX_PATH, METADATA_PATH)
 
-        approach_label = args.approach  # "rag" or "lora"
         agent = RAGAgent(
             model=model,
             tokenizer=tokenizer,
             faiss_store=store,
             embedder=embedder,
         )
-        # Patch approach label for LoRA
-        if approach_label == "lora":
-            import src.models.rag_agent as _rag_mod
-            _original_csv = _rag_mod._OUTPUT_CSV
-            _rag_mod._OUTPUT_CSV = os.path.join(RESULTS_DIR, "lora_predictions.csv")
-
         predictions_df = agent.analyze_all(
             companies_df=companies_df,
             sections_dir=PROCESSED_DIR,
         )
 
-        # Fix approach column for lora
-        if approach_label == "lora":
-            predictions_df["approach"] = "lora"
-            predictions_df.to_csv(
-                os.path.join(RESULTS_DIR, "lora_predictions.csv"),
-                index=False,
-            )
-            _rag_mod._OUTPUT_CSV = _original_csv  
+    elif args.approach in ("lora_r8", "lora_r16", "lora_r32"):
+        model, tokenizer = load_model_for_approach(args)
+
+        from src.models.lora_agent import LoRAAgent
+
+        agent = LoRAAgent(model=model, tokenizer=tokenizer)
+        predictions_df = agent.analyze_all(
+            companies_df=companies_df,
+            sections_dir=PROCESSED_DIR,
+        )
+        # Stamp the exact config name so each run gets its own CSV
+        predictions_df["approach"] = args.approach
+
     else:
         logger.error("Unknown approach: %s", args.approach)
         sys.exit(1)

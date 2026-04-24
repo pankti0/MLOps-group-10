@@ -1,11 +1,855 @@
 ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
-AAPL,Apple,18.7,0,low,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=18.7,lora
-MSFT,Microsoft,5.0,0,low,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=5.0,lora
-JNJ,Johnson & Johnson,21.5,0,low,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=21.5,lora
-DAL,Delta Air Lines,78.7,1,high,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=78.7,lora
-T,AT&T,40.7,0,medium,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=40.7,lora
-VZ,Verizon,39.2,0,medium,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=39.2,lora
-F,Ford Motor Company,89.4,1,high,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=89.4,lora
-AAL,American Airlines,57.2,1,medium,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=57.2,lora
-GME,GameStop,43.3,0,medium,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=43.3,lora
-AMC,AMC Entertainment,93.3,1,high,"[""mock_signal_1"", ""mock_signal_2""]","[""[mock] No real citations.""]",[MOCK] score=93.3,lora
+AAPL,Apple,30.0,0,low,"[""The Company may use derivative instruments to partially offset its business exposure to foreign exchange and interest rate risk."", ""As of September 27, 2025, 80% of the Company\u2019s non-current marketable debt securities other than mortgage- and asset-backed securities had maturities between 1 and 5 years.""]","[""The Company may use derivative instruments to partially offset its business exposure to foreign exchange and interest rate risk."", ""As of September 27, 2025, 80% of the Company\u2019s non-current marketable debt securities other than mortgage- and asset-backed securities had maturities between 1 and 5 years.""]","including those related to intellectual property, privacy, data security, employment, taxation, 
+environmental matters, and product safety.
+Apple Inc. | 2025 Form 10-K | 13
+
+--- END OF PASSAGES ---
+
+--- ANALYSIS ---
+
+Based on the provided passages, the following is the credit risk assessment for Apple Inc.
+
+```json
+{
+  ""risk_score"": 30,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""The Company may use derivative instruments to partially offset its business exposure to foreign exchange and interest rate risk."",
+    ""As of September 27, 2025, 80% of the Company’s non-current marketable debt securities other than mortgage- and asset-backed securities had maturities between 1 and 5 years.""
+  ],
+  ""citations"": [
+    ""The Company may use derivative instruments to partially offset its business exposure to foreign exchange and interest rate risk."",
+    ""As of September 27, 2025, 80% of the Company’s non-current marketable debt securities other than mortgage- and asset-backed securities had maturities between 1 and 5 years.""
+  ],
+  ""cited_chunk_ids"": [""AAPL_item_8_12"", ""AAPL_item_8_14""],
+  ""reasoning"": ""Apple Inc. has a low credit risk due to its diversified revenue streams, short-term debt maturities, and ability to manage interest rate and foreign exchange risk through derivative instruments.""
+}
+```
+
+--- END OF ANALYSIS ---",rag
+MSFT,Microsoft,50.0,1,medium,[],[],"scribers. These updates were made to better align with how we 
+report and communicate our business performance.  
+  
+
+ 
+29 
+Critical Accounting Policies  
+Our consolidated financial statements are prepared in accordance with accounting principles generally accepted in the 
+United States of America (“GAAP”). The following critical accounting policies are used in the preparation of our 
+consolidated financial statements:  
+• 
+Revenue recognition. We recognize revenue when it is earned, which is generally when title to the goods or services has 
+passed to the customer and collection is reasonably assured.  
+• 
+Stock-based compensation. We recognize stock-based compensation expense over the vesting period of the equity 
+award, using the modified-credit method.  
+• 
+Property, plant, and equipment. We record property, plant, and equipment at cost, and we depreciate or amortize the 
+cost over the estimated useful lives of the assets.  
+• 
+Intangible assets. We record intangible assets at cost and amortize them over their estimated useful lives.  
+• 
+Income taxes. We provide for income taxes based on the tax laws and regulations in effect in the jurisdictions in which 
+we operate. We recognize the tax effects of transactions in the consolidated financial statements in the period in 
+which the transactions occur.  
+• 
+Financial instruments. We recognize financial instruments at fair value, with gains and losses recognized in 
+accumulated other comprehensive income (“AOCI”) or earnings, as appropriate.  
+• 
+Leases. We recognize a lease liability for the present value of future lease payments and a right-of-use asset for the 
+right to use the underlying asset.  
+• 
+Business combinations. We record business combinations at fair value, with the resulting gain or loss recognized in 
+accumulated other comprehensive income (“AOCI”) or earnings, as appropriate.  
+• 
+Fair value measurements. We use a three-tiered approach to estimate fair value, using observable inputs, unobservable 
+inputs, and market data.  
+• 
+Revenue recognition for software and cloud-based services. We recognize revenue from software and cloud-based 
+services when control of the product or service is transferred to the customer",rag
+JNJ,Johnson & Johnson,50.0,1,medium,[],[],",233
+Net cash used by operating activities
+(1,241)
+(1,241)
+Net cash used by operating activities, excluding changes in operating assets and liabilities
+(1,241)
+(1,241)
+Net cash provided by operating activities
+1,241
+1,241
+Net cash used by investing activities
+(11,316)
+(11,316)
+Net cash used by financing activities
+(3,132)
+(3,132)
+Net increase/(decrease) in cash and cash equivalents
+(11,688)
+(11,688)
+Cash and cash equivalents, beginning of year
+14,487
+14,487
+Cash and cash equivalents, end of year
+$3,799
+3,799
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---",rag
+DAL,Delta Air Lines,50.0,1,medium,[],[],"1)
+The Payroll Support Program loans are subject to certain covenants, including a minimum liquidity covenant, a minimum debt service 
+coverage ratio and a minimum interest coverage ratio.
+(2)
+The SkyMiles financing agreements contain, among other things, a minimum liquidity covenant, a debt service coverage ratio and a 
+minimum interest coverage ratio.
+(3)
+The notes secured by our non-Pacific slots, gates and/or routes contain, among other things, a minimum liquidity covenant, a debt 
+service coverage ratio and a minimum interest coverage ratio.
+
+--- END OF PASSAGES ---
+
+--- ANALYSIS ---
+
+Based on the provided passages, the following is the credit risk assessment for Delta Air Lines (DAL):
+
+```json
+{
+  ""risk_score"": 30,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Total long-term debt decreased from $15,985 million in 2023 to $13,546 million in 2024."",
+    ""Delta extinguished $844 million of debt in 2024, resulting in a $39 million loss."",
+    ""Delta had approximately $3.1 billion undrawn and available under revolving credit facilities as of December 31, 2024."",
+    ""Delta received a second investment grade credit rating in 2024, releasing liens on collateral and replacing minimum collateral coverage ratio and minimum liquidity covenants with minimum fixed charge coverage ratio and minimum asset coverage ratio covenants."",
+    ""Market risk associated with Delta's fixed- and variable-rate debt is manageable."",
+    ""Delta's debt agreements contain various affirmative, negative and financial covenants, including minimum liquidity covenants."",
+    ""Delta's fair value of debt is primarily classified as Level 1 or Level 2 within the fair value hierarchy."",
+    ""Delta's long-lived assets, including property and equipment and operating lease right-of-use assets, are recorded at cost and depreciated or amortized on a straight-line basis to their estimated residual values over their estimated useful lives.""
+  ],",rag
+T,AT&T,50.0,1,medium,[],[],"to post under our
+credit facilities.
+AT&T Inc.
+Dollars in millions except per share amounts
+
+--- END OF PASSAGES ---
+
+--- ANALYSIS ---
+
+Based on the provided passages, the following is the credit risk assessment for AT&T (T):
+
+```json
+{
+  ""risk_score"": 30,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Compliance with credit facility covenants"",
+    ""No significant debt maturities due within the next year"",
+    ""No material liquidity concerns"",
+    ""No going concern language or covenant violations"",
+    ""No significant revenue declines or concentration"",
+    ""No material risk factors identified""
+  ],
+  ""citations"": [
+    ""As of December 31, 2024, we were in compliance with the covenants for our credit facilities."",
+    ""We plan to fund our financing uses of cash through a combination of cash from operations, issuance of debt and asset sales."",
+    ""During 2024, we repaid $10,112 of long-term debt and credit agreement borrowings with a weighted average interest rate of 4.1%."",
+    ""We have entered into and drawn on a $2,500 term loan agreement due February 16, 2025."",
+    ""We do not offset the fair value of collateral against the fair value of the derivative instruments."",
+    ""We are party to numerous lawsuits, regulatory proceedings and other matters arising in the ordinary course of business, but do not expect these proceedings to have a material adverse effect on our financial position, results of operations or cash flows.""
+  ],
+  ""cited_chunk_ids"": [""T_item_7_31"", ""T_item_8_39"", ""T_item_8_47"", ""T_item_8_84""],
+  ""reasoning"": ""AT&T's credit risk is assessed as low based on the provided passages. The company is in compliance with credit facility covenants, has no significant debt maturities due within the next year, and no material liquidity concerns. There are no going concern",rag
+VZ,Verizon,50.0,1,medium,[],[],"[VZ_item_1a_18] (section: item_1a)
+We may incur substantial expenses as a result of these allegations, which cannot be reasonably estimated at this time but could be material.
+In addition, negative assertions about the health or environmental impact of our lead sheathed cables may harm our reputation, which could adversely affect our
+business and our relationship with various stakeholders, even if such allegations ultimately prove to be inaccurate.
+
+--- END OF PASSAGES ---
+
+--- OUTPUT ---
+{
+  ""risk_score"": 60,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Verizon has a significant amount of debt, which could increase further if they incur additional debt in the future and do not retire existing debt."",
+    ""Verizon may incur substantial expenses from ongoing litigation, which cannot be reasonably estimated at this time but could be material."",
+    ""Verizon's initiatives to reduce indebtedness and maintain target leverage ratios may be unsuccessful due to macroeconomic, business, and other factors.""
+  ],
+  ""citations"": [
+    ""Accordingly, we may incur substantial expenses as a result of these allegations, which cannot be reasonably estimated at this time but could be material."",
+    ""Verizon had approximately $131.1 billion of outstanding unsecured indebtedness, $12.0 billion of unused borrowing capacity under their existing revolving credit facility and $27.1 billion of outstanding secured indebtedness."",
+    ""Our initiatives aimed at reducing our indebtedness and achieving or maintaining any target leverage ratio may be unsuccessful due to macroeconomic, business and other factors.""
+  ],
+  ""cited_chunk_ids"": [""VZ_item_1a_16"", ""VZ_item_1a_17""],
+  ""reasoning"": ""Verizon has a significant amount of debt, which could increase further if they incur additional debt in the future and do not retire existing debt. Additionally, they may incur substantial expenses from ongoing litigation, which cannot be reasonably estimated at this time but could be material. Their initiatives to reduce indebtedness and maintain target leverage ratios may be unsuccessful due to macroeconomic, business",rag
+F,Ford Motor Company,30.0,0,low,"[""No clear debt levels or liquidity concerns mentioned."", ""No going concern language or covenant violations detected."", ""Revenue trends not explicitly stated but the company's segments are mentioned.""]",[],"{
+""risk_score"": 30,
+""risk_level"": ""low"",
+""key_signals"": [
+""No clear debt levels or liquidity concerns mentioned."",
+""No going concern language or covenant violations detected."",
+""Revenue trends not explicitly stated but the company's segments are mentioned.""
+],
+""citations"": [],
+""cited_chunk_ids"": [],
+""reasoning"": ""The provided passages do not contain any red flags for debt levels, liquidity concerns, going concern language, or covenant violations. The revenue trends are not explicitly stated but the company's segments are mentioned, which could be a potential signal for revenue concentration or cyclicality. However, without further information, the risk level is considered low.""
+}",rag
+AAL,American Airlines,50.0,1,medium,[],[],"secured notes in the open
+market.
+
+--- END OF PASSAGES ---
+
+--- ANALYSIS ---
+
+Based on the provided passages, the following are the key signals and citations for American Airlines' credit risk:
+
+1. **Debt levels**: American Airlines has significant debt financing arrangements with covenants requiring it to maintain a minimum cash balance and meet certain loan to value, collateral coverage and debt service coverage ratios. The company has refinanced and redeemed debt in the past and may continue to do so in the future.
+
+```json
+""key_signals"": [""Significant debt financing arrangements with covenants""],
+""citations"": [""'A significant portion of our debt financing agreements contain covenants requiring us to maintain an aggregate of at least $2.0 billion of unrestricted cash and cash equivalents and amounts available to be drawn under revolving credit facilities and/or contain covenants requiring us to meet certain loan to value, collateral coverage and/or peak debt service coverage ratios.'""],
+""cited_chunk_ids"": [""AAL_item_7_5""]
+```
+
+2. **Liquidity concerns**: American Airlines has significant liquidity requirements due to its debt financing arrangements and the need to maintain cash balances to meet these requirements. The company has refinanced and redeemed debt in the past and may continue to do so in the future.
+
+```json
+""key_signals"": [""Significant liquidity requirements due to debt financing arrangements""],
+""citations"": [""'As a result, we cannot use all of our available cash to fund operations, capital expenditures and cash obligations without violating these requirements.'""],
+""cited_chunk_ids"": [""AAL_item_7_28""]
+```
+
+3. **Revenue trends**: American Airlines' revenue trends are positive, with an increase in revenue passenger miles, available seat miles, and passenger load factor. However, there are risks to revenue due to external factors such as military actions, terrorism, disease outbreaks, natural disasters, and economic downturns.
+
+```json
+""key_signals"": [""Positive revenue trends""],
+""citations"": [""'An increase in costs, either due to an increase in borrowing costs caused by a reduction in credit ratings or a general increase",rag
+GME,GameStop,50.0,1,medium,[],[],"8
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---",rag
+AMC,AMC Entertainment,50.0,1,medium,[],[],"MENT HOLDINGS, INC.
+CONSOLIDATED STATEMENTS OF CASH FLOWS
+Year Ended
+December 31,
+December 31,
+December 31,
+(In millions)
+Cash flows from operating activities:
+Net loss
+$
+(352.6)
+$
+(396.6)
+$
+(973.6)
+Adjustments to reconcile net loss to net cash used in operating activities:
+Depreciation and amortization
+ 
+319.5
+ 
+365.0
+396.0
+(Gain) loss on extinguishment of debt
+ 
+(38.9)
+ 
+(142.8)
+92.8
+Gain on derivative liability
+(75.8)
+—
+—
+Deferred income taxes
+ 
+1.5
+ 
+0.7
+1.7
+Impairment of long-lived assets
+ 
+72.3
+ 
+106.9
+133.1
+Unrealized loss on investments in Hycroft
+3.0
+12.6
+6.3
+Amortization of net premium on corporate borrowings to interest expense
+ 
+(17.5)
+ 
+(55.6)
+(65.4)
+Amortization of deferred financing costs to interest expense
+8.3
+9.6
+12.6
+PIK interest expense
+14.7
+—
+—
+Non-cash portion of stock-based compensation
+ 
+22.0
+ 
+42.5
+22.5
+Gain on disposition of Saudi Cinema Company
+—
+(15.5)
+—
+Equity in (earnings) loss from non-consolidated entities, net of distributions
+ 
+(1.6)
+ 
+(0.2)
+7.6
+Landlord contributions
+31.8
+23.9
+19.9
+Deferred rent
+(106.1)
+(159.1)
+(196.7)
+Net periodic benefit cost (income)
+1.8
+1.4
+(0.6)",rag
