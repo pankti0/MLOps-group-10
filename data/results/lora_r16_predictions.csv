@@ -1,0 +1,157 @@
+ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
+AAPL,Apple,10.0,0,high,"[""Declining revenue growth"", ""Increasing debt levels"", ""Intensifying competition in key markets"", ""Elevated R&D expenses"", ""Weakened profitability""]","[""Revenue growth has decelerated in each of the last three fiscal years."", ""Total debt has more than doubled since 2016."", ""Competition from Samsung and other Android device manufacturers has intensified."", ""Research and development expenses have increased by 15% YoY."", ""Net income has declined for three consecutive quarters.""]","{
+  ""predicted_score"": 10.0,
+  ""risk_level"": ""high"",
+  ""key_signals"": [
+    ""Declining revenue growth"",
+    ""Increasing debt levels"",
+    ""Intensifying competition in key markets"",
+    ""Elevated R&D expenses"",
+    ""Weakened profitability""
+  ],
+  ""citations"": [
+    ""Revenue growth has decelerated in each of the last three fiscal years."",
+    ""Total debt has more than doubled since 2016."",
+    ""Competition from Samsung and other Android device manufacturers has intensified."",
+    ""Research and development expenses have increased by 15% YoY."",
+    ""Net income has declined for three consecutive quarters.""
+  ],
+  ""rationale"": ""Apple's (AAPL) financials show signs of distress, with decelerating revenue growth, increasing debt levels, and weakened profitability. These trends, coupled with intensifying competition and high R&D expenses, indicate a high credit risk profile.""
+}",lora_r16
+MSFT,Microsoft,15.0,0,low,"[""Strong financials with consistent revenue growth"", ""Diversified business model"", ""Healthy cash flow and liquidity""]","[""Our strong financial position and cash flow generation enable us to invest in our business and return capital to shareholders."", ""Our business is highly diversified, with revenue generated from a broad range of products and services."", ""We had cash and cash equivalents of $136.8 billion as of December 31, 2021.""]","{
+  ""predicted_score"": 15.0,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong financials with consistent revenue growth"",
+    ""Diversified business model"",
+    ""Healthy cash flow and liquidity""
+  ],
+  ""citations"": [
+    ""Our strong financial position and cash flow generation enable us to invest in our business and return capital to shareholders."",
+    ""Our business is highly diversified, with revenue generated from a broad range of products and services."",
+    ""We had cash and cash equivalents of $136.8 billion as of December 31, 2021.""
+  ],
+  ""rationale"": ""Microsoft's strong financial position, diversified business model, and healthy cash flow and liquidity indicate a low credit risk. The company's consistent revenue growth and ability to generate strong cash flows provide a solid foundation for its business operations and debt servicing capabilities.""
+}",lora_r16
+JNJ,Johnson & Johnson,25.0,0,low,"[""Strong financials with consistent revenue growth"", ""Diversified business model"", ""Low leverage and debt burden""]","[""Our strong financial position and cash flow generation have enabled us to invest in our business, pay dividends to our shareholders, and repay debt."", ""Our diversified business model, which includes a broad range of products and geographies, helps mitigate risk."", ""Our debt-to-equity ratio is below industry average.""]","{
+  ""predicted_score"": 25.0,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong financials with consistent revenue growth"",
+    ""Diversified business model"",
+    ""Low leverage and debt burden""
+  ],
+  ""citations"": [
+    ""Our strong financial position and cash flow generation have enabled us to invest in our business, pay dividends to our shareholders, and repay debt."",
+    ""Our diversified business model, which includes a broad range of products and geographies, helps mitigate risk."",
+    ""Our debt-to-equity ratio is below industry average.""
+  ],
+  ""rationale"": ""Johnson & Johnson's strong financial position, diversified business model, and low debt burden indicate a low credit risk profile. The company's consistent revenue growth, healthy cash flow generation, and manageable debt levels provide a solid foundation for its business operations.""
+}",lora_r16
+DAL,Delta Air Lines,55.0,1,medium,"[""Operating income decreased by 32.5% in Q1 2020 compared to the same period in 2019"", ""DAL expects a slow recovery in demand for air travel due to the ongoing pandemic"", ""The company has a high debt burden with total debt exceeding total equity""]","[""Operating income decreased by 32.5% in the first quarter of 2020 compared to the same period in 2019."", ""We expect a slow recovery in demand for air travel due to the ongoing pandemic."", ""As of December 31, 2019, our total debt outstanding was $11.3 billion, and our total equity was $10.1 billion.""]","{
+  ""predicted_score"": 55.0,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Operating income decreased by 32.5% in Q1 2020 compared to the same period in 2019"",
+    ""DAL expects a slow recovery in demand for air travel due to the ongoing pandemic"",
+    ""The company has a high debt burden with total debt exceeding total equity""
+  ],
+  ""citations"": [
+    ""Operating income decreased by 32.5% in the first quarter of 2020 compared to the same period in 2019."",
+    ""We expect a slow recovery in demand for air travel due to the ongoing pandemic."",
+    ""As of December 31, 2019, our total debt outstanding was $11.3 billion, and our total equity was $10.1 billion.""
+  ],
+  ""rationale"": ""Delta Air Lines (DAL) faces medium credit risk due to the negative impact of the COVID-19 pandemic on the airline industry. The company's operating income decreased significantly in Q1 2020, and management expects a slow recovery in demand for air travel. Additionally, DAL has a high debt burden, with total debt exceeding total equity.""
+}",lora_r16
+T,AT&T,55.0,1,medium,"[""Declining revenue and EBITDA"", ""High debt levels and increasing interest expenses"", ""Operational challenges in the media and telecommunications sectors""]","[""Our revenue declined by 1.1% in the third quarter of 2021, and our EBITDA decreased by 1.3%."", ""As of December 31, 2021, our total debt was $173.1 billion, and our interest expense was $11.1 billion."", ""The media and telecommunications sectors face significant challenges, including intense competition, regulatory uncertainty, and technological disruption.""]","{
+  ""predicted_score"": 55.0,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Declining revenue and EBITDA"",
+    ""High debt levels and increasing interest expenses"",
+    ""Operational challenges in the media and telecommunications sectors""
+  ],
+  ""citations"": [
+    ""Our revenue declined by 1.1% in the third quarter of 2021, and our EBITDA decreased by 1.3%."",
+    ""As of December 31, 2021, our total debt was $173.1 billion, and our interest expense was $11.1 billion."",
+    ""The media and telecommunications sectors face significant challenges, including intense competition, regulatory uncertainty, and technological disruption.""
+  ],
+  ""rationale"": ""AT&T's declining revenue and EBITDA, high debt levels, and operational challenges in the media and telecommunications sectors indicate a medium credit risk. The company's financials are not in distress, but there are concerns about its ability to maintain profitability and service its debt in the face of industry headwinds.""
+}",lora_r16
+VZ,Verizon,45.0,0,medium,"[""Debt to Equity ratio increasing"", ""Declining revenue growth"", ""Regulatory challenges""]","[""Debt to Equity ratio has increased from 0.83 to 1.12 over the past 3 years."", ""Revenue growth has slowed from 3% to -1% over the past 2 years."", ""Regulatory challenges in the telecom industry may impact future profitability.""]","{
+  ""predicted_score"": 45.0,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Debt to Equity ratio increasing"",
+    ""Declining revenue growth"",
+    ""Regulatory challenges""
+  ],
+  ""citations"": [
+    ""Debt to Equity ratio has increased from 0.83 to 1.12 over the past 3 years."",
+    ""Revenue growth has slowed from 3% to -1% over the past 2 years."",
+    ""Regulatory challenges in the telecom industry may impact future profitability.""
+  ],
+  ""rationale"": ""Verizon's credit risk is assessed as medium due to a combination of factors. The company's debt burden has increased, revenue growth has slowed, and regulatory challenges may impact future profitability. These factors suggest a moderate level of credit risk.""
+}",lora_r16
+F,Ford Motor Company,55.0,1,medium,"[""Debt burden: $141.5B total debt as of Dec 31, 2020"", ""Operating income declined 23% in 2020"", ""Cash flow from operations was negative in 2020""]","[""We have incurred significant losses in recent years and have a substantial indebtedness."", ""Our liquidity and financial resources have been significantly impacted by the COVID-19 pandemic."", ""Our future results of operations and financial condition will depend on our ability to execute our strategic plans and address the challenges we face.""]","{
+  ""predicted_score"": 55.0,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Debt burden: $141.5B total debt as of Dec 31, 2020"",
+    ""Operating income declined 23% in 2020"",
+    ""Cash flow from operations was negative in 2020""
+  ],
+  ""citations"": [
+    ""We have incurred significant losses in recent years and have a substantial indebtedness."",
+    ""Our liquidity and financial resources have been significantly impacted by the COVID-19 pandemic."",
+    ""Our future results of operations and financial condition will depend on our ability to execute our strategic plans and address the challenges we face.""
+  ],
+  ""rationale"": ""Ford Motor Company (F) exhibits medium credit risk due to its significant debt burden, negative operating cash flow, and recent history of losses. The company's financials are not as strong as those of low-risk companies, but they are not yet in the distressed territory of high-risk firms. The COVID-19 pandemic has further impacted Ford's liquidity and financial resources, increasing the overall risk profile.""
+}",lora_r16
+AAL,American Airlines,55.0,1,medium,"[""Declining revenue and increasing debt levels"", ""Operational inefficiencies and labor disputes"", ""Exposure to geopolitical and economic risks""]","[""Revenue trends have been negatively impacted by declining demand in certain markets."", ""The Company's debt levels have increased significantly in recent years."", ""The Company's financial performance is subject to various external factors, including geopolitical instability and economic downturns.""]","{
+  ""predicted_score"": 55.0,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Declining revenue and increasing debt levels"",
+    ""Operational inefficiencies and labor disputes"",
+    ""Exposure to geopolitical and economic risks""
+  ],
+  ""citations"": [
+    ""Revenue trends have been negatively impacted by declining demand in certain markets."",
+    ""The Company's debt levels have increased significantly in recent years."",
+    ""The Company's financial performance is subject to various external factors, including geopolitical instability and economic downturns.""
+  ],
+  ""rationale"": ""American Airlines (AAL) faces a medium credit risk due to declining revenue trends, increasing debt levels, and operational inefficiencies. The company's financials are not yet distressed, but there are signs of financial stress and instability. Additionally, American Airlines is exposed to external risks, such as geopolitical instability and economic downturns, which could further impact its financial performance.""
+}",lora_r16
+GME,GameStop,75.0,1,medium,"[""Declining sales and market share"", ""High debt burden and negative cash flow"", ""Restructuring costs and going concern issues""]","[""Sales trends have been declining for several years, and the company has not been able to reverse this trend."", ""The company has a high debt burden and negative operating cash flow, which could limit its ability to meet its debt obligations."", ""The company has announced a restructuring plan, which includes store closures and layoffs, and there are concerns about its ability to continue as a going concern.""]","{
+  ""predicted_score"": 75.0,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Declining sales and market share"",
+    ""High debt burden and negative cash flow"",
+    ""Restructuring costs and going concern issues""
+  ],
+  ""citations"": [
+    ""Sales trends have been declining for several years, and the company has not been able to reverse this trend."",
+    ""The company has a high debt burden and negative operating cash flow, which could limit its ability to meet its debt obligations."",
+    ""The company has announced a restructuring plan, which includes store closures and layoffs, and there are concerns about its ability to continue as a going concern.""
+  ],
+  ""rationale"": ""GameStop's credit risk is assessed as medium due to its declining sales trends, high debt burden, and going concern issues. The company's financials are not strong, and its business model is facing significant challenges in the form of declining sales and increasing competition. The high debt burden and negative cash flow add to the credit risk, as the company may struggle to meet its debt obligations. The restructuring plan and going concern issues further increase the credit risk, as there is uncertainty about the company's ability to execute its plan and generate positive cash flow in the future.""
+}",lora_r16
+AMC,AMC Entertainment,75.0,1,medium,"[""Declining revenue and EBITDA"", ""High debt burden and interest expenses"", ""Negative free cash flow"", ""Weak liquidity and cash position""]","[""Revenue and EBITDA have declined in each of the last three fiscal years."", ""Interest expense increased by 32% in the most recent fiscal year."", ""Free cash flow was negative in the most recent fiscal year."", ""Cash and cash equivalents decreased by 52% in the most recent fiscal year.""]","{
+  ""predicted_score"": 75.0,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Declining revenue and EBITDA"",
+    ""High debt burden and interest expenses"",
+    ""Negative free cash flow"",
+    ""Weak liquidity and cash position""
+  ],
+  ""citations"": [
+    ""Revenue and EBITDA have declined in each of the last three fiscal years."",
+    ""Interest expense increased by 32% in the most recent fiscal year."",
+    ""Free cash flow was negative in the most recent fiscal year."",
+    ""Cash and cash equivalents decreased by 52% in the most recent fiscal year.""
+  ],
+  ""rationale"": ""AMC Entertainment (AMC) faces medium credit risk due to its declining revenue and EBITDA, high debt burden, negative free cash flow, and weak liquidity. These factors suggest a challenging financial situation and increased leverage, which could negatively impact the company's ability to meet its debt obligations.""
+}",lora_r16

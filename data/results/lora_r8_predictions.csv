@@ -1,0 +1,149 @@
+ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
+AAPL,Apple,15.5,0,low,"[""Strong cash position and liquidity"", ""Consistent revenue growth"", ""Diversified product portfolio""]","[""As of February 26, 2023, we had $91.8 billion in cash and cash equivalents and $111.3 billion in marketable securities."", ""Our revenue for the year ended December 31, 2022, increased by 8% compared to the year ended December 31, 2021."", ""Our revenue from the iPhone, Mac, and Wearables, Home and Accessories segments accounted for 68%, 26%, and 6% of our total revenue, respectively, for the year ended December 31, 2022.""]","{
+  ""predicted_score"": 15.5,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong cash position and liquidity"",
+    ""Consistent revenue growth"",
+    ""Diversified product portfolio""
+  ],
+  ""citations"": [
+    ""As of February 26, 2023, we had $91.8 billion in cash and cash equivalents and $111.3 billion in marketable securities."",
+    ""Our revenue for the year ended December 31, 2022, increased by 8% compared to the year ended December 31, 2021."",
+    ""Our revenue from the iPhone, Mac, and Wearables, Home and Accessories segments accounted for 68%, 26%, and 6% of our total revenue, respectively, for the year ended December 31, 2022.""
+  ],
+  ""rationale"": ""Apple's strong financial position, consistent revenue growth, and diversified product portfolio indicate a low credit risk. The company's cash position and liquidity are robust, with significant cash reserves and marketable securities. Apple's revenue has been growing steadily, with an increase of 8% in the last fiscal year. Additionally, the company's product portfolio is diversified, with the iPhone, Mac, and Wearables, Home and Accessories segments contributing significantly to the total revenue. These factors suggest a low credit risk for Apple.""
+}",lora_r8
+MSFT,Microsoft,15.5,0,low,"[""Strong cash position and liquidity"", ""Consistent revenue growth"", ""Diversified business model""]","[""As of June 30, 2021, we had cash and cash equivalents of $138.8 billion."", ""Our revenue increased by 18% in fiscal 2021."", ""Our business segments include Personal Computing, Intelligent Cloud, and Productivity and Business Processes.""]","{
+  ""predicted_score"": 15.5,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong cash position and liquidity"",
+    ""Consistent revenue growth"",
+    ""Diversified business model""
+  ],
+  ""citations"": [
+    ""As of June 30, 2021, we had cash and cash equivalents of $138.8 billion."",
+    ""Our revenue increased by 18% in fiscal 2021."",
+    ""Our business segments include Personal Computing, Intelligent Cloud, and Productivity and Business Processes.""
+  ],
+  ""rationale"": ""Microsoft's strong financial position, consistent revenue growth, and diversified business model indicate a low credit risk. The company's cash reserves provide a significant buffer against potential operational or financial challenges. The revenue growth, driven by multiple business segments, demonstrates a stable and resilient business model. These factors, combined with Microsoft's solid financials and stable business, position the company for a low credit risk.""
+}",lora_r8
+JNJ,Johnson & Johnson,25.5,0,low,"[""Strong and diversified revenue streams"", ""Consistent revenue growth"", ""Healthy cash flow and liquidity""]","[""Our diverse portfolio of products and businesses has enabled us to weather economic downturns and other challenges."", ""Our revenue growth has been driven by a combination of volume growth, price increases, and new product introductions."", ""We generated strong operating cash flows of $12.3 billion in 2020, and our cash and cash equivalents totaled $11.3 billion as of December 26, 2020.""]","{
+  ""predicted_score"": 25.5,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong and diversified revenue streams"",
+    ""Consistent revenue growth"",
+    ""Healthy cash flow and liquidity""
+  ],
+  ""citations"": [
+    ""Our diverse portfolio of products and businesses has enabled us to weather economic downturns and other challenges."",
+    ""Our revenue growth has been driven by a combination of volume growth, price increases, and new product introductions."",
+    ""We generated strong operating cash flows of $12.3 billion in 2020, and our cash and cash equivalents totaled $11.3 billion as of December 26, 2020.""
+  ],
+  ""rationale"": ""Johnson & Johnson (JNJ) exhibits a low credit risk profile based on the analysis of its 10-K filing. The company's strong and diversified revenue streams, consistent revenue growth, and healthy cash flow and liquidity position are key factors contributing to its low risk score. The management's ability to weather economic downturns and other challenges, as well as the growth being driven by a combination of volume growth, price increases, and new product introductions, further strengthens the company's financial position. These factors collectively indicate a stable business with a low debt burden, which is consistent with a low credit risk rating.""
+}",lora_r8
+DAL,Delta Air Lines,55.0,1,medium,"[""Pandemic impact on travel demand"", ""Fuel price volatility"", ""Labor relations and workforce productivity""]","[""The COVID-19 pandemic and its impact on travel demand, including potential quarantines and border closures, could adversely affect our business, financial condition, and results of operations."", ""Fuel is a significant component of our operating expenses, and changes in fuel prices can have a material impact on our results of operations."", ""Labor relations and workforce productivity are critical to our ability to maintain a safe and efficient work environment and to provide high-quality service to our customers.""]","{
+  ""predicted_score"": 55,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Pandemic impact on travel demand"",
+    ""Fuel price volatility"",
+    ""Labor relations and workforce productivity""
+  ],
+  ""citations"": [
+    ""The COVID-19 pandemic and its impact on travel demand, including potential quarantines and border closures, could adversely affect our business, financial condition, and results of operations."",
+    ""Fuel is a significant component of our operating expenses, and changes in fuel prices can have a material impact on our results of operations."",
+    ""Labor relations and workforce productivity are critical to our ability to maintain a safe and efficient work environment and to provide high-quality service to our customers.""
+  ],
+  ""rationale"": ""Delta Air Lines (DAL) faces medium credit risk due to the presence of several key risk factors. The ongoing COVID-19 pandemic and its impact on travel demand pose a significant threat to the company's financial performance. Fuel price volatility is another risk factor, as fuel is a significant component of the airline's operating expenses. Lastly, labor relations and workforce productivity are critical to maintaining a safe and efficient work environment and providing high-quality service to customers. These factors, combined with the cyclical nature of the airline industry, contribute to a medium credit risk assessment for DAL.""
+}",lora_r8
+T,AT&T,45.0,0,medium,"[""Decline in revenue and operating income due to intense competition and regulatory environment"", ""Increase in debt levels and interest expenses"", ""Pension and other postretirement benefit plans with significant funding deficiencies""]","[""We face intense competition in all of our businesses, which may adversely impact our revenue and operating income."", ""Our debt levels and interest expenses have increased in recent years."", ""Our pension and other postretirement benefit plans have significant funding deficiencies.""]","{
+  ""predicted_score"": 45,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Decline in revenue and operating income due to intense competition and regulatory environment"",
+    ""Increase in debt levels and interest expenses"",
+    ""Pension and other postretirement benefit plans with significant funding deficiencies""
+  ],
+  ""citations"": [
+    ""We face intense competition in all of our businesses, which may adversely impact our revenue and operating income."",
+    ""Our debt levels and interest expenses have increased in recent years."",
+    ""Our pension and other postretirement benefit plans have significant funding deficiencies.""
+  ],
+  ""rationale"": ""AT&T's (T) credit risk assessment is classified as medium. The company faces intense competition and regulatory environment that has led to a decline in revenue and operating income. Additionally, AT&T's debt levels and interest expenses have increased, which may negatively impact its ability to meet debt obligations. Furthermore, the company's pension and other postretirement benefit plans have significant funding deficiencies, which could result in additional expenses and potential cash flow issues. These factors contribute to a medium credit risk level for AT&T.""
+}",lora_r8
+VZ,Verizon,45.0,0,medium,"[""Decline in revenue in the Wireless segment due to increasing competition and declining prices"", ""Increase in pension and postretirement benefit plans' liabilities"", ""Regulatory changes and litigation risks""]","[""Weak competition and declining prices in the Wireless segment may adversely impact our revenue."", ""Our pension and postretirement benefit plans' liabilities increased by $1.3 billion in 2020."", ""Regulatory changes and litigation risks could have a material adverse effect on our business, financial condition, and results of operations.""]","{
+  ""predicted_score"": 45,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Decline in revenue in the Wireless segment due to increasing competition and declining prices"",
+    ""Increase in pension and postretirement benefit plans' liabilities"",
+    ""Regulatory changes and litigation risks""
+  ],
+  ""citations"": [
+    ""Weak competition and declining prices in the Wireless segment may adversely impact our revenue."",
+    ""Our pension and postretirement benefit plans' liabilities increased by $1.3 billion in 2020."",
+    ""Regulatory changes and litigation risks could have a material adverse effect on our business, financial condition, and results of operations.""
+  ],
+  ""rationale"": ""Verizon (VZ) faces a medium credit risk due to a decline in revenue in the Wireless segment, increasing pension and postretirement benefit plans' liabilities, and regulatory changes and litigation risks. The decline in revenue in the Wireless segment, which is the primary source of income for Verizon, is a concern due to increasing competition and declining prices. The increase in pension and postretirement benefit plans' liabilities, which totaled $83.3 billion as of December 31, 2020, is a significant financial burden that could impact Verizon's ability to meet its debt obligations. Regulatory changes and litigation risks, including potential changes to net neutrality rules and ongoing litigation related to the sale of Yahoo!, could have a material adverse effect on Verizon's business, financial condition, and results of operations.""
+}",lora_r8
+F,Ford Motor Company,55.0,1,medium,"[""Debt levels have increased due to significant vehicle recalls and restructuring costs"", ""Earnings have been volatile due to market conditions and product recalls""]","[""We incurred significant costs related to vehicle recalls and restructuring activities in 2020."", ""Our earnings have been volatile due to market conditions and product recalls.""]","{
+  ""predicted_score"": 55,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Debt levels have increased due to significant vehicle recalls and restructuring costs"",
+    ""Earnings have been volatile due to market conditions and product recalls""
+  ],
+  ""citations"": [
+    ""We incurred significant costs related to vehicle recalls and restructuring activities in 2020."",
+    ""Our earnings have been volatile due to market conditions and product recalls.""
+  ],
+  ""rationale"": ""Ford Motor Company (F) faces medium credit risk due to its increasing debt levels and volatile earnings. The company incurred significant costs related to vehicle recalls and restructuring activities in 2020, which increased its debt burden. Additionally, Ford's earnings have been volatile due to market conditions and product recalls, which may impact its ability to meet debt obligations. These factors contribute to a medium credit risk assessment for Ford.""
+}",lora_r8
+AAL,American Airlines,55.0,1,medium,"[""Continued uncertainty related to the COVID-19 pandemic and its impact on travel demand"", ""Increase in operating expenses due to labor costs and fuel prices"", ""Debt levels and liquidity concerns""]","[""The Company's financial condition and results of operations could be materially adversely affected by the COVID-19 pandemic and its impact on travel demand."", ""Operating expenses, including labor and fuel costs, are significant components of our cost structure."", ""As of December 31, 2020, the Company had total debt outstanding of $29.2 billion.""]","{
+  ""predicted_score"": 55,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Continued uncertainty related to the COVID-19 pandemic and its impact on travel demand"",
+    ""Increase in operating expenses due to labor costs and fuel prices"",
+    ""Debt levels and liquidity concerns""
+  ],
+  ""citations"": [
+    ""The Company's financial condition and results of operations could be materially adversely affected by the COVID-19 pandemic and its impact on travel demand."",
+    ""Operating expenses, including labor and fuel costs, are significant components of our cost structure."",
+    ""As of December 31, 2020, the Company had total debt outstanding of $29.2 billion.""
+  ],
+  ""rationale"": ""American Airlines (AAL) faces medium credit risk due to the ongoing impact of the COVID-19 pandemic on travel demand, increasing operating expenses, and debt levels. The company's financials are negatively affected by the pandemic, as evidenced by the uncertainty surrounding travel demand and its potential impact on the company's financial condition and results of operations. Additionally, operating expenses, particularly labor and fuel costs, are significant components of the company's cost structure, which could put pressure on profitability. Lastly, the company's debt levels and liquidity concerns add to the medium credit risk assessment.""
+}",lora_r8
+GME,GameStop,68.0,1,medium,"[""Decline in sales due to industry disruption and competition from digital platforms"", ""Increase in long-term debt and decrease in cash and cash equivalents"", ""Restructuring charges and impairment losses""]","[""Sales declined 13.2% for the fiscal year ended February 1, 2020, due in part to industry disruption and increased competition from digital platforms."", ""As of February 1, 2020, long-term debt was $1.0 billion, an increase of $151.5 million from the prior year."", ""Restructuring charges and impairment losses were $11.1 million and $11.3 million, respectively, for the fiscal years ended February 1, 2020 and 2019.""]","{
+  ""predicted_score"": 68,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Decline in sales due to industry disruption and competition from digital platforms"",
+    ""Increase in long-term debt and decrease in cash and cash equivalents"",
+    ""Restructuring charges and impairment losses""
+  ],
+  ""citations"": [
+    ""Sales declined 13.2% for the fiscal year ended February 1, 2020, due in part to industry disruption and increased competition from digital platforms."",
+    ""As of February 1, 2020, long-term debt was $1.0 billion, an increase of $151.5 million from the prior year."",
+    ""Restructuring charges and impairment losses were $11.1 million and $11.3 million, respectively, for the fiscal years ended February 1, 2020 and 2019.""
+  ],
+  ""rationale"": ""GameStop (GME) faces a medium credit risk due to declining sales, increased debt burden, and restructuring charges. The company's sales have been negatively impacted by industry disruption and competition from digital platforms. Additionally, GameStop's long-term debt has increased, while cash and cash equivalents have decreased. These factors, along with restructuring charges and impairment losses, indicate a moderate credit risk for the company.""
+}",lora_r8
+AMC,AMC Entertainment,55.0,1,medium,"[""The Company's liquidity and financial flexibility have been significantly impacted by the COVID-19 pandemic."", ""The Company has substantial debt maturities in the near term."", ""The Company's revenue and operating income have been negatively affected by the COVID-19 pandemic.""]","[""The Company's liquidity and financial flexibility have been significantly impacted by the COVID-19 pandemic."", ""The Company has substantial debt maturities in the near term."", ""The Company's revenue and operating income have been negatively affected by the COVID-19 pandemic.""]","{
+  ""predicted_score"": 55,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""The Company's liquidity and financial flexibility have been significantly impacted by the COVID-19 pandemic."",
+    ""The Company has substantial debt maturities in the near term."",
+    ""The Company's revenue and operating income have been negatively affected by the COVID-19 pandemic.""
+  ],
+  ""citations"": [
+    ""The Company's liquidity and financial flexibility have been significantly impacted by the COVID-19 pandemic."",
+    ""The Company has substantial debt maturities in the near term."",
+    ""The Company's revenue and operating income have been negatively affected by the COVID-19 pandemic.""
+  ],
+  ""rationale"": ""AMC Entertainment (AMC) faces medium credit risk due to the significant impact of the COVID-19 pandemic on its financials. The company's liquidity and financial flexibility have been negatively affected by the pandemic, as evidenced by the statements in the 10-K filings. Additionally, AMC has substantial debt maturities in the near term, which could put pressure on the company's ability to meet its debt obligations. Furthermore, the company's revenue and operating income have been negatively affected by the pandemic, which could impact its ability to generate cash flows to service its debt. These factors contribute to a medium credit risk assessment for AMC.""
+}",lora_r8

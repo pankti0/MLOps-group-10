@@ -1,0 +1,157 @@
+ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
+AAPL,Apple,0.0,0,low,"[""Strong financials with ample liquidity"", ""Stable business model with predictable revenue streams"", ""Low leverage and manageable debt burden"", ""Consistent profitability and positive free cash flow"", ""Strong competitive position and market share""]","[""We have a strong balance sheet and ample liquidity to support our business."", ""Our business model is stable and predictable, with a diversified revenue base."", ""Our leverage remains manageable, and we have ample capacity to meet our debt obligations.""]","{
+  ""predicted_score"": 0.0,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong financials with ample liquidity"",
+    ""Stable business model with predictable revenue streams"",
+    ""Low leverage and manageable debt burden"",
+    ""Consistent profitability and positive free cash flow"",
+    ""Strong competitive position and market share""
+  ],
+  ""citations"": [
+    ""We have a strong balance sheet and ample liquidity to support our business."",
+    ""Our business model is stable and predictable, with a diversified revenue base."",
+    ""Our leverage remains manageable, and we have ample capacity to meet our debt obligations.""
+  ],
+  ""rationale"": ""Apple's strong financial position, stable business model, and manageable leverage indicate a low credit risk profile.""
+}",lora_r32
+MSFT,Microsoft,0.0,0,low,"[""Strong financials with positive free cash flow"", ""Stable business model with recurring revenue streams"", ""Low leverage with manageable debt burden"", ""Strong liquidity position with ample cash reserves"", ""Consistent profitability with stable earnings""]","[""We have a strong balance sheet with significant cash and short-term investments."", ""Our financial position is strong, and we have ample liquidity to meet our obligations."", ""Our business model is characterized by recurring revenue streams and a strong competitive position.""]","{
+  ""predicted_score"": 0.0,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong financials with positive free cash flow"",
+    ""Stable business model with recurring revenue streams"",
+    ""Low leverage with manageable debt burden"",
+    ""Strong liquidity position with ample cash reserves"",
+    ""Consistent profitability with stable earnings""
+  ],
+  ""citations"": [
+    ""We have a strong balance sheet with significant cash and short-term investments."",
+    ""Our financial position is strong, and we have ample liquidity to meet our obligations."",
+    ""Our business model is characterized by recurring revenue streams and a strong competitive position.""
+  ],
+  ""rationale"": ""Microsoft's strong financial position, stable business model, and low leverage make it a low credit risk.""
+}",lora_r32
+JNJ,Johnson & Johnson,0.0,0,low,"[""Strong financials with consistent revenue growth"", ""Stable business model with diversified product portfolio"", ""Low leverage with manageable debt burden"", ""Strong liquidity position with ample cash reserves"", ""Robust balance sheet with adequate equity coverage""]","[""We have a strong balance sheet with significant liquidity and financial flexibility."", ""Our financial position remains strong, with a solid balance sheet and ample liquidity.""]","{
+  ""predicted_score"": 0.0,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong financials with consistent revenue growth"",
+    ""Stable business model with diversified product portfolio"",
+    ""Low leverage with manageable debt burden"",
+    ""Strong liquidity position with ample cash reserves"",
+    ""Robust balance sheet with adequate equity coverage""
+  ],
+  ""citations"": [
+    ""We have a strong balance sheet with significant liquidity and financial flexibility."",
+    ""Our financial position remains strong, with a solid balance sheet and ample liquidity.""
+  ],
+  ""rationale"": ""Johnson & Johnson (JNJ) exhibits a low credit risk profile due to its strong financials, stable business model, and manageable leverage. The company's consistent revenue growth, diversified product portfolio, and robust balance sheet provide a solid foundation for its creditworthiness.""
+}",lora_r32
+DAL,Delta Air Lines,35.0,0,low,"[""Strong liquidity position"", ""Stable revenue growth"", ""Moderate leverage"", ""Healthy cash flow generation"", ""Strong balance sheet""]","[""We have a strong liquidity position, with significant cash and short-term investments.""]","{
+  ""predicted_score"": 35.0,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong liquidity position"",
+    ""Stable revenue growth"",
+    ""Moderate leverage"",
+    ""Healthy cash flow generation"",
+    ""Strong balance sheet""
+  ],
+  ""citations"": [
+    ""We have a strong liquidity position, with significant cash and short-term investments.""
+  ],
+  ""rationale"": ""Delta Air Lines (DAL) exhibits a low credit risk profile, with strong financials, stable business, and a manageable debt burden.""
+}",lora_r32
+T,AT&T,35.0,0,medium,"[""Mixed signals: Some positive (stable revenue, low leverage) and negative (declining EBITDA, high CAPEX)""]","[""Management acknowledges debt maturities and refinancing risk, but also mentions ongoing cost savings initiatives.""]","{
+  ""predicted_score"": 35.0,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Mixed signals: Some positive (stable revenue, low leverage) and negative (declining EBITDA, high CAPEX)""
+  ],
+  ""citations"": [
+    ""Management acknowledges debt maturities and refinancing risk, but also mentions ongoing cost savings initiatives.""
+  ],
+  ""rationale"": ""AT&T's credit risk profile is medium, as it exhibits both positive and negative signals. The company's stable revenue and low leverage are counterbalanced by declining EBITDA and high capital expenditures. The company's debt maturities and refinancing risk are acknowledged but mitigated by ongoing cost savings initiatives.""
+}",lora_r32
+VZ,Verizon,35.0,0,medium,"[""Mixed signals: Some positive (stable revenue, low leverage) and some negative (declining EBITDA, high CAPEX)""]","[""Management acknowledges challenges in maintaining revenue growth and EBITDA margin.""]","{
+  ""predicted_score"": 35.0,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Mixed signals: Some positive (stable revenue, low leverage) and some negative (declining EBITDA, high CAPEX)""
+  ],
+  ""citations"": [
+    ""Management acknowledges challenges in maintaining revenue growth and EBITDA margin.""
+  ],
+  ""rationale"": ""Verizon's credit risk is assessed as medium due to mixed signals in the financials and management's acknowledgement of challenges. The company's stable revenue and low leverage are partially offset by declining EBITDA and high CAPEX.""
+}",lora_r32
+F,Ford Motor Company,35.0,0,medium,"[""Mixed signals: Some financials are strong, but others are weak"", ""Moderate leverage: Debt burden is not excessive but not low"", ""Going concern issues: Some concerns about the company's ability to meet its obligations""]","[""We face significant risks and uncertainties that could adversely affect our business, financial condition, and results of operations.""]","{
+  ""predicted_score"": 35.0,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Mixed signals: Some financials are strong, but others are weak"",
+    ""Moderate leverage: Debt burden is not excessive but not low"",
+    ""Going concern issues: Some concerns about the company's ability to meet its obligations""
+  ],
+  ""citations"": [
+    ""We face significant risks and uncertainties that could adversely affect our business, financial condition, and results of operations.""
+  ],
+  ""rationale"": ""Ford Motor Company (F) exhibits medium credit risk due to mixed financial signals and moderate leverage. The company faces some going concern issues, but its overall financial position is not yet distressed.""
+}",lora_r32
+AAL,American Airlines,85.0,1,high,"[""High leverage with debt-to-equity ratio > 3x"", ""Negative operating cash flow"", ""Negative EBITDA"", ""Negative EBIT"", ""Negative retained earnings"", ""Going concern issues mentioned"", ""High debt maturities within 12 months""]","[""We may not be able to meet our debt service requirements."", ""Our liquidity position is weak."", ""Our financial condition is uncertain."", ""Our business is subject to significant risks and uncertainties.""]","{
+  ""predicted_score"": 85.0,
+  ""risk_level"": ""high"",
+  ""key_signals"": [
+    ""High leverage with debt-to-equity ratio > 3x"",
+    ""Negative operating cash flow"",
+    ""Negative EBITDA"",
+    ""Negative EBIT"",
+    ""Negative retained earnings"",
+    ""Going concern issues mentioned"",
+    ""High debt maturities within 12 months""
+  ],
+  ""citations"": [
+    ""We may not be able to meet our debt service requirements."",
+    ""Our liquidity position is weak."",
+    ""Our financial condition is uncertain."",
+    ""Our business is subject to significant risks and uncertainties.""
+  ],
+  ""rationale"": ""American Airlines (AAL) exhibits high credit risk due to its distressed financials, going concern issues, and high leverage. The company's negative operating cash flow, negative EBITDA, negative EBIT, and negative retained earnings indicate a weak financial position. Additionally, the company mentions going concern issues and high debt maturities within 12 months, which further increase the credit risk.""
+}",lora_r32
+GME,GameStop,85.0,1,high,"[""Distressed financials: Negative operating cash flow, high leverage, and negative EBITDA"", ""Going concern issues: Restructuring, refinancing, and liquidity concerns"", ""High leverage: Debt-to-equity ratio > 5x, interest coverage < 1x"", ""Negative EBITDA: Operating income < 0"", ""Negative operating cash flow: Cash from operations < 0""]","[""We may not be able to meet our obligations under our debt agreements, which could result in a default and bankruptcy."", ""Our liquidity position is uncertain, and we may not be able to obtain additional financing on acceptable terms."", ""Our financial condition is weak, and our ability to generate positive operating cash flow is uncertain.""]","{
+  ""predicted_score"": 85.0,
+  ""risk_level"": ""high"",
+  ""key_signals"": [
+    ""Distressed financials: Negative operating cash flow, high leverage, and negative EBITDA"",
+    ""Going concern issues: Restructuring, refinancing, and liquidity concerns"",
+    ""High leverage: Debt-to-equity ratio > 5x, interest coverage < 1x"",
+    ""Negative EBITDA: Operating income < 0"",
+    ""Negative operating cash flow: Cash from operations < 0""
+  ],
+  ""citations"": [
+    ""We may not be able to meet our obligations under our debt agreements, which could result in a default and bankruptcy."",
+    ""Our liquidity position is uncertain, and we may not be able to obtain additional financing on acceptable terms."",
+    ""Our financial condition is weak, and our ability to generate positive operating cash flow is uncertain.""
+  ],
+  ""rationale"": ""GameStop's financials are distressed, and the company faces significant going concern issues. The high leverage, negative EBITDA, and negative operating cash flow are all indicative of high credit risk.""
+}",lora_r32
+AMC,AMC Entertainment,85.0,1,high,"[""Distressed financials: Negative EBITDA, high leverage, negative FCF"", ""Going concern issues: High debt burden, liquidity concerns, cash burn"", ""Business model challenges: Declining revenue, weak growth, competitive threats"", ""Operational risks: High leverage, high capex, weak EBITDA margin"", ""Regulatory risks: Potential regulatory changes, fines, or sanctions""]","[""We may not be able to meet our debt service obligations when due."", ""Our business may not generate sufficient cash flows to meet our obligations."", ""Our business may not be able to generate sufficient cash flows to meet our obligations."", ""Our business may not be able to generate sufficient cash flows to meet our obligations."", ""Our business may not be able to generate sufficient cash flows to meet our obligations.""]","{
+  ""predicted_score"": 85.0,
+  ""risk_level"": ""high"",
+  ""key_signals"": [
+    ""Distressed financials: Negative EBITDA, high leverage, negative FCF"",
+    ""Going concern issues: High debt burden, liquidity concerns, cash burn"",
+    ""Business model challenges: Declining revenue, weak growth, competitive threats"",
+    ""Operational risks: High leverage, high capex, weak EBITDA margin"",
+    ""Regulatory risks: Potential regulatory changes, fines, or sanctions""
+  ],
+  ""citations"": [
+    ""We may not be able to meet our debt service obligations when due."",
+    ""Our business may not generate sufficient cash flows to meet our obligations."",
+    ""Our business may not be able to generate sufficient cash flows to meet our obligations."",
+    ""Our business may not be able to generate sufficient cash flows to meet our obligations."",
+    ""Our business may not be able to generate sufficient cash flows to meet our obligations.""
+  ],
+  ""rationale"": ""AMC Entertainment (AMC) faces significant credit risk due to its distressed financials, high leverage, and going concern issues. The company's negative EBITDA, high leverage, and negative FCF indicate a weak financial position. Additionally, AMC's liquidity concerns, cash burn, and business model challenges further increase the credit risk. Operational risks, such as high leverage, high capex, and weak EBITDA margin, also contribute to the elevated risk profile. Regulatory risks, including potential regulatory changes, fines, or sanctions, may further impact the credit risk assessment.""
+}",lora_r32
