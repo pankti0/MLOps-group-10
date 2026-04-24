@@ -31,7 +31,7 @@ _CSV_COLUMNS = [
     "approach",
 ]
 
-# 🔥 STRONGER QUERY (KEY FIX)
+# 🔥 STRONGER QUERY
 _RAG_QUERY_SUFFIX = (
     " HIGH RISK debt leverage liquidity crisis financial distress "
     "going concern warning covenant breach losses negative cash flow "
@@ -39,15 +39,14 @@ _RAG_QUERY_SUFFIX = (
 )
 
 _MIN_CHUNKS = 3
-_RETRIEVE_K = 7   # 🔥 increased from 5 → 7 for better signal
+_RETRIEVE_K = 7
 
 
 # ------------------------------------------------------------------
-# 🔥 FIXED THRESHOLDS (aligned with your dataset)
+# Thresholds aligned with dataset
 # ------------------------------------------------------------------
 
 def _score_to_label(score: float) -> int:
-    # label=1 only for HIGH risk
     return 1 if score >= 70 else 0
 
 
@@ -85,14 +84,12 @@ class RAGAgent:
 
         logger.info("[rag] Retrieved %d raw candidates for %s.", len(candidates), ticker)
 
-        # Case-robust ticker filter
         company_chunks = [
             c for c in candidates
             if c.get("metadata", {}).get("ticker", "").upper() == ticker.upper()
         ]
         logger.info("[rag] %d chunks after ticker filter.", len(company_chunks))
 
-        # Section filter
         VALID_SECTIONS = {"item_1a", "item_7", "item_8"}
 
         company_chunks = [
@@ -101,7 +98,6 @@ class RAGAgent:
         ]
         logger.info("[rag] %d chunks after section filter.", len(company_chunks))
 
-        # Numeric filter
         def is_text_heavy(text: str) -> bool:
             words = text.split()
             if not words:
@@ -115,7 +111,6 @@ class RAGAgent:
         ]
         logger.info("[rag] %d chunks after text filter.", len(company_chunks))
 
-        # Fallback
         if len(company_chunks) < _MIN_CHUNKS:
             logger.warning(
                 "[rag] Too few filtered chunks (%d) for %s, using top FAISS results.",
@@ -124,7 +119,6 @@ class RAGAgent:
             )
             return candidates[:_RETRIEVE_K]
 
-        # Re-rank
         company_chunks = sorted(
             company_chunks,
             key=lambda c: c.get("score", 0),
@@ -204,8 +198,9 @@ class RAGAgent:
 
         predicted_score = float(parsed.get("risk_score", 50))
 
-        # 🔥 HARD RULE FIX (force correct calibration)
-        strong_risk_keywords = [
+        # 🔥 FINAL CALIBRATION (HIGH + LOW)
+
+        strong_high_risk_keywords = [
             "indebtedness",
             "liquidity",
             "not be sufficient",
@@ -215,20 +210,32 @@ class RAGAgent:
             "going concern"
         ]
 
-        text_blob = " ".join(parsed.get("key_signals", [])).lower() + " " + parsed.get("reasoning", "").lower()
+        strong_low_risk_keywords = [
+            "strong cash",
+            "sufficient liquidity",
+            "low debt",
+            "strong balance sheet",
+            "consistent profitability",
+            "positive cash flow"
+        ]
 
-        # If strong risk signals present → bump score
-        if any(keyword in text_blob for keyword in strong_risk_keywords):
+        text_blob = (
+            " ".join(parsed.get("key_signals", [])).lower()
+            + " "
+            + parsed.get("reasoning", "").lower()
+        )
+
+        if any(keyword in text_blob for keyword in strong_high_risk_keywords):
             predicted_score = max(predicted_score, 75)
-        # 🔥 FIXED: correct thresholds
+
+        elif any(keyword in text_blob for keyword in strong_low_risk_keywords):
+            predicted_score = min(predicted_score, 30)
+
         predicted_label = _score_to_label(predicted_score)
         risk_level = _score_to_risk_level(predicted_score)
 
         key_signals = parsed.get("key_signals", [])
         citations = parsed.get("citations", [])
-
-        if predicted_score == 50:
-            logger.warning("[rag] %s likely weak prediction (default-like score).", ticker)
 
         logger.info(
             "[rag] %s -> score=%.1f, label=%d, level=%s",
