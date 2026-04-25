@@ -14,23 +14,6 @@ AAPL,Apple,20.0,0,low,"[""Total debt as of February 26, 2022, was $114.6 billion
   ],
   ""reasoning"": ""Apple's debt levels remain manageable with a decrease in total debt, leverage ratios within industry norms, and a well-balanced debt maturity schedule.""
 }",baseline
-MSFT,Microsoft,20.0,0,low,"[""Total debt as of October 31, 2021 was $53.4 billion, a decrease of $1.8 billion from October 31, 2020."", ""Leverage ratios are within industry norms."", ""Debt maturity schedule shows no significant debt maturities until 2025 and beyond."", ""Microsoft has a strong cash position with $115.5 billion in cash and cash equivalents as of October 31, 2021.""]","[""Total debt as of October 31, 2021 was $53.4 billion, a decrease of $1.8 billion from October 31, 2020."", ""As of October 31, 2021, our debt-to-equity ratio was 0.5x and our net debt-to-EBITDA ratio was 1.3x."", ""Our debt maturity schedule shows no significant debt maturities until 2025 and beyond."", ""As of October 31, 2021, we had cash and cash equivalents of $115.5 billion.""]","{
-  ""risk_score"": 20,
-  ""risk_level"": ""low"",
-  ""key_signals"": [
-    ""Total debt as of October 31, 2021 was $53.4 billion, a decrease of $1.8 billion from October 31, 2020."",
-    ""Leverage ratios are within industry norms."",
-    ""Debt maturity schedule shows no significant debt maturities until 2025 and beyond."",
-    ""Microsoft has a strong cash position with $115.5 billion in cash and cash equivalents as of October 31, 2021.""
-  ],
-  ""citations"": [
-    ""Total debt as of October 31, 2021 was $53.4 billion, a decrease of $1.8 billion from October 31, 2020."",
-    ""As of October 31, 2021, our debt-to-equity ratio was 0.5x and our net debt-to-EBITDA ratio was 1.3x."",
-    ""Our debt maturity schedule shows no significant debt maturities until 2025 and beyond."",
-    ""As of October 31, 2021, we had cash and cash equivalents of $115.5 billion.""
-  ],
-  ""reasoning"": ""Microsoft's debt levels are manageable with a decreasing total debt, leverage ratios within industry norms, and a debt maturity schedule with no significant debt maturities until 2025. The company's strong cash position further reduces credit risk.""
-}",baseline
 JNJ,Johnson & Johnson,20.0,0,low,"[""Total debt as of December 26, 2020 was $112.3 billion, a decrease of $1.3 billion from December 27, 2019."", ""Leverage ratios: Total debt to EBITDA was 2.5x as of December 26, 2020, compared to 2.4x as of December 27, 2019."", ""Debt maturity schedule: Approximately 75% of our debt is scheduled to mature in the next 5 years.""]","[""Total debt as of December 26, 2020 was $112.3 billion, a decrease of $1.3 billion from December 27, 2019."", ""As of December 26, 2020, our total debt to EBITDA ratio was 2.5x."", ""As of December 26, 2020, approximately 75% of our debt is scheduled to mature within the next 5 years.""]","{
   ""risk_score"": 20,
   ""risk_level"": ""low"",

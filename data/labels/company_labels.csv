@@ -1,6 +1,5 @@
 ticker,company_name,pdf_path,label,risk_category,risk_score
 AAPL,Apple,10-k forms/Apple_2025_annual_report.pdf,0,low,15
-MSFT,Microsoft,10-k forms/Microsoft_2024_annual_report.pdf,0,low,10
 JNJ,Johnson & Johnson,10-k forms/Johnson & Johnson_2024_annual_report.pdf,0,low,20
 DAL,Delta Air Lines,10-k forms/Delta Air Lines_2024_annual_report.pdf,0,medium,45
 T,AT&T,10-k forms/AT&T_2024_annual_report.pdf,0,medium,55

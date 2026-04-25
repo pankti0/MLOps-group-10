@@ -34,7 +34,7 @@ We build a system that:
 
 ### Ground Truth
 
-Binary default label (1 = high credit risk, 0 = low/medium risk), sourced from publicly available financial outcomes. Companies include AAL, GME, AMC Entertainment (high risk) vs AAPL, MSFT, JNJ (low risk). Labels are in `data/labels/company_labels.csv`.
+Binary default label (1 = high credit risk, 0 = low/medium risk), sourced from publicly available financial outcomes. Companies include AAL, GME, AMC Entertainment (high risk) vs AAPL, JNJ, GOOGL (low risk). Labels are in `data/labels/company_labels.csv`.
 
 ---
 

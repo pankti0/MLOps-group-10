@@ -21,26 +21,6 @@ AAPL,Apple,50.0,0,medium,"[""Exposure to foreign exchange rate fluctuations thro
   ],
   ""reasoning"": ""Apple uses hedging instruments to protect against foreign exchange rate fluctuations, which can impact revenue and inventory purchases. Economic conditions, including slow growth, high unemployment, inflation, and other factors, can adversely impact consumer confidence and spending, affecting demand for Apple's products and services. Restricted cash and cash equivalents and marketable securities are designated to settle obligations related to the State Aid Decision.""
 }",rag
-MSFT,Microsoft,75.0,1,high,"[""substantial indebtedness"", ""liquidity constraints"", ""potential for increased financial covenants""]","[""AMC_item_1a_7"", ""AAL_item_1a_4"", ""AAL_item_1a_5""]","{
-  ""risk_score"": 65,
-  ""risk_level"": ""medium"",
-  ""key_signals"": [
-    ""substantial indebtedness"",
-    ""liquidity constraints"",
-    ""potential for increased financial covenants""
-  ],
-  ""citations"": [
-    ""AMC_item_1a_7"",
-    ""AAL_item_1a_4"",
-    ""AAL_item_1a_5""
-  ],
-  ""cited_chunk_ids"": [
-    ""item_1a_7"",
-    ""item_1a_4"",
-    ""item_1a_5""
-  ],
-  ""reasoning"": ""Microsoft shows substantial indebtedness and liquidity constraints, which could negatively impact its ability to service its debt and recover investor investments. Additionally, the potential for increased financial covenants could further limit its flexibility and increase the risk of cross-default and cross-acceleration.""
-}",rag
 JNJ,Johnson & Johnson,50.0,0,medium,"[""Legal proceedings resulting in significant expenses, fines and reputational damage"", ""Creation of new entities and assumption of talc-related liabilities""]","[""JNJ_item_1a_7"", ""JNJ_item_8_79""]","{
   ""risk_score"": 50,
   ""risk_level"": ""medium"",

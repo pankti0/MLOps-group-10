@@ -27,46 +27,6 @@ Based on the provided passages, the following is the credit risk assessment for 
 ```
 
 --- END OF ANALYSIS ---",rag
-MSFT,Microsoft,50.0,1,medium,[],[],"scribers. These updates were made to better align with how we 
-report and communicate our business performance.  
-  
-
- 
-29 
-Critical Accounting Policies  
-Our consolidated financial statements are prepared in accordance with accounting principles generally accepted in the 
-United States of America (“GAAP”). The following critical accounting policies are used in the preparation of our 
-consolidated financial statements:  
-• 
-Revenue recognition. We recognize revenue when it is earned, which is generally when title to the goods or services has 
-passed to the customer and collection is reasonably assured.  
-• 
-Stock-based compensation. We recognize stock-based compensation expense over the vesting period of the equity 
-award, using the modified-credit method.  
-• 
-Property, plant, and equipment. We record property, plant, and equipment at cost, and we depreciate or amortize the 
-cost over the estimated useful lives of the assets.  
-• 
-Intangible assets. We record intangible assets at cost and amortize them over their estimated useful lives.  
-• 
-Income taxes. We provide for income taxes based on the tax laws and regulations in effect in the jurisdictions in which 
-we operate. We recognize the tax effects of transactions in the consolidated financial statements in the period in 
-which the transactions occur.  
-• 
-Financial instruments. We recognize financial instruments at fair value, with gains and losses recognized in 
-accumulated other comprehensive income (“AOCI”) or earnings, as appropriate.  
-• 
-Leases. We recognize a lease liability for the present value of future lease payments and a right-of-use asset for the 
-right to use the underlying asset.  
-• 
-Business combinations. We record business combinations at fair value, with the resulting gain or loss recognized in 
-accumulated other comprehensive income (“AOCI”) or earnings, as appropriate.  
-• 
-Fair value measurements. We use a three-tiered approach to estimate fair value, using observable inputs, unobservable 
-inputs, and market data.  
-• 
-Revenue recognition for software and cloud-based services. We recognize revenue from software and cloud-based 
-services when control of the product or service is transferred to the customer",rag
 JNJ,Johnson & Johnson,50.0,1,medium,[],[],",233
 Net cash used by operating activities
 (1,241)

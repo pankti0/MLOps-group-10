@@ -18,21 +18,6 @@ AAPL,Apple,10.0,0,high,"[""Declining revenue growth"", ""Increasing debt levels"
   ],
   ""rationale"": ""Apple's (AAPL) financials show signs of distress, with decelerating revenue growth, increasing debt levels, and weakened profitability. These trends, coupled with intensifying competition and high R&D expenses, indicate a high credit risk profile.""
 }",lora_r16
-MSFT,Microsoft,15.0,0,low,"[""Strong financials with consistent revenue growth"", ""Diversified business model"", ""Healthy cash flow and liquidity""]","[""Our strong financial position and cash flow generation enable us to invest in our business and return capital to shareholders."", ""Our business is highly diversified, with revenue generated from a broad range of products and services."", ""We had cash and cash equivalents of $136.8 billion as of December 31, 2021.""]","{
-  ""predicted_score"": 15.0,
-  ""risk_level"": ""low"",
-  ""key_signals"": [
-    ""Strong financials with consistent revenue growth"",
-    ""Diversified business model"",
-    ""Healthy cash flow and liquidity""
-  ],
-  ""citations"": [
-    ""Our strong financial position and cash flow generation enable us to invest in our business and return capital to shareholders."",
-    ""Our business is highly diversified, with revenue generated from a broad range of products and services."",
-    ""We had cash and cash equivalents of $136.8 billion as of December 31, 2021.""
-  ],
-  ""rationale"": ""Microsoft's strong financial position, diversified business model, and healthy cash flow and liquidity indicate a low credit risk. The company's consistent revenue growth and ability to generate strong cash flows provide a solid foundation for its business operations and debt servicing capabilities.""
-}",lora_r16
 JNJ,Johnson & Johnson,25.0,0,low,"[""Strong financials with consistent revenue growth"", ""Diversified business model"", ""Low leverage and debt burden""]","[""Our strong financial position and cash flow generation have enabled us to invest in our business, pay dividends to our shareholders, and repay debt."", ""Our diversified business model, which includes a broad range of products and geographies, helps mitigate risk."", ""Our debt-to-equity ratio is below industry average.""]","{
   ""predicted_score"": 25.0,
   ""risk_level"": ""low"",

@@ -16,23 +16,6 @@ AAPL,Apple,0.0,0,low,"[""Strong financials with ample liquidity"", ""Stable busi
   ],
   ""rationale"": ""Apple's strong financial position, stable business model, and manageable leverage indicate a low credit risk profile.""
 }",lora_r32
-MSFT,Microsoft,0.0,0,low,"[""Strong financials with positive free cash flow"", ""Stable business model with recurring revenue streams"", ""Low leverage with manageable debt burden"", ""Strong liquidity position with ample cash reserves"", ""Consistent profitability with stable earnings""]","[""We have a strong balance sheet with significant cash and short-term investments."", ""Our financial position is strong, and we have ample liquidity to meet our obligations."", ""Our business model is characterized by recurring revenue streams and a strong competitive position.""]","{
-  ""predicted_score"": 0.0,
-  ""risk_level"": ""low"",
-  ""key_signals"": [
-    ""Strong financials with positive free cash flow"",
-    ""Stable business model with recurring revenue streams"",
-    ""Low leverage with manageable debt burden"",
-    ""Strong liquidity position with ample cash reserves"",
-    ""Consistent profitability with stable earnings""
-  ],
-  ""citations"": [
-    ""We have a strong balance sheet with significant cash and short-term investments."",
-    ""Our financial position is strong, and we have ample liquidity to meet our obligations."",
-    ""Our business model is characterized by recurring revenue streams and a strong competitive position.""
-  ],
-  ""rationale"": ""Microsoft's strong financial position, stable business model, and low leverage make it a low credit risk.""
-}",lora_r32
 JNJ,Johnson & Johnson,0.0,0,low,"[""Strong financials with consistent revenue growth"", ""Stable business model with diversified product portfolio"", ""Low leverage with manageable debt burden"", ""Strong liquidity position with ample cash reserves"", ""Robust balance sheet with adequate equity coverage""]","[""We have a strong balance sheet with significant liquidity and financial flexibility."", ""Our financial position remains strong, with a solid balance sheet and ample liquidity.""]","{
   ""predicted_score"": 0.0,
   ""risk_level"": ""low"",

@@ -134,6 +134,18 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Disable 4-bit quantisation (higher VRAM usage).",
     )
+    parser.add_argument(
+        "--fold",
+        type=int,
+        default=None,
+        help="Fold number to use for cross-validation (1-5). If not set, uses all companies or legacy test.jsonl.",
+    )
+    parser.add_argument(
+        "--split",
+        choices=["train", "val", "test"],
+        default="test",
+        help="Which split to use from the fold directory (default: test).",
+    )
     return parser.parse_args()
 
 # Model loading
@@ -198,13 +210,44 @@ def main() -> None:
 
     import pandas as pd
 
-    # Load company list
-    if not os.path.isfile(LABELS_CSV):
-        logger.error("Labels CSV not found: %s", LABELS_CSV)
-        sys.exit(1)
 
-    companies_df = pd.read_csv(LABELS_CSV)
-    logger.info("Loaded %d companies from '%s'.", len(companies_df), LABELS_CSV)
+    # --- FOLD/SPLIT LOGIC ---
+    fold_dir = None
+    split_jsonl = None
+    companies_df = None
+    split_name = args.split
+    if args.fold is not None:
+        fold_dir = os.path.join(_REPO_ROOT, "data", "finetune", f"fold_{args.fold}")
+        split_jsonl = os.path.join(fold_dir, f"{split_name}.jsonl")
+        if not os.path.isfile(split_jsonl):
+            logger.error(f"Split file not found for fold {args.fold}: {split_jsonl}")
+            sys.exit(1)
+        # Load tickers from split
+        tickers = []
+        with open(split_jsonl, "r", encoding="utf-8") as f:
+            for line in f:
+                if line.strip():
+                    try:
+                        obj = json.loads(line)
+                        ticker = obj.get("ticker")
+                        if ticker:
+                            tickers.append(str(ticker))
+                    except Exception:
+                        continue
+        # Load company list
+        if not os.path.isfile(LABELS_CSV):
+            logger.error("Labels CSV not found: %s", LABELS_CSV)
+            sys.exit(1)
+        all_companies_df = pd.read_csv(LABELS_CSV)
+        companies_df = all_companies_df[all_companies_df["ticker"].astype(str).isin(tickers)].copy()
+        logger.info(f"Loaded {len(companies_df)} companies for fold {args.fold} split '{split_name}'.")
+    else:
+        # Legacy: use all companies or test.jsonl for LoRA
+        if not os.path.isfile(LABELS_CSV):
+            logger.error("Labels CSV not found: %s", LABELS_CSV)
+            sys.exit(1)
+        companies_df = pd.read_csv(LABELS_CSV)
+        logger.info("Loaded %d companies from '%s'.", len(companies_df), LABELS_CSV)
 
     # Build agent
     if args.mock:
@@ -256,7 +299,6 @@ def main() -> None:
 
     elif args.approach in ("lora_r8", "lora_r16", "lora_r32"):
         model, tokenizer = load_model_for_approach(args)
-
         from src.models.lora_agent import LoRAAgent
 
         agent = LoRAAgent(model=model, tokenizer=tokenizer)
@@ -264,7 +306,6 @@ def main() -> None:
             companies_df=companies_df,
             sections_dir=PROCESSED_DIR,
         )
-        # Stamp the exact config name so each run gets its own CSV
         predictions_df["approach"] = args.approach
 
     else:
@@ -273,7 +314,7 @@ def main() -> None:
 
     print_summary(predictions_df)
     os.makedirs(RESULTS_DIR, exist_ok=True)
-    out_path = os.path.join(RESULTS_DIR, f"{args.approach}_predictions.csv")
+    out_path = os.path.join(RESULTS_DIR, f"{args.approach}_fold{args.fold or 'all'}_{args.split}.csv")
     predictions_df.to_csv(out_path, index=False)
     print(f"Results saved to: {out_path}\n")
 

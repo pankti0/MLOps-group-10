@@ -1,6 +1,5 @@
 ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
 AAPL,Apple,0.17,0,low,"['X1(WC/TA)=0.013', 'X2(RE/TA)=-0.608', 'X3(EBIT/TA)=0.324', 'X4(MC/TL)=11.379', 'X5(Rev/TA)=1.111']",[],Altman Z-Score: 8.1713 | Zone: safe,altman_zscore
-MSFT,Microsoft,0.03,0,low,"['X1(WC/TA)=0.078', 'X2(RE/TA)=0.231', 'X3(EBIT/TA)=0.213', 'X4(MC/TL)=13.778', 'X5(Rev/TA)=0.478']",[],Altman Z-Score: 9.8641 | Zone: safe,altman_zscore
 JNJ,Johnson & Johnson,9.12,0,low,"['X1(WC/TA)=0.092', 'X2(RE/TA)=0.521', 'X3(EBIT/TA)=0.092', 'X4(MC/TL)=4.043', 'X5(Rev/TA)=0.540']",[],Altman Z-Score: 4.1096 | Zone: safe,altman_zscore
 DAL,Delta Air Lines,69.18,1,high,"['X1(WC/TA)=-0.027', 'X2(RE/TA)=-0.164', 'X3(EBIT/TA)=0.069', 'X4(MC/TL)=0.406', 'X5(Rev/TA)=0.794']",[],Altman Z-Score: 1.0013 | Zone: distress,altman_zscore
 T,AT&T,75.14,1,high,"['X1(WC/TA)=-0.025', 'X2(RE/TA)=-0.040', 'X3(EBIT/TA)=0.042', 'X4(MC/TL)=0.573', 'X5(Rev/TA)=0.306']",[],Altman Z-Score: 0.7038 | Zone: distress,altman_zscore

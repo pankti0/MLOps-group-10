@@ -157,111 +157,109 @@ def _build_ideal_output(company_name: str, ticker: str, risk_category: str, risk
     Returns:
         Ideal output dict.
     """
-    category = risk_category.lower().strip()
-    if category == "high":
-        return _high_risk_output(company_name, ticker, risk_score)
-    elif category == "medium":
-        return _medium_risk_output(company_name, ticker, risk_score)
-    else:
-        return _low_risk_output(company_name, ticker, risk_score)
 
-# Data loading helpers
+    def main() -> None:
+        """Generate fine-tuning data and perform stratified k-fold cross-validation splits."""
+        from sklearn.model_selection import StratifiedKFold
+        from collections import Counter
 
+        repo_root = get_repo_root()
+        labels_path = repo_root / "data" / "labels" / "company_labels.csv"
+        sections_dir = str(repo_root / "data" / "processed")
+        output_dir = str(repo_root / "data" / "finetune")
 
-def _load_sections(ticker: str, sections_dir: str) -> Dict[str, str]:
-    """Load processed sections JSON for a ticker.
+        # Load labels
+        if not labels_path.exists():
+            logger.error("Labels file not found: %s", labels_path)
+            sys.exit(1)
 
-    Args:
-        ticker: Ticker symbol.
-        sections_dir: Directory containing {ticker}_sections.json files.
+        labels_df = pd.read_csv(labels_path)
+        logger.info("Loaded %d companies from %s", len(labels_df), labels_path)
 
-    Returns:
-        Sections dict, or empty dict if file not found.
-    """
-    path = os.path.join(sections_dir, f"{ticker}_sections.json")
-    if not os.path.exists(path):
-        logger.warning("Sections file not found for %s: %s", ticker, path)
-        return {}
-    with open(path, "r", encoding="utf-8") as fh:
-        return json.load(fh)
+        # Build one training example per company
+        examples: List[dict] = []
+        y = []  # stratification labels
 
+        for _, row in labels_df.iterrows():
+            ticker = str(row["ticker"])
+            company_name = str(row["company_name"])
+            risk_category = str(row.get("risk_category", "medium"))
+            risk_score = int(row.get("risk_score", 50))
 
-def _write_jsonl(records: List[dict], path: str) -> None:
-    """Write a list of dicts to a JSONL file.
+            sections = _load_sections(ticker, sections_dir)
+            if not sections:
+                logger.warning("No sections for %s — using placeholder text.", ticker)
+                item_1a = f"Risk factors section not available for {company_name}."
+                item_7 = f"Management discussion not available for {company_name}."
+            else:
+                item_1a = sections.get("item_1a", "")
+                item_7 = sections.get("item_7", "")
 
-    Args:
-        records: List of dict records.
-        path: Output file path.
-    """
-    os.makedirs(os.path.dirname(os.path.abspath(path)), exist_ok=True)
-    with open(path, "w", encoding="utf-8") as fh:
-        for record in records:
-            fh.write(json.dumps(record, ensure_ascii=False) + "\n")
-    logger.info("Wrote %d records to %s", len(records), path)
+            ideal_output = _build_ideal_output(company_name, ticker, risk_category, risk_score)
 
+            example = build_training_example(
+                company_name=company_name,
+                ticker=ticker,
+                item_1a=item_1a,
+                item_7=item_7,
+                ideal_output=ideal_output,
+            )
+            example["ticker"] = ticker
+            example["risk_category"] = risk_category
+            examples.append(example)
+            y.append(risk_category)
 
+        if not examples:
+            logger.error("No training examples generated. Exiting.")
+            sys.exit(1)
 
-def main() -> None:
-    """Generate fine-tuning data and split into train/val/test sets."""
-    repo_root = get_repo_root()
-    labels_path = repo_root / "data" / "labels" / "company_labels.csv"
-    sections_dir = str(repo_root / "data" / "processed")
-    output_dir = str(repo_root / "data" / "finetune")
+        # Stratified K-Fold Cross-Validation
+        n_splits = 5
+        skf = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=42)
 
-    # Load labels
-    if not labels_path.exists():
-        logger.error("Labels file not found: %s", labels_path)
-        sys.exit(1)
+        print("\n" + "=" * 60)
+        print(f"  STRATIFIED {n_splits}-FOLD CROSS-VALIDATION SPLITS")
+        print("=" * 60)
 
-    labels_df = pd.read_csv(labels_path)
-    logger.info("Loaded %d companies from %s", len(labels_df), labels_path)
+        for fold, (train_val_idx, test_idx) in enumerate(skf.split(examples, y), 1):
+            # Further split train_val into train/val (e.g., 80/20)
+            train_val_y = [y[i] for i in train_val_idx]
+            train_val_examples = [examples[i] for i in train_val_idx]
+            test_examples = [examples[i] for i in test_idx]
 
-    # Build one training example per company
-    examples: List[dict] = []
-    skipped: List[str] = []
+            # Stratified split for val
+            val_size = max(1, int(0.2 * len(train_val_examples)))
+            if val_size >= len(train_val_examples):
+                val_size = max(1, len(train_val_examples) // 5)
+            val_skf = StratifiedKFold(n_splits=len(train_val_examples) // val_size, shuffle=True, random_state=fold)
+            val_split = next(val_skf.split(train_val_examples, train_val_y))
+            train_idx, val_idx = val_split
+            train_examples = [train_val_examples[i] for i in train_idx]
+            val_examples = [train_val_examples[i] for i in val_idx]
 
-    for _, row in labels_df.iterrows():
-        ticker = str(row["ticker"])
-        company_name = str(row["company_name"])
-        risk_category = str(row.get("risk_category", "medium"))
-        risk_score = int(row.get("risk_score", 50))
+            fold_dir = os.path.join(output_dir, f"fold_{fold}")
+            os.makedirs(fold_dir, exist_ok=True)
+            train_path = os.path.join(fold_dir, "train.jsonl")
+            val_path = os.path.join(fold_dir, "val.jsonl")
+            test_path = os.path.join(fold_dir, "test.jsonl")
 
-        sections = _load_sections(ticker, sections_dir)
-        if not sections:
-            logger.warning("No sections for %s — using placeholder text.", ticker)
-            item_1a = f"Risk factors section not available for {company_name}."
-            item_7 = f"Management discussion not available for {company_name}."
-        else:
-            item_1a = sections.get("item_1a", "")
-            item_7 = sections.get("item_7", "")
+            _write_jsonl(train_examples, train_path)
+            _write_jsonl(val_examples, val_path)
+            _write_jsonl(test_examples, test_path)
 
-        ideal_output = _build_ideal_output(company_name, ticker, risk_category, risk_score)
+            print(f"FOLD {fold}")
+            print(f"  Train: {len(train_examples)}  Val: {len(val_examples)}  Test: {len(test_examples)}")
+            for split_name, split_examples in [
+                ("train", train_examples),
+                ("val", val_examples),
+                ("test", test_examples),
+            ]:
+                cats = Counter(e.get("risk_category", "unknown") for e in split_examples)
+                print(f"    {split_name:5s} risk categories: {dict(cats)}")
+            print(f"  Saved to: {fold_dir}")
+            print("-" * 60)
 
-        example = build_training_example(
-            company_name=company_name,
-            ticker=ticker,
-            item_1a=item_1a,
-            item_7=item_7,
-            ideal_output=ideal_output,
-        )
-        example["ticker"] = ticker
-        example["risk_category"] = risk_category
-        examples.append(example)
-        logger.info("Built training example for %s (%s)", company_name, ticker)
-
-    if not examples:
-        logger.error("No training examples generated. Exiting.")
-        sys.exit(1)
-
-    # Shuffle before splitting
-    random.shuffle(examples)
-
-    # Split: 70/15/15 rounded to 7/1/2 for 10 companies
-    n = len(examples)
-    n_train = max(1, round(n * 0.70))
-    n_val = max(1, round(n * 0.15))
-    n_test = n - n_train - n_val
-
+        print("\nAll folds complete. Use fold_X/train.jsonl etc. for training and evaluation.")
     # Ensure at least 1 example in each split
     if n_test < 1:
         n_test = 1

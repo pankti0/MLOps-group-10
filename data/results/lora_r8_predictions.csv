@@ -14,21 +14,6 @@ AAPL,Apple,15.5,0,low,"[""Strong cash position and liquidity"", ""Consistent rev
   ],
   ""rationale"": ""Apple's strong financial position, consistent revenue growth, and diversified product portfolio indicate a low credit risk. The company's cash position and liquidity are robust, with significant cash reserves and marketable securities. Apple's revenue has been growing steadily, with an increase of 8% in the last fiscal year. Additionally, the company's product portfolio is diversified, with the iPhone, Mac, and Wearables, Home and Accessories segments contributing significantly to the total revenue. These factors suggest a low credit risk for Apple.""
 }",lora_r8
-MSFT,Microsoft,15.5,0,low,"[""Strong cash position and liquidity"", ""Consistent revenue growth"", ""Diversified business model""]","[""As of June 30, 2021, we had cash and cash equivalents of $138.8 billion."", ""Our revenue increased by 18% in fiscal 2021."", ""Our business segments include Personal Computing, Intelligent Cloud, and Productivity and Business Processes.""]","{
-  ""predicted_score"": 15.5,
-  ""risk_level"": ""low"",
-  ""key_signals"": [
-    ""Strong cash position and liquidity"",
-    ""Consistent revenue growth"",
-    ""Diversified business model""
-  ],
-  ""citations"": [
-    ""As of June 30, 2021, we had cash and cash equivalents of $138.8 billion."",
-    ""Our revenue increased by 18% in fiscal 2021."",
-    ""Our business segments include Personal Computing, Intelligent Cloud, and Productivity and Business Processes.""
-  ],
-  ""rationale"": ""Microsoft's strong financial position, consistent revenue growth, and diversified business model indicate a low credit risk. The company's cash reserves provide a significant buffer against potential operational or financial challenges. The revenue growth, driven by multiple business segments, demonstrates a stable and resilient business model. These factors, combined with Microsoft's solid financials and stable business, position the company for a low credit risk.""
-}",lora_r8
 JNJ,Johnson & Johnson,25.5,0,low,"[""Strong and diversified revenue streams"", ""Consistent revenue growth"", ""Healthy cash flow and liquidity""]","[""Our diverse portfolio of products and businesses has enabled us to weather economic downturns and other challenges."", ""Our revenue growth has been driven by a combination of volume growth, price increases, and new product introductions."", ""We generated strong operating cash flows of $12.3 billion in 2020, and our cash and cash equivalents totaled $11.3 billion as of December 26, 2020.""]","{
   ""predicted_score"": 25.5,
   ""risk_level"": ""low"",
