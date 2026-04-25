@@ -37,6 +37,32 @@ CHUNK_SIZE = 512
 CHUNK_OVERLAP = 64
 
 
+def _select_embedding_device() -> str:
+    """Pick embedding device with CUDA preference and safe fallback.
+
+    Order:
+    1. EMBED_DEVICE env var (if set)
+    2. CUDA if available
+    3. CPU fallback
+    """
+    env_device = os.getenv("EMBED_DEVICE", "").strip()
+    if env_device:
+        logger.info("Using EMBED_DEVICE override: %s", env_device)
+        return env_device
+
+    try:
+        import torch
+
+        if torch.cuda.is_available():
+            logger.info("CUDA is available; using GPU for embeddings.")
+            return "cuda"
+    except ImportError:
+        logger.warning("torch not installed; falling back to CPU for embeddings.")
+
+    logger.info("CUDA not available; using CPU for embeddings.")
+    return "cpu"
+
+
 # -----------------------------------------------------------
 # Chunking
 # -----------------------------------------------------------
@@ -186,14 +212,16 @@ def main() -> None:
 
     logger.info("Total chunks: %d", len(all_chunks))
 
-    # Build embeddings
-    embedder = Embedder()
+    # Build embeddings (prefer GPU when available)
+    device = _select_embedding_device()
+    embedder = Embedder(device=device)
     store = FAISSStore(dimension=embedder.get_dimension())
 
     store.build_index(all_chunks, embedder)
     store.save(INDEX_PATH, METADATA_PATH)
 
     print("=" * 60)
+    print(f"Embedding device      : {device}")
     print(f"Total chunks embedded : {len(all_chunks)}")
     print(f"FAISS index size      : {store._index.ntotal}")
     print(f"Embedding dimension   : {embedder.get_dimension()}")
