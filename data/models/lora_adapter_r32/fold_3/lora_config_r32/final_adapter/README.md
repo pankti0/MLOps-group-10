@@ -5,9 +5,7 @@ pipeline_tag: text-generation
 tags:
 - base_model:adapter:mistralai/Mistral-7B-Instruct-v0.2
 - lora
-- sft
 - transformers
-- trl
 ---
 
 # Model Card for Model ID

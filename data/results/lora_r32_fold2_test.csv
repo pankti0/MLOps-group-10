@@ -1,0 +1,91 @@
+ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
+AAL,American Airlines,35.0,0,low,"[""Strong liquidity position"", ""Stable revenue growth"", ""Consistent profitability"", ""Manageable leverage"", ""Healthy cash flow generation""]","[""We have a strong balance sheet with significant liquidity and ample cash to meet our obligations."", ""Our revenue growth has been stable and consistent, driven by a mix of organic growth and strategic acquisitions.""]","{
+  ""predicted_score"": 35.0,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong liquidity position"",
+    ""Stable revenue growth"",
+    ""Consistent profitability"",
+    ""Manageable leverage"",
+    ""Healthy cash flow generation""
+  ],
+  ""citations"": [
+    ""We have a strong balance sheet with significant liquidity and ample cash to meet our obligations."",
+    ""Our revenue growth has been stable and consistent, driven by a mix of organic growth and strategic acquisitions.""
+  ],
+  ""rationale"": ""American Airlines (AAL) exhibits strong financials and a stable business profile, with manageable leverage and healthy cash flow generation. These factors support a low credit risk assessment.""
+}",lora_r32
+TMUS,T-Mobile US,35.0,0,low,"[""Strong free cash flow generation"", ""Healthy balance sheet with low leverage"", ""Stable revenue growth"", ""Consistent profitability"", ""Strong liquidity position""]","[""We have a strong balance sheet with significant liquidity and ample capacity to fund our growth initiatives.""]","{
+  ""predicted_score"": 35.0,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong free cash flow generation"",
+    ""Healthy balance sheet with low leverage"",
+    ""Stable revenue growth"",
+    ""Consistent profitability"",
+    ""Strong liquidity position""
+  ],
+  ""citations"": [
+    ""We have a strong balance sheet with significant liquidity and ample capacity to fund our growth initiatives.""
+  ],
+  ""rationale"": ""T-Mobile US (TMUS) exhibits strong financials, stable business, and low leverage, indicating a low credit risk profile.""
+}",lora_r32
+ELV,Elevance Health,35.0,0,low,"[""Strong financials with positive free cash flow"", ""Stable business with consistent revenue growth"", ""Low leverage with manageable debt burden""]","[""We have a strong balance sheet with significant liquidity and ample cash on hand.""]","{
+  ""predicted_score"": 35.0,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong financials with positive free cash flow"",
+    ""Stable business with consistent revenue growth"",
+    ""Low leverage with manageable debt burden""
+  ],
+  ""citations"": [
+    ""We have a strong balance sheet with significant liquidity and ample cash on hand.""
+  ],
+  ""rationale"": ""Elevance Health's strong financials, stable business, and low leverage position it as a low credit risk.""
+}",lora_r32
+FLUT,Flutter Entertainment,35.0,0,low,"[""Strong financials with positive free cash flow"", ""Stable business with diversified revenue streams"", ""Low leverage with manageable debt burden""]","[""We have a strong balance sheet with significant liquidity and a robust capital structure.""]","{
+  ""predicted_score"": 35.0,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong financials with positive free cash flow"",
+    ""Stable business with diversified revenue streams"",
+    ""Low leverage with manageable debt burden""
+  ],
+  ""citations"": [
+    ""We have a strong balance sheet with significant liquidity and a robust capital structure.""
+  ],
+  ""rationale"": ""Flutter Entertainment (FLUT) exhibits strong financials, stable business, and low leverage, indicating a low credit risk profile.""
+}",lora_r32
+TXN,Texas Instruments,15.0,0,low,"[""Strong balance sheet with ample liquidity"", ""Consistent profitability and stable revenue growth"", ""Low leverage and manageable debt maturities"", ""Diversified business model with minimal industry concentration"", ""Robust cash flow generation and healthy free cash flow conversion""]","[""We have a strong balance sheet with ample liquidity to support our business and growth initiatives."", ""Our consistent profitability and stable revenue growth demonstrate our ability to generate strong free cash flow."", ""Our leverage remains manageable, and our debt maturities are well-matched to our cash flows.""]","{
+  ""predicted_score"": 15.0,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong balance sheet with ample liquidity"",
+    ""Consistent profitability and stable revenue growth"",
+    ""Low leverage and manageable debt maturities"",
+    ""Diversified business model with minimal industry concentration"",
+    ""Robust cash flow generation and healthy free cash flow conversion""
+  ],
+  ""citations"": [
+    ""We have a strong balance sheet with ample liquidity to support our business and growth initiatives."",
+    ""Our consistent profitability and stable revenue growth demonstrate our ability to generate strong free cash flow."",
+    ""Our leverage remains manageable, and our debt maturities are well-matched to our cash flows.""
+  ],
+  ""rationale"": ""Texas Instruments (TXN) exhibits a low credit risk profile due to its strong financial position, stable business fundamentals, and manageable leverage.""
+}",lora_r32
+FNMA,Fannie Mae,35.0,0,low,"[""Strong financials with positive free cash flow"", ""Stable business model with predictable revenue"", ""Low leverage with manageable debt burden"", ""Strong liquidity position with ample cash reserves"", ""Consistent dividend payments and share buybacks""]","[""We have a strong balance sheet and ample liquidity to support our mission."", ""Our financial position remains strong, with a solid capital base and a stable business model.""]","{
+  ""predicted_score"": 35.0,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong financials with positive free cash flow"",
+    ""Stable business model with predictable revenue"",
+    ""Low leverage with manageable debt burden"",
+    ""Strong liquidity position with ample cash reserves"",
+    ""Consistent dividend payments and share buybacks""
+  ],
+  ""citations"": [
+    ""We have a strong balance sheet and ample liquidity to support our mission."",
+    ""Our financial position remains strong, with a solid capital base and a stable business model.""
+  ],
+  ""rationale"": ""Fannie Mae (FNMA) exhibits strong financials, stable business, and low leverage, indicating a low credit risk profile.""
+}",lora_r32

@@ -1,0 +1,117 @@
+ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
+JNJ,Johnson & Johnson,10.0,0,low,"[""Strong balance sheet with ample liquidity"", ""Consistent revenue growth and profitability"", ""Diversified business model with stable cash flows"", ""Low leverage and manageable debt maturities"", ""Robust free cash flow generation""]","[""We have a strong balance sheet with ample liquidity to support our business and growth initiatives."", ""Our diversified business model and stable cash flows enable us to manage through economic downturns.""]","{
+  ""predicted_score"": 10.0,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong balance sheet with ample liquidity"",
+    ""Consistent revenue growth and profitability"",
+    ""Diversified business model with stable cash flows"",
+    ""Low leverage and manageable debt maturities"",
+    ""Robust free cash flow generation""
+  ],
+  ""citations"": [
+    ""We have a strong balance sheet with ample liquidity to support our business and growth initiatives."",
+    ""Our diversified business model and stable cash flows enable us to manage through economic downturns.""
+  ],
+  ""rationale"": ""Johnson & Johnson is a financially strong and stable company with a diversified business model, consistent revenue growth, and ample liquidity. Its strong balance sheet and manageable leverage position it well to weather economic downturns and maintain its creditworthiness.""
+}",lora_r32
+DAL,Delta Air Lines,0.0,0,low,"[""Strong balance sheet with ample liquidity"", ""Consistent profitability and cash generation"", ""Stable business model with predictable revenue streams"", ""Low leverage and manageable debt maturity profile"", ""Strong competitive position and industry tailwinds""]","[""We have a strong balance sheet with ample liquidity to meet our obligations."", ""Our consistent profitability and cash generation provide a solid foundation for our business."", ""Our stable business model and predictable revenue streams enable us to manage through economic downturns.""]","{
+  ""predicted_score"": 0.0,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong balance sheet with ample liquidity"",
+    ""Consistent profitability and cash generation"",
+    ""Stable business model with predictable revenue streams"",
+    ""Low leverage and manageable debt maturity profile"",
+    ""Strong competitive position and industry tailwinds""
+  ],
+  ""citations"": [
+    ""We have a strong balance sheet with ample liquidity to meet our obligations."",
+    ""Our consistent profitability and cash generation provide a solid foundation for our business."",
+    ""Our stable business model and predictable revenue streams enable us to manage through economic downturns.""
+  ],
+  ""rationale"": ""Delta Air Lines (DAL) exhibits strong financials, stable business, and low leverage, indicating a low credit risk profile.""
+}",lora_r32
+F,Ford Motor Company,35.0,0,low,"[""Strong balance sheet with ample liquidity"", ""Consistent profitability and cash generation"", ""Stable business model with low leverage"", ""Diversified revenue streams and geographic presence"", ""Robust capital structure with low financial leverage""]","[""We have a strong balance sheet with ample liquidity to support our business."", ""Our consistent profitability and cash generation provide a solid foundation for our future growth."", ""Our stable business model and low leverage position us well for the future.""]","{
+  ""predicted_score"": 35.0,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong balance sheet with ample liquidity"",
+    ""Consistent profitability and cash generation"",
+    ""Stable business model with low leverage"",
+    ""Diversified revenue streams and geographic presence"",
+    ""Robust capital structure with low financial leverage""
+  ],
+  ""citations"": [
+    ""We have a strong balance sheet with ample liquidity to support our business."",
+    ""Our consistent profitability and cash generation provide a solid foundation for our future growth."",
+    ""Our stable business model and low leverage position us well for the future.""
+  ],
+  ""rationale"": ""Ford Motor Company (F) exhibits strong financials, stable business, and low leverage, indicating a low credit risk profile.""
+}",lora_r32
+AMZN,Amazon,0.0,0,low,"[""Strong financials with positive free cash flow"", ""Stable business model with diversified revenue streams"", ""Low leverage with manageable debt burden"", ""Strong competitive position with significant market share"", ""Robust liquidity with ample cash reserves""]","[""We have a strong balance sheet with significant cash and short-term investments."", ""Our operating cash flow has been consistently positive and growing."", ""Our debt maturity profile is favorable with long-term debt tenors.""]","{
+  ""predicted_score"": 0.0,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong financials with positive free cash flow"",
+    ""Stable business model with diversified revenue streams"",
+    ""Low leverage with manageable debt burden"",
+    ""Strong competitive position with significant market share"",
+    ""Robust liquidity with ample cash reserves""
+  ],
+  ""citations"": [
+    ""We have a strong balance sheet with significant cash and short-term investments."",
+    ""Our operating cash flow has been consistently positive and growing."",
+    ""Our debt maturity profile is favorable with long-term debt tenors.""
+  ],
+  ""rationale"": ""Amazon's strong financials, stable business model, and low leverage position it as a low credit risk.""
+}",lora_r32
+KMX,Carmax,35.0,0,low,"[""Strong balance sheet with ample liquidity"", ""Consistent revenue growth"", ""Stable earnings and cash flow"", ""Manageable leverage and debt maturity profile"", ""Diversified business model with low cyclicality""]","[""We have a strong balance sheet with ample liquidity to support our growth initiatives."", ""Our revenue growth has been consistent over the past few years."", ""Our earnings and cash flow have remained stable despite macroeconomic headwinds.""]","{
+  ""predicted_score"": 35.0,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong balance sheet with ample liquidity"",
+    ""Consistent revenue growth"",
+    ""Stable earnings and cash flow"",
+    ""Manageable leverage and debt maturity profile"",
+    ""Diversified business model with low cyclicality""
+  ],
+  ""citations"": [
+    ""We have a strong balance sheet with ample liquidity to support our growth initiatives."",
+    ""Our revenue growth has been consistent over the past few years."",
+    ""Our earnings and cash flow have remained stable despite macroeconomic headwinds.""
+  ],
+  ""rationale"": ""Carmax (KMX) exhibits strong financials, stable business, and low leverage, indicating a low credit risk profile.""
+}",lora_r32
+CHTR,Charter Communications,35.0,0,low,"[""Strong free cash flow generation"", ""Consistent revenue growth"", ""Healthy balance sheet with low leverage"", ""Diversified business model"", ""Strong liquidity position""]","[""We have a strong balance sheet with significant liquidity to support our growth initiatives."", ""Our financial position is strong, and we have ample liquidity to meet our obligations.""]","{
+  ""predicted_score"": 35.0,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong free cash flow generation"",
+    ""Consistent revenue growth"",
+    ""Healthy balance sheet with low leverage"",
+    ""Diversified business model"",
+    ""Strong liquidity position""
+  ],
+  ""citations"": [
+    ""We have a strong balance sheet with significant liquidity to support our growth initiatives."",
+    ""Our financial position is strong, and we have ample liquidity to meet our obligations.""
+  ],
+  ""rationale"": ""Charter Communications (CHTR) exhibits strong financials, stable business, and low leverage, indicating a low credit risk profile.""
+}",lora_r32
+KHC,Kraft Heinz,35.0,0,low,"[""Strong balance sheet with ample liquidity"", ""Consistent revenue growth"", ""Stable debt maturity profile"", ""Low leverage with manageable interest expense"", ""Diversified revenue base"", ""Strong free cash flow generation""]","[""We have a strong balance sheet with significant liquidity, which we believe positions us well to manage through economic downturns.""]","{
+  ""predicted_score"": 35.0,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong balance sheet with ample liquidity"",
+    ""Consistent revenue growth"",
+    ""Stable debt maturity profile"",
+    ""Low leverage with manageable interest expense"",
+    ""Diversified revenue base"",
+    ""Strong free cash flow generation""
+  ],
+  ""citations"": [
+    ""We have a strong balance sheet with significant liquidity, which we believe positions us well to manage through economic downturns.""
+  ],
+  ""rationale"": ""Kraft Heinz (KHC) exhibits a low credit risk profile due to its strong financial position, stable business, and manageable leverage.""
+}",lora_r32
