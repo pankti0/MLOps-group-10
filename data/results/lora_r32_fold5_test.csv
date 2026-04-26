@@ -1,0 +1,81 @@
+ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
+AAPL,Apple,0.0,0,low,"[""Strong balance sheet with ample liquidity"", ""Consistent revenue growth and profitability"", ""Diversified business model with recurring revenue streams"", ""Strong competitive position and brand recognition"", ""Robust cash flow generation and low leverage""]","[""We have a strong balance sheet with ample liquidity to support our business and investment plans."", ""Our recurring revenue streams provide predictable cash flows and enable us to invest in long-term growth opportunities."", ""Our competitive position and brand recognition enable us to maintain pricing power and generate strong cash flows.""]","{
+  ""predicted_score"": 0.0,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong balance sheet with ample liquidity"",
+    ""Consistent revenue growth and profitability"",
+    ""Diversified business model with recurring revenue streams"",
+    ""Strong competitive position and brand recognition"",
+    ""Robust cash flow generation and low leverage""
+  ],
+  ""citations"": [
+    ""We have a strong balance sheet with ample liquidity to support our business and investment plans."",
+    ""Our recurring revenue streams provide predictable cash flows and enable us to invest in long-term growth opportunities."",
+    ""Our competitive position and brand recognition enable us to maintain pricing power and generate strong cash flows.""
+  ],
+  ""rationale"": ""Apple's strong financial position, consistent revenue growth, and diversified business model indicate a low credit risk profile.""
+}",lora_r32
+T,AT&T,15.0,0,medium,"[""Mixed signals: Some positive (stable revenue, low leverage) and negative (declining EBITDA, high CAPEX)""]","[""Management acknowledges 'challenges' in the business and 'significant debt maturities'.""]","{
+  ""predicted_score"": 15.0,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Mixed signals: Some positive (stable revenue, low leverage) and negative (declining EBITDA, high CAPEX)""
+  ],
+  ""citations"": [
+    ""Management acknowledges 'challenges' in the business and 'significant debt maturities'.""
+  ],
+  ""rationale"": ""AT&T's credit risk is medium due to mixed signals in its financials and business profile. While the company maintains strong revenue and low leverage, it faces challenges from declining EBITDA and high capital expenditures. The company's debt maturities are also a concern.""
+}",lora_r32
+GME,GameStop,35.0,0,medium,"[""Mixed financials: strong revenue growth but weak EBITDA and free cash flow"", ""Moderate leverage: net debt/EBITDA around 3x"", ""Some concerns: negative free cash flow, high capital expenditures, and weak operating margins""]","[""We have incurred significant losses in recent periods and have a substantial debt burden.""]","{
+  ""predicted_score"": 35.0,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Mixed financials: strong revenue growth but weak EBITDA and free cash flow"",
+    ""Moderate leverage: net debt/EBITDA around 3x"",
+    ""Some concerns: negative free cash flow, high capital expenditures, and weak operating margins""
+  ],
+  ""citations"": [
+    ""We have incurred significant losses in recent periods and have a substantial debt burden.""
+  ],
+  ""rationale"": ""GameStop's credit risk is medium due to mixed financials, moderate leverage, and some concerns. The company's revenue growth is strong, but its EBITDA and free cash flow are weak. Net debt/EBITDA is around 3x, and the company has negative free cash flow, high capital expenditures, and weak operating margins. The company's credit risk is not yet distressed, but it is not strong either.""
+}",lora_r32
+UNH,UnitedHealth Group,10.0,0,high,"[""Distressed financials: Negative free cash flow, high leverage, and declining EBITDA"", ""Going concern issues: Significant liquidity concerns, high debt maturities, and potential refinancing risk"", ""High leverage: Debt-to-equity ratio above 3x, interest coverage below 1x"", ""Mixed signals: Mixed revenue growth, weak operating margins, and high capital expenditures"", ""Regulatory risk: Potential changes to healthcare regulations could negatively impact UNH's business""]","[""We face significant competition, which could negatively impact our market position and pricing power."", ""Our business is subject to various risks, including regulatory, economic, and operational risks."", ""Our business is subject to significant debt maturities, which could impact our liquidity and ability to refinance debt.""]","{
+  ""predicted_score"": 10.0,
+  ""risk_level"": ""high"",
+  ""key_signals"": [
+    ""Distressed financials: Negative free cash flow, high leverage, and declining EBITDA"",
+    ""Going concern issues: Significant liquidity concerns, high debt maturities, and potential refinancing risk"",
+    ""High leverage: Debt-to-equity ratio above 3x, interest coverage below 1x"",
+    ""Mixed signals: Mixed revenue growth, weak operating margins, and high capital expenditures"",
+    ""Regulatory risk: Potential changes to healthcare regulations could negatively impact UNH's business""
+  ],
+  ""citations"": [
+    ""We face significant competition, which could negatively impact our market position and pricing power."",
+    ""Our business is subject to various risks, including regulatory, economic, and operational risks."",
+    ""Our business is subject to significant debt maturities, which could impact our liquidity and ability to refinance debt.""
+  ],
+  ""rationale"": ""UnitedHealth Group (UNH) exhibits high credit risk due to distressed financials, going concern issues, and high leverage. The company faces significant regulatory risk and mixed signals in its revenue growth and operating performance.""
+}",lora_r32
+VLO,Valero Energy,35.0,0,medium,"[""Mixed signals: Some positive (e.g., strong cash flow, low leverage) and some negative (e.g., weak EBITDA, high leverage)""]","[""Management acknowledges 'challenging market conditions' and 'volatility in commodity prices'""]","{
+  ""predicted_score"": 35.0,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Mixed signals: Some positive (e.g., strong cash flow, low leverage) and some negative (e.g., weak EBITDA, high leverage)""
+  ],
+  ""citations"": [
+    ""Management acknowledges 'challenging market conditions' and 'volatility in commodity prices'""
+  ],
+  ""rationale"": ""Valero Energy (VLO) exhibits medium credit risk due to mixed financial signals and volatile market conditions.""
+}",lora_r32
+CMCSA,Comcast,15.0,0,medium,"[""Mixed signals: Some positive (stable revenue, strong cash flow) and negative (debt burden, leverage)""]","[""We face significant competition in our markets, which could negatively impact our revenue growth.""]","{
+  ""predicted_score"": 15.0,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Mixed signals: Some positive (stable revenue, strong cash flow) and negative (debt burden, leverage)""
+  ],
+  ""citations"": [
+    ""We face significant competition in our markets, which could negatively impact our revenue growth.""
+  ],
+  ""rationale"": ""Comcast's credit risk is medium due to mixed signals in its financials and business profile. While the company has strong cash flow and stable revenue, it also faces significant competition and carries a moderate debt burden.""
+}",lora_r32

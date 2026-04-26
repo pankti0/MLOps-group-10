@@ -1,0 +1,96 @@
+ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
+VZ,Verizon,25.0,0,low,"[""Strong balance sheet with ample liquidity"", ""Consistent revenue growth and stable earnings"", ""Low leverage and manageable debt maturities"", ""Diversified business model with minimal industry concentration"", ""Robust free cash flow generation""]","[""We have a strong balance sheet with ample liquidity to support our business and growth initiatives."", ""Our revenue growth has been consistent, driven by both organic and inorganic growth."", ""Our leverage remains low, and our debt maturities are manageable."", ""Our business model is diversified, with minimal industry concentration."", ""We generate significant free cash flow, which we use to invest in growth and return capital to shareholders.""]","{
+  ""predicted_score"": 25.0,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong balance sheet with ample liquidity"",
+    ""Consistent revenue growth and stable earnings"",
+    ""Low leverage and manageable debt maturities"",
+    ""Diversified business model with minimal industry concentration"",
+    ""Robust free cash flow generation""
+  ],
+  ""citations"": [
+    ""We have a strong balance sheet with ample liquidity to support our business and growth initiatives."",
+    ""Our revenue growth has been consistent, driven by both organic and inorganic growth."",
+    ""Our leverage remains low, and our debt maturities are manageable."",
+    ""Our business model is diversified, with minimal industry concentration."",
+    ""We generate significant free cash flow, which we use to invest in growth and return capital to shareholders.""
+  ],
+  ""rationale"": ""Verizon's strong financial position, stable business, and low leverage make it a low credit risk.""
+}",lora_r32
+GOOGL,Alphabet,0.0,0,low,"[""Strong financials with consistent revenue growth"", ""Diversified business model with multiple revenue streams"", ""Low leverage with ample liquidity"", ""Strong competitive position with significant market share"", ""Robust balance sheet with minimal debt maturities""]","[""We have a strong balance sheet with significant cash and short-term investments."", ""Our diversified business model and strong competitive position enable us to generate consistent revenue growth.""]","{
+  ""predicted_score"": 0.0,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong financials with consistent revenue growth"",
+    ""Diversified business model with multiple revenue streams"",
+    ""Low leverage with ample liquidity"",
+    ""Strong competitive position with significant market share"",
+    ""Robust balance sheet with minimal debt maturities""
+  ],
+  ""citations"": [
+    ""We have a strong balance sheet with significant cash and short-term investments."",
+    ""Our diversified business model and strong competitive position enable us to generate consistent revenue growth.""
+  ],
+  ""rationale"": ""Alphabet (GOOGL) exhibits strong financials, a stable business model, and a low debt burden, indicating a low credit risk profile.""
+}",lora_r32
+CAT,Caterpillar,0.0,0,low,"[""Strong balance sheet with ample liquidity"", ""Consistent profitability and cash generation"", ""Diversified business model with stable revenue streams"", ""Robust free cash flow generation"", ""Low leverage and manageable debt maturity profile""]","[""We have a strong balance sheet with ample liquidity to meet our obligations."", ""Our business model is well-positioned to generate consistent profitability and cash flow.""]","{
+  ""predicted_score"": 0.0,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong balance sheet with ample liquidity"",
+    ""Consistent profitability and cash generation"",
+    ""Diversified business model with stable revenue streams"",
+    ""Robust free cash flow generation"",
+    ""Low leverage and manageable debt maturity profile""
+  ],
+  ""citations"": [
+    ""We have a strong balance sheet with ample liquidity to meet our obligations."",
+    ""Our business model is well-positioned to generate consistent profitability and cash flow.""
+  ],
+  ""rationale"": ""Caterpillar's strong financial position, stable business model, and low leverage support a low credit risk assessment.""
+}",lora_r32
+MU,Micron Technology,35.0,0,low,"[""Strong balance sheet with ample liquidity"", ""Consistent profitability and cash generation"", ""Stable business model with low leverage""]","[""We have a strong balance sheet with ample liquidity to support our business."", ""Our business model is stable, and we have a proven track record of generating consistent profitability and cash flow.""]","{
+  ""predicted_score"": 35.0,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong balance sheet with ample liquidity"",
+    ""Consistent profitability and cash generation"",
+    ""Stable business model with low leverage""
+  ],
+  ""citations"": [
+    ""We have a strong balance sheet with ample liquidity to support our business."",
+    ""Our business model is stable, and we have a proven track record of generating consistent profitability and cash flow.""
+  ],
+  ""rationale"": ""Micron Technology (MU) exhibits low credit risk due to its strong financial profile, stable business model, and manageable leverage.""
+}",lora_r32
+ARE,Alexandria Real Estate Equities,0.15,0,low,"[""Strong balance sheet with ample liquidity"", ""Consistent revenue growth"", ""Diversified tenant base"", ""Low leverage"", ""Stable cash flows""]","[""We have a strong balance sheet with ample liquidity to fund our growth strategy."", ""Our tenant base is highly diversified by industry, geography, and lease term.""]","{
+  ""predicted_score"": 0.15,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong balance sheet with ample liquidity"",
+    ""Consistent revenue growth"",
+    ""Diversified tenant base"",
+    ""Low leverage"",
+    ""Stable cash flows""
+  ],
+  ""citations"": [
+    ""We have a strong balance sheet with ample liquidity to fund our growth strategy."",
+    ""Our tenant base is highly diversified by industry, geography, and lease term.""
+  ],
+  ""rationale"": ""Alexandria Real Estate Equities (ARE) exhibits strong financials, stable business, and low leverage, indicating a low credit risk profile.""
+}",lora_r32
+PARA,Paramount Skydance,50.0,0,medium,"[""Mixed financials: strong revenue growth but weak EBITDA and cash flow"", ""Moderate leverage: net debt/EBITDA around 3x"", ""Some concerns: potential for increased competition and industry disruption""]","[""We face significant competition from other media companies and technology platforms."", ""Our results of operations may be adversely affected by changes in consumer preferences.""]","{
+  ""predicted_score"": 50.0,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Mixed financials: strong revenue growth but weak EBITDA and cash flow"",
+    ""Moderate leverage: net debt/EBITDA around 3x"",
+    ""Some concerns: potential for increased competition and industry disruption""
+  ],
+  ""citations"": [
+    ""We face significant competition from other media companies and technology platforms."",
+    ""Our results of operations may be adversely affected by changes in consumer preferences.""
+  ],
+  ""rationale"": ""Paramount Skydance (PARA) exhibits mixed credit risk signals. While the company has strong revenue growth, it also faces challenges with weak EBITDA and cash flow. Additionally, the company's leverage is moderate, and there are concerns about increased competition and industry disruption.""
+}",lora_r32

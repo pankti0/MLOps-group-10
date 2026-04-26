@@ -1,0 +1,87 @@
+ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
+AMC,AMC Entertainment,35.0,0,low,"[""Strong liquidity position"", ""Stable revenue growth"", ""Low leverage"", ""Healthy cash flow"", ""Strong balance sheet""]","[""We have a strong balance sheet with significant liquidity.""]","{
+  ""predicted_score"": 35.0,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Strong liquidity position"",
+    ""Stable revenue growth"",
+    ""Low leverage"",
+    ""Healthy cash flow"",
+    ""Strong balance sheet""
+  ],
+  ""citations"": [
+    ""We have a strong balance sheet with significant liquidity.""
+  ],
+  ""rationale"": ""AMC Entertainment (AMC) presents a low credit risk profile. The company's strong liquidity position, stable revenue growth, and healthy cash flow support a low leverage profile. The balance sheet is robust, and the company's financials are in good shape.""
+}",lora_r32
+AVGO,Broadcom,85.0,1,high,"[""High leverage (Debt/EBITDA > 3x)"", ""Negative free cash flow"", ""Declining revenue"", ""Weak EBITDA margin"", ""Negative EPS"", ""Going concern issues""]","[""We have incurred significant indebtedness and may not be able to service our debt obligations."", ""Our revenue has declined in recent quarters and we face significant competition.""]","{
+  ""predicted_score"": 85.0,
+  ""risk_level"": ""high"",
+  ""key_signals"": [
+    ""High leverage (Debt/EBITDA > 3x)"",
+    ""Negative free cash flow"",
+    ""Declining revenue"",
+    ""Weak EBITDA margin"",
+    ""Negative EPS"",
+    ""Going concern issues""
+  ],
+  ""citations"": [
+    ""We have incurred significant indebtedness and may not be able to service our debt obligations."",
+    ""Our revenue has declined in recent quarters and we face significant competition.""
+  ],
+  ""rationale"": ""Broadcom's high leverage, negative free cash flow, declining revenue, and weak EBITDA margin indicate a high credit risk profile.""
+}",lora_r32
+CI,Cigna Group,85.0,1,high,"[""High leverage (debt/EBITDA > 5x)"", ""Negative free cash flow"", ""Declining revenue"", ""Eroding liquidity"", ""Negative EBITDA growth""]","[""We expect to incur significant indebtedness to fund our growth strategy."", ""Our liquidity position has deteriorated due to increased debt levels and negative operating cash flows.""]","{
+  ""predicted_score"": 85.0,
+  ""risk_level"": ""high"",
+  ""key_signals"": [
+    ""High leverage (debt/EBITDA > 5x)"",
+    ""Negative free cash flow"",
+    ""Declining revenue"",
+    ""Eroding liquidity"",
+    ""Negative EBITDA growth""
+  ],
+  ""citations"": [
+    ""We expect to incur significant indebtedness to fund our growth strategy."",
+    ""Our liquidity position has deteriorated due to increased debt levels and negative operating cash flows.""
+  ],
+  ""rationale"": ""Cigna Group (CI) exhibits high credit risk due to its aggressive growth strategy, high leverage, and negative operating cash flows. The company's liquidity position is eroding, and its revenue growth is declining. These factors suggest a high risk of default.""
+}",lora_r32
+CNC,Centene,50.0,0,medium,"[""Mixed signals: Some positive (growth, diversified revenue streams) and negative (debt burden, leverage)""]","[""Management acknowledges debt burden and leverage concerns""]","{
+  ""predicted_score"": 50.0,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Mixed signals: Some positive (growth, diversified revenue streams) and negative (debt burden, leverage)""
+  ],
+  ""citations"": [
+    ""Management acknowledges debt burden and leverage concerns""
+  ],
+  ""rationale"": ""Centene's credit risk profile is medium, as it exhibits both positive and negative signals. The company's growth and diversified revenue streams are counterbalanced by a significant debt burden and leverage.""
+}",lora_r32
+HD,Home Depot,50.0,0,medium,[],[],"{
+  ""predicted_score"": 95.0,
+  ""risk_level"": ""high"",
+  ""key_signals"": [
+    ""High leverage (Debt/EBITDA > 3x)"",
+    ""Declining revenue and EBITDA"",
+    ""Negative free cash flow"",
+    ""Negative net income"",
+    ""Negative equity"",
+    ""High interest expense"",
+    ""Negative working capital"",
+    ""Negative cash from operations"",
+    ""Negative cash from investing"",
+    ""Negative cash from financing"",
+    ""Negative cash from financing activities"",
+    ""Negative cash from financing activities > cash from operations"",
+    ""Negative cash from financing > cash from operations > cash from investing"",
+    ""Negative cash from financing > cash from operations > cash from investing > cash from financing"",
+    ""Negative cash from financing > cash from operations > cash from investing > cash from financing > cash from financing"",
+    ""Negative cash from financing > cash from operations > cash from investing > cash from financing > cash from financing > cash from financing"",
+    ""Negative cash from financing > cash from operations > cash from investing > cash from financing > cash from financing > cash from financing > cash from financing"",
+    ""Negative cash from financing > cash from operations > cash from investing > cash from financing > cash from financing > cash from financing > cash from financing > cash from financing"",
+    ""Negative cash from financing > cash from operations > cash from investing > cash from financing > cash from financing > cash from financing > cash from financing > cash from financing > cash from financing"",
+    ""Negative cash from financing > cash from operations > cash from investing > cash from financing > cash from financing > cash from financing > cash from financing > cash from financing > cash from financing > cash from financing"",
+    ""Negative cash from financing > cash from operations > cash from investing > cash from financing > cash from financing > cash from financing > cash from financing > cash from financing > cash from financing > cash from financing > cash from financing"",
+    ""Negative cash from financing > cash from operations > cash from investing > cash from financing > cash from financing > cash from financing > cash from financing > cash from financing > cash from financing > cash from financing > cash from financing > cash from financing"",
+    ""Negative cash from financing",lora_r32
