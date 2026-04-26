@@ -16,10 +16,17 @@ Outputs:
 
 
 import os
+import sys
 import numpy as np
 import pandas as pd
 import logging
-from src.evaluation.metrics import compute_classification_metrics
+
+# Add repo root to sys.path for absolute imports
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if REPO_ROOT not in sys.path:
+    sys.path.insert(0, REPO_ROOT)
+
+from evaluation.metrics import compute_classification_metrics
 
 def parse_args():
     import argparse
