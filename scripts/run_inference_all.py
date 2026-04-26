@@ -110,7 +110,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--approach",
-        choices=["baseline", "rag", "lora_r8", "lora_r16", "lora_r32"],
+        choices=["baseline", "rag", "lora_r8", "lora_r16", "lora_r32", "lora_r32_rag"],
         required=True,
         help="Inference approach to use.",
     )
@@ -296,6 +296,41 @@ def main() -> None:
             companies_df=companies_df,
             sections_dir=PROCESSED_DIR,
         )
+
+    elif args.approach == "lora_r32_rag":
+        # Hybrid: LoRA model with RAG retrieval
+        model, tokenizer = load_model_for_approach(argparse.Namespace(
+            **{**vars(args), "approach": "lora_r32"}
+        ))
+        # RAG requires a pre-built FAISS index
+        if not os.path.isfile(INDEX_PATH) or not os.path.isfile(METADATA_PATH):
+            logger.error(
+                "FAISS index not found. Run scripts/build_embeddings.py first.\n"
+                "  Expected: %s\n  Expected: %s",
+                INDEX_PATH,
+                METADATA_PATH,
+            )
+            sys.exit(1)
+
+        from src.embeddings.embedder import Embedder
+        from src.embeddings.faiss_store import FAISSStore
+        from src.models.rag_agent import RAGAgent
+
+        embedder = Embedder()
+        store = FAISSStore(dimension=embedder.get_dimension())
+        store.load(INDEX_PATH, METADATA_PATH)
+
+        agent = RAGAgent(
+            model=model,
+            tokenizer=tokenizer,
+            faiss_store=store,
+            embedder=embedder,
+        )
+        predictions_df = agent.analyze_all(
+            companies_df=companies_df,
+            sections_dir=PROCESSED_DIR,
+        )
+        predictions_df["approach"] = "lora_r32_rag"
 
     elif args.approach in ("lora_r8", "lora_r16", "lora_r32"):
         model, tokenizer = load_model_for_approach(args)
