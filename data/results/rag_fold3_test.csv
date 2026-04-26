@@ -1,0 +1,116 @@
+ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
+VZ,Verizon,75.0,1,high,"[""Substantial indebtedness"", ""Refinancing pressure""]","[""VZ_item_1a_16"", ""VZ_item_1a_17""]","{
+  ""risk_score"": 55,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Substantial indebtedness"",
+    ""Refinancing pressure""
+  ],
+  ""citations"": [
+    ""VZ_item_1a_16"",
+    ""VZ_item_1a_17""
+  ],
+  ""cited_chunk_ids"": [
+    ""VZ_item_1a_16"",
+    ""VZ_item_1a_17""
+  ],
+  ""reasoning"": ""Verizon has a significant amount of debt and may need to refinance existing debt at higher interest rates. These factors increase the medium risk level.""
+}",rag
+GOOGL,Alphabet,75.0,1,high,"[""significant constraints on ability to incur additional debt"", ""limited ability to issue equity to bolster liquidity"", ""may be required to issue additional debt on unfavorable terms"", ""high leverage""]","[""AMC_item_1a_7"", ""AMC_item_1a_30"", ""AAL_item_1a_4""]","{
+  ""risk_score"": 65,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""significant constraints on ability to incur additional debt"",
+    ""limited ability to issue equity to bolster liquidity"",
+    ""may be required to issue additional debt on unfavorable terms"",
+    ""high leverage""
+  ],
+  ""citations"": [
+    ""AMC_item_1a_7"",
+    ""AMC_item_1a_30"",
+    ""AAL_item_1a_4""
+  ],
+  ""cited_chunk_ids"": [
+    ""item_1a_7"",
+    ""item_1a_30"",
+    ""item_1a_4""
+  ],
+  ""reasoning"": """"
+}",rag
+CAT,Caterpillar,75.0,1,high,"[""Substantial indebtedness"", ""Restrictive covenants limiting ability to incur additional debt"", ""Potential for negative impact on earnings from increase in interest rates""]","[""AAL_item_1a_4"", ""AAL_item_1a_5"", ""DAL_item_8_36""]","{
+  ""risk_score"": 55,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Substantial indebtedness"",
+    ""Restrictive covenants limiting ability to incur additional debt"",
+    ""Potential for negative impact on earnings from increase in interest rates""
+  ],
+  ""citations"": [
+    ""AAL_item_1a_4"",
+    ""AAL_item_1a_5"",
+    ""DAL_item_8_36""
+  ],
+  ""cited_chunk_ids"": [
+    ""item_1a_4"",
+    ""item_1a_5"",
+    ""item_8_36""
+  ],
+  ""reasoning"": ""The company has substantial indebtedness, restrictive covenants limiting its ability to incur additional debt, and is exposed to potential negative impact on earnings from an increase in interest rates. These factors increase the risk level to medium.""
+}",rag
+MU,Micron Technology,55.0,0,medium,"[""significant constraints on ability to incur additional debt"", ""may be required to issue additional debt on unfavorable terms"", ""may be unable to issue equity or currency in strategic transactions""]","[""AMC_item_1a_7"", ""AMC_item_1a_30"", ""AAL_item_1a_4""]","{
+  ""risk_score"": 55,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""significant constraints on ability to incur additional debt"",
+    ""may be required to issue additional debt on unfavorable terms"",
+    ""may be unable to issue equity or currency in strategic transactions""
+  ],
+  ""citations"": [
+    ""AMC_item_1a_7"",
+    ""AMC_item_1a_30"",
+    ""AAL_item_1a_4""
+  ],
+  ""cited_chunk_ids"": [
+    ""item_1a_7"",
+    ""item_1a_30"",
+    ""item_1a_4""
+  ],
+  ""reasoning"": ""Micron Technology faces constraints on its ability to incur additional debt and may be required to issue additional debt on unfavorable terms due to high leverage. Additionally, the company may be unable to issue equity or currency in strategic transactions, which could limit its ability to respond to future challenges.""
+}",rag
+ARE,Alexandria Real Estate Equities,75.0,1,high,"[""substantial indebtedness"", ""liquidity constraints"", ""inability to issue equity""]","[""AAL_item_1a_4"", ""AMC_item_1a_7"", ""AMC_item_1a_30""]","{
+  ""risk_score"": 55,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""substantial indebtedness"",
+    ""liquidity constraints"",
+    ""inability to issue equity""
+  ],
+  ""citations"": [
+    ""AAL_item_1a_4"",
+    ""AMC_item_1a_7"",
+    ""AMC_item_1a_30""
+  ],
+  ""cited_chunk_ids"": [
+    ""item_1a_4"",
+    ""item_1a_7"",
+    ""item_1a_30""
+  ],
+  ""reasoning"": ""The company has substantial indebtedness and faces constraints on its ability to issue equity for liquidity. These factors increase the risk level to medium.""
+}",rag
+PARA,Paramount Skydance,75.0,1,high,"[""substantial indebtedness"", ""liquidity constraints""]","[""AMC_item_1a_7"", ""AMC_item_1a_30""]","{
+  ""risk_score"": 55,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""substantial indebtedness"",
+    ""liquidity constraints""
+  ],
+  ""citations"": [
+    ""AMC_item_1a_7"",
+    ""AMC_item_1a_30""
+  ],
+  ""cited_chunk_ids"": [
+    ""item_1a_7"",
+    ""item_1a_30""
+  ],
+  ""reasoning"": ""Paramount Skydance faces substantial indebtedness and liquidity constraints, as indicated in AMC_item1a_7 and AMC_item1a_30. The company may be unable to issue equity or debt to bolster its liquidity and may be required to issue additional debt on unfavorable terms, which could exacerbate its challenges. These factors increase the risk level to medium.""
+}",rag

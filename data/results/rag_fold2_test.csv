@@ -1,0 +1,128 @@
+ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
+AAL,American Airlines,75.0,1,high,"[""substantial indebtedness""]","[""AAL_item_1a_3""]","{
+  ""risk_score"": 65,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [""substantial indebtedness""],
+  ""citations"": [""AAL_item_1a_3""],
+  ""cited_chunk_ids"": [""AAL_item_1a_3""],
+  ""reasoning"": ""American Airlines has substantial indebtedness, which is a medium risk signal. The company's debt obligations, which are greater than those of its competitors, could have important consequences, such as requiring the company to maintain a certain level of unrestricted cash and cash equivalents and meet certain loan to value, collateral coverage, and/or peak debt service coverage ratios.""
+}",rag
+TMUS,T-Mobile US,50.0,0,medium,"[""Substantial debt"", ""Expected reclassification of $59M to interest expense"", ""Possible impact on availability of borrowings under revolving lines of credit"", ""Potential volatility in interest expenses as interest rates fluctuate""]","[""VZ_item_1a_16"", ""T_item_8_47"", ""AAL_item_1a_4""]","{
+  ""risk_score"": 50,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Substantial debt"",
+    ""Expected reclassification of $59M to interest expense"",
+    ""Possible impact on availability of borrowings under revolving lines of credit"",
+    ""Potential volatility in interest expenses as interest rates fluctuate""
+  ],
+  ""citations"": [
+    ""VZ_item_1a_16"",
+    ""T_item_8_47"",
+    ""AAL_item_1a_4""
+  ],
+  ""cited_chunk_ids"": [
+    ""item_1a_16"",
+    ""item_8_47"",
+    ""item_1a_4""
+  ],
+  ""reasoning"": ""Substantial debt and potential reclassification of $59M to interest expense increase the debt level and interest expenses, respectively. These factors, along with potential volatility in interest expenses and possible impact on availability of borrowings under revolving lines of credit, contribute to a medium risk level for T-Mobile US.""
+}",rag
+ELV,Elevance Health,55.0,0,medium,"[""Substantial debt and potential increase in debt levels"", ""Restrictive covenants limiting ability to issue equity or incur additional debt"", ""Potential negative impact of economic downturn and adverse business developments""]","[""AAL_item_1a_4"", ""AMC_item_1a_7"", ""AMC_item_1a_34""]","{
+  ""risk_score"": 55,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Substantial debt and potential increase in debt levels"",
+    ""Restrictive covenants limiting ability to issue equity or incur additional debt"",
+    ""Potential negative impact of economic downturn and adverse business developments""
+  ],
+  ""citations"": [
+    ""AAL_item_1a_4"",
+    ""AMC_item_1a_7"",
+    ""AMC_item_1a_34""
+  ],
+  ""cited_chunk_ids"": [
+    ""item_1a_4"",
+    ""item_1a_7"",
+    ""item_1a_34""
+  ],
+  ""reasoning"": """"
+}",rag
+IP,International Paper,75.0,1,high,"[""substantial indebtedness"", ""liquidity constraints"", ""ability to incur additional debt is limited"", ""financial covenants"", ""cross-default and cross-acceleration risk""]","[""AAL_item_1a_3"", ""AAL_item_1a_4"", ""AAL_item_1a_5"", ""AMC_item_1a_7""]","{
+  ""risk_score"": 55,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""substantial indebtedness"",
+    ""liquidity constraints"",
+    ""ability to incur additional debt is limited"",
+    ""financial covenants"",
+    ""cross-default and cross-acceleration risk""
+  ],
+  ""citations"": [
+    ""AAL_item_1a_3"",
+    ""AAL_item_1a_4"",
+    ""AAL_item_1a_5"",
+    ""AMC_item_1a_7""
+  ],
+  ""cited_chunk_ids"": [
+    ""AAL_item_1a_3_chunk_id"",
+    ""AAL_item_1a_4_chunk_id"",
+    ""AAL_item_1a_5_chunk_id"",
+    ""AMC_item_1a_7_chunk_id""
+  ],
+  ""reasoning"": """"
+}",rag
+FLUT,Flutter Entertainment,75.0,1,high,"[""substantial indebtedness"", ""liquidity constraints""]","[""AMC_item_1a_7"", ""AAL_item_1a_3"", ""AAL_item_1a_30""]","{
+  ""risk_score"": 65,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""substantial indebtedness"",
+    ""liquidity constraints""
+  ],
+  ""citations"": [
+    ""AMC_item_1a_7"",
+    ""AAL_item_1a_3"",
+    ""AAL_item_1a_30""
+  ],
+  ""cited_chunk_ids"": [
+    ""item_1a_7"",
+    ""item_1a_3"",
+    ""item_1a_30""
+  ],
+  ""reasoning"": ""The company faces substantial indebtedness and liquidity constraints, limiting its ability to issue equity or debt to bolster its liquidity and respond to future challenges. These factors increase the risk level to medium.""
+}",rag
+TXN,Texas Instruments,75.0,1,high,"[""significant constraints on ability to incur additional debt"", ""may be required to issue additional debt with unfavorable terms"", ""may be unable to issue equity or currency in strategic transactions""]","[""AMC_item_1a_7"", ""AMC_item_1a_30""]","{
+  ""risk_score"": 55,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""significant constraints on ability to incur additional debt"",
+    ""may be required to issue additional debt with unfavorable terms"",
+    ""may be unable to issue equity or currency in strategic transactions""
+  ],
+  ""citations"": [
+    ""AMC_item_1a_7"",
+    ""AMC_item_1a_30""
+  ],
+  ""cited_chunk_ids"": [
+    ""item_1a_7"",
+    ""item_1a_30""
+  ],
+  ""reasoning"": ""Texas Instruments faces constraints on its ability to incur additional debt and may be required to issue additional debt with unfavorable terms in the future. Additionally, the company may be unable to issue equity or currency in strategic transactions, which could limit its flexibility and potentially impact its liquidity and results of operations.""
+}",rag
+FNMA,Fannie Mae,75.0,1,high,"[""significant constraints on ability to incur additional debt"", ""substantial indebtedness and other obligations greater than competitors""]","[""AMC_item_1a_7"", ""AAL_item_1a_3""]","{
+  ""risk_score"": 65,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""significant constraints on ability to incur additional debt"",
+    ""substantial indebtedness and other obligations greater than competitors""
+  ],
+  ""citations"": [
+    ""AMC_item_1a_7"",
+    ""AAL_item_1a_3""
+  ],
+  ""cited_chunk_ids"": [
+    ""item_1a_7"",
+    ""item_1a_3""
+  ],
+  ""reasoning"": ""The company faces constraints on its ability to incur additional debt and has substantial indebtedness and other obligations that are greater than its competitors. These factors increase the risk level to medium.""
+}",rag

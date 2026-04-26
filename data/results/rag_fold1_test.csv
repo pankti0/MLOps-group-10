@@ -1,0 +1,133 @@
+ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
+JNJ,Johnson & Johnson,50.0,0,medium,"[""Legal proceedings with potential significant expenses, fines, and reputational damage""]","[""JNJ_item_1a_7""]","{
+  ""risk_score"": 50,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Legal proceedings with potential significant expenses, fines, and reputational damage""
+  ],
+  ""citations"": [
+    ""JNJ_item_1a_7""
+  ],
+  ""cited_chunk_ids"": [
+    ""JNJ_item_1a_7""
+  ],
+  ""reasoning"": ""Johnson & Johnson is subject to numerous legal proceedings that can result in significant expenses, fines, and reputational damage. This increases the risk level to medium.""
+}",rag
+DAL,Delta Air Lines,50.0,0,medium,"[""Presence of debt covenants limiting ability to incur liens, dispose of collateral, and engage in mergers or asset transfers"", ""Existence of legal proceedings related to employment practices, environmental issues, commercial disputes, antitrust and other regulatory matters""]","[""DAL_item_8_36"", ""DAL_item_8_37"", ""DAL_item_1a_0""]","{
+  ""risk_score"": 50,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Presence of debt covenants limiting ability to incur liens, dispose of collateral, and engage in mergers or asset transfers"",
+    ""Existence of legal proceedings related to employment practices, environmental issues, commercial disputes, antitrust and other regulatory matters""
+  ],
+  ""citations"": [
+    ""DAL_item_8_36"",
+    ""DAL_item_8_37"",
+    ""DAL_item_1a_0""
+  ],
+  ""cited_chunk_ids"": [
+    ""item_8_36"",
+    ""item_8_37"",
+    ""item_1a_0""
+  ],
+  ""reasoning"": ""The presence of debt covenants limiting Delta's ability to incur liens, dispose of collateral, and engage in mergers or asset transfers indicates potential financial constraints. Additionally, the existence of various legal proceedings related to employment practices, environmental issues, commercial disputes, antitrust and other regulatory matters could result in significant liabilities.""
+}",rag
+F,Ford Motor Company,75.0,1,high,"[""Leverage: Ford Credit uses leverage to make business decisions and assess it worthiness, and may need to obtain  appropriate credit ratings for asset-backed securitization transactions and derivatives to manage interest rate risk."", ""Funding and Liquidity Risks: Ford Credit\u2019s funding plan is subject to risks and uncertainties, including disruption in the capital markets and regulatory changes that could impact both unsecured debt and asset-backed securities issuance.""]","[""F_item_7_50"", ""F_item_1a_37"", ""F_item_7_43"", ""F_item_7_49"", ""F_item_7_59""]","{
+  ""risk_score"": 50,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Leverage: Ford Credit uses leverage to make business decisions and assess it worthiness, and may need to obtain  appropriate credit ratings for asset-backed securitization transactions and derivatives to manage interest rate risk."",
+    ""Funding and Liquidity Risks: Ford Credit’s funding plan is subject to risks and uncertainties, including disruption in the capital markets and regulatory changes that could impact both unsecured debt and asset-backed securities issuance.""
+  ],
+  ""citations"": [
+    ""F_item_7_50"",
+    ""F_item_1a_37"",
+    ""F_item_7_43"",
+    ""F_item_7_49"",
+    ""F_item_7_59""
+  ],
+  ""cited_chunk_ids"": [
+    ""item_7:67-72"",
+    ""item_1a:36-40"",
+    ""item_7:42-48"",
+    ""item_7:48-50"",
+    ""item_7:57-59""
+  ],
+  ""reasoning"": ""Ford Credit uses leverage to make business decisions and assess its worthiness, and may need to obtain appropriate credit ratings for asset-backed securitization transactions and derivatives to manage interest rate risk. Ford Credit’s funding plan is subject to risks and uncertainties, including disruption in the capital markets and regulatory changes that could impact both unsecured debt and asset-backed securities issuance. These factors increase the medium risk level for Ford Credit.""
+}",rag
+AMZN,Amazon,75.0,1,high,"[""substantial indebtedness"", ""liquidity constraints"", ""inability to issue equity"", ""potential for additional debt"", ""potential for negative consequences on ability to operate and finance business""]","[""AMC_item_1a_6"", ""AMC_item_1a_30"", ""AMC_item_1a_34""]","{
+  ""risk_score"": 70,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""substantial indebtedness"",
+    ""liquidity constraints"",
+    ""inability to issue equity"",
+    ""potential for additional debt"",
+    ""potential for negative consequences on ability to operate and finance business""
+  ],
+  ""citations"": [
+    ""AMC_item_1a_6"",
+    ""AMC_item_1a_30"",
+    ""AMC_item_1a_34""
+  ],
+  ""cited_chunk_ids"": [
+    ""item_1a_6"",
+    ""item_1a_30"",
+    ""item_1a_34""
+  ],
+  ""reasoning"": """"
+}",rag
+KMX,Carmax,55.0,0,medium,"[""Ford Credit's ability to obtain funding is subject to market volatility, credit rating downgrades, and regulatory changes"", ""Carmax has significant constraints on its ability to incur additional debt"", ""Carmax's obligations could impact its ability to obtain additional financing and conduct business""]","[""F_item_1a_37"", ""AMC_item_1a_7"", ""AAL_item_1a_5""]","{
+  ""risk_score"": 55,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Ford Credit's ability to obtain funding is subject to market volatility, credit rating downgrades, and regulatory changes"",
+    ""Carmax has significant constraints on its ability to incur additional debt"",
+    ""Carmax's obligations could impact its ability to obtain additional financing and conduct business""
+  ],
+  ""citations"": [
+    ""F_item_1a_37"",
+    ""AMC_item_1a_7"",
+    ""AAL_item_1a_5""
+  ],
+  ""cited_chunk_ids"": [
+    ""F_item_1a_37"",
+    ""AMC_item_1a_7"",
+    ""AAL_item_1a_5""
+  ],
+  ""reasoning"": ""Ford Credit's ability to obtain funding is subject to market volatility, credit rating downgrades, and regulatory changes (F_item_1a_37). Carmax has significant constraints on its ability to incur additional debt (AMC_item_1a_7). Carmax's obligations could impact its ability to obtain additional financing and conduct business (AAL_item_1a_5).""
+}",rag
+CHTR,Charter Communications,75.0,1,high,"[""Substantial indebtedness"", ""Liquidity constraints""]","[""VZ_item_1a_16"", ""AMC_item_1a_7""]","{
+  ""risk_score"": 55,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Substantial indebtedness"",
+    ""Liquidity constraints""
+  ],
+  ""citations"": [
+    ""VZ_item_1a_16"",
+    ""AMC_item_1a_7""
+  ],
+  ""cited_chunk_ids"": [
+    ""item_1a_16"",
+    ""item_1a_7""
+  ],
+  ""reasoning"": ""Substantial indebtedness: Verizon has a significant amount of debt and may incur additional expenses from ongoing allegations, increasing their debt levels. Liquidity constraints: Charter Communications may face constraints on their ability to incur additional debt and are more vulnerable to economic downturn and adverse business developments.""
+}",rag
+KHC,Kraft Heinz,75.0,1,high,"[""substantial indebtedness"", ""liquidity constraints""]","[""AMC_item_1a_6"", ""AMC_item_1a_30""]","{
+  ""risk_score"": 65,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""substantial indebtedness"",
+    ""liquidity constraints""
+  ],
+  ""citations"": [
+    ""AMC_item_1a_6"",
+    ""AMC_item_1a_30""
+  ],
+  ""cited_chunk_ids"": [
+    ""item_1a_6"",
+    ""item_1a_30""
+  ],
+  ""reasoning"": ""The company has substantial indebtedness and faces liquidity constraints, which may impact its ability to service its debt and negatively affect an investor's ability to recover their investments. These factors increase the risk level to medium.""
+}",rag

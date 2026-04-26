@@ -1,0 +1,116 @@
+ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
+AMC,AMC Entertainment,75.0,1,high,"[""substantial indebtedness"", ""liquidity constraints""]","[""AMC_item_1a_0"", ""AMC_item_8_13""]","{
+  ""risk_score"": 55,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""substantial indebtedness"",
+    ""liquidity constraints""
+  ],
+  ""citations"": [
+    ""AMC_item_1a_0"",
+    ""AMC_item_8_13""
+  ],
+  ""cited_chunk_ids"": [
+    ""19"",
+    ""1""
+  ],
+  ""reasoning"": ""The company has substantial indebtedness as indicated by the risk factors section (AMC_item_1a_0, cited_chunk_id: 19). Additionally, the company mentions liquidity constraints in the MD&A section (AMC_item_8_13, cited_chunk_id: 1). These signals increase the risk level to medium.""
+}",rag
+AVGO,Broadcom,75.0,1,high,"[""Substantial debt and potential increase"", ""Financial covenants and potential impact on liquidity""]","[""VZ_item_1a_16"", ""AAL_item_1a_5""]","{
+  ""risk_score"": 55,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Substantial debt and potential increase"",
+    ""Financial covenants and potential impact on liquidity""
+  ],
+  ""citations"": [
+    ""VZ_item_1a_16"",
+    ""AAL_item_1a_5""
+  ],
+  ""cited_chunk_ids"": [
+    ""item_1a_16"",
+    ""item_1a_5""
+  ],
+  ""reasoning"": ""Broadcom (AVGO) faces substantial debt and potential increase in obligations due to allegations and potential negative impact on reputation. Additionally, financial covenants in agreements could impact liquidity and availability of borrowings.""
+}",rag
+CI,Cigna Group,75.0,1,high,"[""substantial indebtedness"", ""liquidity constraints"", ""inability to fund operations for the next 12 months""]","[""[AAL_item_1a_4]"", ""[AMC_item_1a_6]"", ""[AAL_item_1a_5]""]","{
+  ""risk_score"": 75,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""substantial indebtedness"",
+    ""liquidity constraints"",
+    ""inability to fund operations for the next 12 months""
+  ],
+  ""citations"": [
+    ""[AAL_item_1a_4]"",
+    ""[AMC_item_1a_6]"",
+    ""[AAL_item_1a_5]""
+  ],
+  ""cited_chunk_ids"": [
+    ""AAL_item_1a_4"",
+    ""AMC_item_1a_6"",
+    ""AAL_item_1a_5""
+  ],
+  ""reasoning"": ""Substantial indebtedness and liquidity constraints were identified in passages [AAL_item1a_4], [AMC_item1a_6], and [AAL_item1a_5]. These factors increase the risk for Cigna Group as they may limit the company's ability to meet its financial obligations and service its debt, potentially impacting an investor's ability to recover their investments.""
+}",rag
+CNC,Centene,75.0,1,high,"[""substantial indebtedness"", ""liquidity constraints"", ""potential for increased financial covenants""]","[""AMC_item_1a_6"", ""AMC_item_1a_7"", ""AAL_item_1a_4"", ""AAL_item_1a_5""]","{
+  ""risk_score"": 65,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""substantial indebtedness"",
+    ""liquidity constraints"",
+    ""potential for increased financial covenants""
+  ],
+  ""citations"": [
+    ""AMC_item_1a_6"",
+    ""AMC_item_1a_7"",
+    ""AAL_item_1a_4"",
+    ""AAL_item_1a_5""
+  ],
+  ""cited_chunk_ids"": [
+    ""item_1a_6"",
+    ""item_1a_7"",
+    ""item_1a_4"",
+    ""item_1a_5""
+  ],
+  ""reasoning"": ""Centene has substantial indebtedness and liquidity constraints, which could negatively impact its ability to service its debt and potentially face increased financial covenants in the future.""
+}",rag
+DELL,Dell Technologies,55.0,0,medium,"[""significant constraints on ability to incur additional debt"", ""restrictions on ability to issue equity or issue debt on favorable terms"", ""financial covenants requiring maintenance of cash and cash equivalents""]","[""AMC_item_1a_7"", ""AMC_item_1a_30"", ""DAL_item_8_36""]","{
+  ""risk_score"": 55,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""significant constraints on ability to incur additional debt"",
+    ""restrictions on ability to issue equity or issue debt on favorable terms"",
+    ""financial covenants requiring maintenance of cash and cash equivalents""
+  ],
+  ""citations"": [
+    ""AMC_item_1a_7"",
+    ""AMC_item_1a_30"",
+    ""DAL_item_8_36""
+  ],
+  ""cited_chunk_ids"": [
+    ""item_1a_7"",
+    ""item_1a_30"",
+    ""item_8_36""
+  ],
+  ""reasoning"": ""The company faces constraints on its ability to incur additional debt and issue equity, and must comply with financial covenants requiring maintenance of cash and cash equivalents. These factors increase the medium risk level.""
+}",rag
+HD,Home Depot,75.0,1,high,"[""substantial indebtedness"", ""liquidity constraints""]","[""AMC_item_1a_6"", ""AMC_item_1a_7"", ""AMC_item_1a_30""]","{
+  ""risk_score"": 75,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""substantial indebtedness"",
+    ""liquidity constraints""
+  ],
+  ""citations"": [
+    ""AMC_item_1a_6"",
+    ""AMC_item_1a_7"",
+    ""AMC_item_1a_30""
+  ],
+  ""cited_chunk_ids"": [
+    ""AMC_item_1a_6"",
+    ""AMC_item_1a_7"",
+    ""AMC_item_1a_30""
+  ],
+  ""reasoning"": ""Home Depot shows signs of substantial indebtedness and liquidity constraints, which increase the risk level to medium.""
+}",rag
