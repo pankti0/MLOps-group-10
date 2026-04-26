@@ -1,0 +1,22 @@
+ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
+AAL,American Airlines,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTION\n=====================""]",[],"=====================
+END OF INSTRUCTION
+=====================",lora_r32_rag
+TMUS,T-Mobile US,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTION\n=====================""]",[],"=====================
+END OF INSTRUCTION
+=====================",lora_r32_rag
+ELV,Elevance Health,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTION\n=====================""]",[],"=====================
+END OF INSTRUCTION
+=====================",lora_r32_rag
+IP,International Paper,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTIONS\n=====================""]",[],"=====================
+END OF INSTRUCTIONS
+=====================",lora_r32_rag
+FLUT,Flutter Entertainment,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTIONS\n=====================""]",[],"=====================
+END OF INSTRUCTIONS
+=====================",lora_r32_rag
+TXN,Texas Instruments,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTION\n=====================""]",[],"=====================
+END OF INSTRUCTION
+=====================",lora_r32_rag
+FNMA,Fannie Mae,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTIONS\n=====================""]",[],"=====================
+END OF INSTRUCTIONS
+=====================",lora_r32_rag

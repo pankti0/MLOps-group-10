@@ -1,19 +1,19 @@
 ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
 AAPL,Apple,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTIONS\n=====================""]",[],"=====================
 END OF INSTRUCTIONS
-=====================",rag
+=====================",lora_r32_rag
 T,AT&T,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTION\n=====================""]",[],"=====================
 END OF INSTRUCTION
-=====================",rag
+=====================",lora_r32_rag
 GME,GameStop,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTIONS\n=====================""]",[],"=====================
 END OF INSTRUCTIONS
-=====================",rag
+=====================",lora_r32_rag
 UNH,UnitedHealth Group,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTION\n=====================""]",[],"=====================
 END OF INSTRUCTION
-=====================",rag
+=====================",lora_r32_rag
 VLO,Valero Energy,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTION\n=====================""]",[],"=====================
 END OF INSTRUCTION
-=====================",rag
+=====================",lora_r32_rag
 CMCSA,Comcast,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTION\n=====================""]",[],"=====================
 END OF INSTRUCTION
-=====================",rag
+=====================",lora_r32_rag

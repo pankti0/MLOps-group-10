@@ -1,0 +1,19 @@
+ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
+AMC,AMC Entertainment,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTIONS\n=====================""]",[],"=====================
+END OF INSTRUCTIONS
+=====================",lora_r32_rag
+AVGO,Broadcom,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTION\n=====================""]",[],"=====================
+END OF INSTRUCTION
+=====================",lora_r32_rag
+CI,Cigna Group,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTIONS\n=====================""]",[],"=====================
+END OF INSTRUCTIONS
+=====================",lora_r32_rag
+CNC,Centene,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTION\n=====================""]",[],"=====================
+END OF INSTRUCTION
+=====================",lora_r32_rag
+DELL,Dell Technologies,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTION\n=====================""]",[],"=====================
+END OF INSTRUCTION
+=====================",lora_r32_rag
+HD,Home Depot,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTIONS\n=====================""]",[],"=====================
+END OF INSTRUCTIONS
+=====================",lora_r32_rag

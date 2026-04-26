@@ -1,0 +1,22 @@
+ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
+JNJ,Johnson & Johnson,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTIONS\n=====================""]",[],"=====================
+END OF INSTRUCTIONS
+=====================",lora_r32_rag
+DAL,Delta Air Lines,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTIONS\n=====================""]",[],"=====================
+END OF INSTRUCTIONS
+=====================",lora_r32_rag
+F,Ford Motor Company,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTION\n=====================""]",[],"=====================
+END OF INSTRUCTION
+=====================",lora_r32_rag
+AMZN,Amazon,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTIONS\n=====================""]",[],"=====================
+END OF INSTRUCTIONS
+=====================",lora_r32_rag
+KMX,Carmax,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTION\n=====================""]",[],"=====================
+END OF INSTRUCTION
+=====================",lora_r32_rag
+CHTR,Charter Communications,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTION\n=====================""]",[],"=====================
+END OF INSTRUCTION
+=====================",lora_r32_rag
+KHC,Kraft Heinz,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTIONS\n=====================""]",[],"=====================
+END OF INSTRUCTIONS
+=====================",lora_r32_rag

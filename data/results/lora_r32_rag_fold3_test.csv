@@ -1,0 +1,19 @@
+ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
+VZ,Verizon,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTION\n=====================""]",[],"=====================
+END OF INSTRUCTION
+=====================",lora_r32_rag
+GOOGL,Alphabet,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTION\n=====================""]",[],"=====================
+END OF INSTRUCTION
+=====================",lora_r32_rag
+CAT,Caterpillar,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTIONS\n=====================""]",[],"=====================
+END OF INSTRUCTIONS
+=====================",lora_r32_rag
+MU,Micron Technology,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTIONS\n=====================""]",[],"=====================
+END OF INSTRUCTIONS
+=====================",lora_r32_rag
+ARE,Alexandria Real Estate Equities,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTION\n=====================""]",[],"=====================
+END OF INSTRUCTION
+=====================",lora_r32_rag
+PARA,Paramount Skydance,50.0,0,medium,"[""Model failed to produce structured output"", ""=====================\nEND OF INSTRUCTIONS\n=====================""]",[],"=====================
+END OF INSTRUCTIONS
+=====================",lora_r32_rag
