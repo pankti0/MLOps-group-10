@@ -1,5 +1,7 @@
 # Credit Risk Detection Agent — MLOps Group 10
 
+## Please find our report MLOPs_Group 10_Final Report.pdf in this repo's root.
+
 An AI agent that detects credit risk signals from SEC 10-K filings using three model strategies: **baseline prompting**, **RAG**, and **LoRA fine-tuning**, evaluated against the Altman Z-Score financial benchmark.
 
 Base model: **Mistral-7B-Instruct-v0.2** 
