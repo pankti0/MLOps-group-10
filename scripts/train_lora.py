@@ -50,6 +50,12 @@ def parse_args() -> argparse.Namespace:
         default="configs/lora_config.yaml",
         help="Path to lora_config.yaml (relative to repo root or absolute).",
     )
+    parser.add_argument(
+        "--fold",
+        type=int,
+        default=None,
+        help="Fold number for cross-validation (optional).",
+    )
     return parser.parse_args()
 
 
@@ -66,10 +72,18 @@ def main() -> None:
     logger.info("Loading config from %s", config_path)
     config = load_config(config_path)
 
-    # Resolve output directory
+
+    # Determine config name for directory naming
+    config_name = os.path.splitext(os.path.basename(args.config))[0]
+
+    # Resolve output directory, add fold and config name if fold is specified
     output_dir = config.get("output_dir", "data/models/lora_adapter")
     if not os.path.isabs(output_dir):
         output_dir = str(repo_root / output_dir)
+    if args.fold is not None:
+        output_dir = os.path.join(output_dir, f"fold_{args.fold}", config_name)
+    else:
+        output_dir = os.path.join(output_dir, config_name)
     os.makedirs(output_dir, exist_ok=True)
     logger.info("Model output directory: %s", output_dir)
 
@@ -81,12 +95,18 @@ def main() -> None:
         quant_config=config["quantization"],
     )
 
-    #  3. Load training data 
-    finetune_dir = repo_root / "data" / "finetune"
-    train_path = str(finetune_dir / "train.jsonl")
-    val_path = str(finetune_dir / "val.jsonl")
 
-    logger.info("Loading training data from %s", finetune_dir)
+    #  3. Load training data (support cross-validation folds)
+    finetune_dir = repo_root / "data" / "finetune"
+    if args.fold is not None:
+        fold_dir = finetune_dir / f"fold_{args.fold}"
+        train_path = str(fold_dir / "train.jsonl")
+        val_path = str(fold_dir / "val.jsonl")
+        logger.info(f"Loading training data from fold {args.fold}: {fold_dir}")
+    else:
+        train_path = str(finetune_dir / "train.jsonl")
+        val_path = str(finetune_dir / "val.jsonl")
+        logger.info("Loading training data from %s", finetune_dir)
     train_dataset, val_dataset = load_training_data(train_path, val_path)
 
     #  4. Initialize W&B 
