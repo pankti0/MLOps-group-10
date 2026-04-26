@@ -138,7 +138,15 @@ def main() -> None:
 
     logger.info("Saving final adapter to %s", final_adapter_dir)
     try:
-        model.save_pretrained(final_adapter_dir)
+        from peft import PeftModel
+        from transformers import AutoModelForCausalLM
+
+        # Reload the trained model from the output directory
+        trained_model = PeftModel.from_pretrained(
+            AutoModelForCausalLM.from_pretrained(output_dir, trust_remote_code=True),
+            output_dir
+        )
+        trained_model.save_pretrained(final_adapter_dir)
         tokenizer.save_pretrained(final_adapter_dir)
         logger.info("Final adapter saved successfully.")
     except Exception as exc:  # noqa: BLE001
