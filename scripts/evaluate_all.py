@@ -21,12 +21,15 @@ import numpy as np
 import pandas as pd
 import logging
 
-# Add repo root to sys.path for absolute imports
+# Add repo root and src to sys.path for absolute imports
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SRC_PATH = os.path.join(REPO_ROOT, "src")
 if REPO_ROOT not in sys.path:
     sys.path.insert(0, REPO_ROOT)
+if SRC_PATH not in sys.path:
+    sys.path.insert(0, SRC_PATH)
 
-from evaluation.metrics import compute_classification_metrics
+from src.evaluation.metrics import compute_classification_metrics
 
 def parse_args():
     import argparse
