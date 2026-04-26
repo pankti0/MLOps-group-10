@@ -26,6 +26,7 @@ FOLD_FILES = {
     "baseline": [f"baseline_fold{i}_test.csv" for i in range(1, 6)],
     "rag": [f"rag_fold{i}_test.csv" for i in range(1, 6)],
     "lora_r32": [f"lora_r32_fold{i}_test.csv" for i in range(1, 6)],
+    "lora_r32_rag": [f"lora_r32_rag_fold{i}_test.csv" for i in range(1, 6)],
     "altman_zscore": ["altman_zscore_predictions.csv"],
 }
 
