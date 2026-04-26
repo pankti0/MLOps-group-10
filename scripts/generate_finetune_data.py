@@ -188,6 +188,7 @@ def main() -> None:
         logger.error("Labels file not found: %s", labels_path)
         sys.exit(1)
 
+
     labels_df = pd.read_csv(labels_path)
     logger.info("Loaded %d companies from %s", len(labels_df), labels_path)
 

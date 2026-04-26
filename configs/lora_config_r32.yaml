@@ -16,19 +16,20 @@ lora:
   task_type: "CAUSAL_LM"
 
 training:
-  num_epochs: 3
+  num_epochs: 1  # FAST: reduce epochs for speed
   per_device_train_batch_size: 2
   gradient_accumulation_steps: 4
   learning_rate: 2.0e-4
   warmup_ratio: 0.03
   lr_scheduler_type: "cosine"
-  max_seq_length: 2048
+  max_seq_length: 1024  # FAST: reduce sequence length if sections are short
   fp16: false
   bf16: true
   logging_steps: 10
   eval_steps: 50
   save_steps: 100
   load_best_model_at_end: true
+# early_stopping_patience: 2  # (Optional) Add to train_lora.py for early stopping
 
 quantization:
   load_in_4bit: true

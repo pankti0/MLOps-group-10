@@ -273,7 +273,15 @@ def train(
     if "max_seq_length" not in sft_config_params and "max_seq_length" in sft_trainer_params:
         sft_trainer_kwargs["max_seq_length"] = max_seq_len
 
-    trainer = SFTTrainer(**sft_trainer_kwargs)
+
+    # --- EARLY STOPPING ---
+    from transformers import EarlyStoppingCallback
+    patience = training_config.get("early_stopping_patience", 2)
+    early_stopping = EarlyStoppingCallback(early_stopping_patience=patience)
+    trainer = SFTTrainer(
+        **sft_trainer_kwargs,
+        callbacks=[early_stopping]
+    )
 
     trainer.train()
     logger.info("Training complete. Saving model to %s", output_dir)
