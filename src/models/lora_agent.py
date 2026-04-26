@@ -149,7 +149,7 @@ class LoRAAgent:
 
         predicted_score = float(parsed.get("predicted_score", 50.0))
         predicted_score = max(0.0, min(100.0, predicted_score))
-        predicted_label = 1 if predicted_score >= 50.0 else 0
+        predicted_label = 1 if predicted_score >= 70.0 else 0
         risk_level = parsed.get("risk_level", "medium")
 
         return {

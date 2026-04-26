@@ -146,165 +146,135 @@ def _low_risk_output(company_name: str, ticker: str, score: int) -> dict:
 
 
 def _build_ideal_output(company_name: str, ticker: str, risk_category: str, risk_score: int) -> dict:
-    """Route to the appropriate template based on risk category.
+    """Route to the appropriate template based on risk category."""
+    if risk_category == "high":
+        return _high_risk_output(company_name, ticker, risk_score)
+    elif risk_category == "low":
+        return _low_risk_output(company_name, ticker, risk_score)
+    else:
+        return _medium_risk_output(company_name, ticker, risk_score)
 
-    Args:
-        company_name: Company name.
-        ticker: Ticker symbol.
-        risk_category: One of 'low', 'medium', 'high'.
-        risk_score: Numeric risk score from labels CSV.
 
-    Returns:
-        Ideal output dict.
-    """
+def _load_sections(ticker: str, sections_dir: str) -> dict:
+    """Load processed section JSON for a ticker."""
+    path = os.path.join(sections_dir, f"{ticker}_sections.json")
+    if not os.path.exists(path):
+        return None
+    try:
+        with open(path, "r", encoding="utf-8") as fh:
+            return json.load(fh)
+    except Exception:
+        return None
 
-    def main() -> None:
-        """Generate fine-tuning data and perform stratified k-fold cross-validation splits."""
-        from sklearn.model_selection import StratifiedKFold
-        from collections import Counter
 
-        repo_root = get_repo_root()
-        labels_path = repo_root / "data" / "labels" / "company_labels.csv"
-        sections_dir = str(repo_root / "data" / "processed")
-        output_dir = str(repo_root / "data" / "finetune")
+def _write_jsonl(examples: list, path: str) -> None:
+    with open(path, "w", encoding="utf-8") as f:
+        for ex in examples:
+            f.write(json.dumps(ex, ensure_ascii=False) + "\n")
 
-        # Load labels
-        if not labels_path.exists():
-            logger.error("Labels file not found: %s", labels_path)
-            sys.exit(1)
 
-        labels_df = pd.read_csv(labels_path)
-        logger.info("Loaded %d companies from %s", len(labels_df), labels_path)
+def main() -> None:
+    """Generate fine-tuning data and perform stratified k-fold cross-validation splits."""
+    from sklearn.model_selection import StratifiedKFold
+    from collections import Counter
 
-        # Build one training example per company
-        examples: List[dict] = []
-        y = []  # stratification labels
+    repo_root = get_repo_root()
+    labels_path = repo_root / "data" / "labels" / "company_labels.csv"
+    sections_dir = str(repo_root / "data" / "processed")
+    output_dir = str(repo_root / "data" / "finetune")
 
-        for _, row in labels_df.iterrows():
-            ticker = str(row["ticker"])
-            company_name = str(row["company_name"])
-            risk_category = str(row.get("risk_category", "medium"))
-            risk_score = int(row.get("risk_score", 50))
+    # Load labels
+    if not labels_path.exists():
+        logger.error("Labels file not found: %s", labels_path)
+        sys.exit(1)
 
-            sections = _load_sections(ticker, sections_dir)
-            if not sections:
-                logger.warning("No sections for %s — using placeholder text.", ticker)
-                item_1a = f"Risk factors section not available for {company_name}."
-                item_7 = f"Management discussion not available for {company_name}."
-            else:
-                item_1a = sections.get("item_1a", "")
-                item_7 = sections.get("item_7", "")
+    labels_df = pd.read_csv(labels_path)
+    logger.info("Loaded %d companies from %s", len(labels_df), labels_path)
 
-            ideal_output = _build_ideal_output(company_name, ticker, risk_category, risk_score)
+    # Build one training example per company
+    examples: List[dict] = []
+    y = []  # stratification labels
 
-            example = build_training_example(
-                company_name=company_name,
-                ticker=ticker,
-                item_1a=item_1a,
-                item_7=item_7,
-                ideal_output=ideal_output,
-            )
-            example["ticker"] = ticker
-            example["risk_category"] = risk_category
-            examples.append(example)
-            y.append(risk_category)
+    for _, row in labels_df.iterrows():
+        ticker = str(row["ticker"])
+        company_name = str(row["company_name"])
+        risk_category = str(row.get("risk_category", "medium"))
+        risk_score = int(row.get("risk_score", 50))
 
-        if not examples:
-            logger.error("No training examples generated. Exiting.")
-            sys.exit(1)
+        sections = _load_sections(ticker, sections_dir)
+        if not sections:
+            logger.warning("No sections for %s — using placeholder text.", ticker)
+            item_1a = f"Risk factors section not available for {company_name}."
+            item_7 = f"Management discussion not available for {company_name}."
+        else:
+            item_1a = sections.get("item_1a", "")
+            item_7 = sections.get("item_7", "")
 
-        # Stratified K-Fold Cross-Validation
-        n_splits = 5
-        skf = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=42)
+        ideal_output = _build_ideal_output(company_name, ticker, risk_category, risk_score)
 
-        print("\n" + "=" * 60)
-        print(f"  STRATIFIED {n_splits}-FOLD CROSS-VALIDATION SPLITS")
-        print("=" * 60)
+        example = build_training_example(
+            company_name=company_name,
+            ticker=ticker,
+            item_1a=item_1a,
+            item_7=item_7,
+            ideal_output=ideal_output,
+        )
+        example["ticker"] = ticker
+        example["risk_category"] = risk_category
+        examples.append(example)
+        y.append(risk_category)
 
-        for fold, (train_val_idx, test_idx) in enumerate(skf.split(examples, y), 1):
-            # Further split train_val into train/val (e.g., 80/20)
-            train_val_y = [y[i] for i in train_val_idx]
-            train_val_examples = [examples[i] for i in train_val_idx]
-            test_examples = [examples[i] for i in test_idx]
+    if not examples:
+        logger.error("No training examples generated. Exiting.")
+        sys.exit(1)
 
-            # Stratified split for val
-            val_size = max(1, int(0.2 * len(train_val_examples)))
-            if val_size >= len(train_val_examples):
-                val_size = max(1, len(train_val_examples) // 5)
-            val_skf = StratifiedKFold(n_splits=len(train_val_examples) // val_size, shuffle=True, random_state=fold)
-            val_split = next(val_skf.split(train_val_examples, train_val_y))
-            train_idx, val_idx = val_split
-            train_examples = [train_val_examples[i] for i in train_idx]
-            val_examples = [train_val_examples[i] for i in val_idx]
+    # Stratified K-Fold Cross-Validation
+    n_splits = 5
+    skf = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=42)
 
-            fold_dir = os.path.join(output_dir, f"fold_{fold}")
-            os.makedirs(fold_dir, exist_ok=True)
-            train_path = os.path.join(fold_dir, "train.jsonl")
-            val_path = os.path.join(fold_dir, "val.jsonl")
-            test_path = os.path.join(fold_dir, "test.jsonl")
-
-            _write_jsonl(train_examples, train_path)
-            _write_jsonl(val_examples, val_path)
-            _write_jsonl(test_examples, test_path)
-
-            print(f"FOLD {fold}")
-            print(f"  Train: {len(train_examples)}  Val: {len(val_examples)}  Test: {len(test_examples)}")
-            for split_name, split_examples in [
-                ("train", train_examples),
-                ("val", val_examples),
-                ("test", test_examples),
-            ]:
-                cats = Counter(e.get("risk_category", "unknown") for e in split_examples)
-                print(f"    {split_name:5s} risk categories: {dict(cats)}")
-            print(f"  Saved to: {fold_dir}")
-            print("-" * 60)
-
-        print("\nAll folds complete. Use fold_X/train.jsonl etc. for training and evaluation.")
-    # Ensure at least 1 example in each split
-    if n_test < 1:
-        n_test = 1
-        n_val = max(1, n - n_train - n_test)
-        n_train = n - n_val - n_test
-
-    train_examples = examples[:n_train]
-    val_examples = examples[n_train:n_train + n_val]
-    test_examples = examples[n_train + n_val:]
-
-    logger.info(
-        "Split: %d train / %d val / %d test (total=%d)",
-        len(train_examples), len(val_examples), len(test_examples), n,
-    )
-
-    # Save to disk
-    train_path = os.path.join(output_dir, "train.jsonl")
-    val_path = os.path.join(output_dir, "val.jsonl")
-    test_path = os.path.join(output_dir, "test.jsonl")
-
-    _write_jsonl(train_examples, train_path)
-    _write_jsonl(val_examples, val_path)
-    _write_jsonl(test_examples, test_path)
-
-    # Print statistics
     print("\n" + "=" * 60)
-    print("  FINE-TUNING DATA GENERATION COMPLETE")
+    print(f"  STRATIFIED {n_splits}-FOLD CROSS-VALIDATION SPLITS")
     print("=" * 60)
-    print(f"  Total examples   : {n}")
-    print(f"  Train            : {len(train_examples)}")
-    print(f"  Validation       : {len(val_examples)}")
-    print(f"  Test             : {len(test_examples)}")
-    print(f"  Output directory : {output_dir}")
-    print("=" * 60 + "\n")
 
-    # Per-split risk category breakdown
-    for split_name, split_examples in [
-        ("train", train_examples),
-        ("val", val_examples),
-        ("test", test_examples),
-    ]:
-        from collections import Counter
-        cats = Counter(e.get("risk_category", "unknown") for e in split_examples)
-        print(f"  {split_name:5s} risk categories: {dict(cats)}")
-    print()
+    for fold, (train_val_idx, test_idx) in enumerate(skf.split(examples, y), 1):
+        # Further split train_val into train/val (e.g., 80/20)
+        train_val_y = [y[i] for i in train_val_idx]
+        train_val_examples = [examples[i] for i in train_val_idx]
+        test_examples = [examples[i] for i in test_idx]
+
+        # Stratified split for val
+        val_size = max(1, int(0.2 * len(train_val_examples)))
+        if val_size >= len(train_val_examples):
+            val_size = max(1, len(train_val_examples) // 5)
+        val_skf = StratifiedKFold(n_splits=len(train_val_examples) // val_size, shuffle=True, random_state=fold)
+        val_split = next(val_skf.split(train_val_examples, train_val_y))
+        train_idx, val_idx = val_split
+        train_examples = [train_val_examples[i] for i in train_idx]
+        val_examples = [train_val_examples[i] for i in val_idx]
+
+        fold_dir = os.path.join(output_dir, f"fold_{fold}")
+        os.makedirs(fold_dir, exist_ok=True)
+        train_path = os.path.join(fold_dir, "train.jsonl")
+        val_path = os.path.join(fold_dir, "val.jsonl")
+        test_path = os.path.join(fold_dir, "test.jsonl")
+
+        _write_jsonl(train_examples, train_path)
+        _write_jsonl(val_examples, val_path)
+        _write_jsonl(test_examples, test_path)
+
+        print(f"FOLD {fold}")
+        print(f"  Train: {len(train_examples)}  Val: {len(val_examples)}  Test: {len(test_examples)}")
+        for split_name, split_examples in [
+            ("train", train_examples),
+            ("val", val_examples),
+            ("test", test_examples),
+        ]:
+            cats = Counter(e.get("risk_category", "unknown") for e in split_examples)
+            print(f"    {split_name:5s} risk categories: {dict(cats)}")
+        print(f"  Saved to: {fold_dir}")
+        print("-" * 60)
+
+    print("\nAll folds complete. Use fold_X/train.jsonl etc. for training and evaluation.")
 
 
 if __name__ == "__main__":

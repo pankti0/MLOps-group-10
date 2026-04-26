@@ -27,7 +27,7 @@ T,AT&T,30.0,0,low,"[""Total debt as of year-end 2021 was $115.3 billion, a decre
   ],
   ""reasoning"": ""AT&T's debt levels are manageable with a decreasing total debt, leverage ratios within industry norms, and a debt maturity schedule with no significant maturities in the near term.""
 }",baseline
-GME,GameStop,50.0,1,medium,"[""Total debt as of fiscal year end was $1.3 billion."", ""Leverage ratios exceeded covenant thresholds, but waivers were obtained.""]","[""Total Debt: As of December 31, 2020, we had total debt outstanding of $1.3 billion."", ""Leverage Ratios: Our leverage ratios exceeded the covenant thresholds for our senior secured credit facilities as of December 31, 2020. We have obtained waivers from our lenders to permit us to exceed these covenants.""]","{
+GME,GameStop,50.0,0,medium,"[""Total debt as of fiscal year end was $1.3 billion."", ""Leverage ratios exceeded covenant thresholds, but waivers were obtained.""]","[""Total Debt: As of December 31, 2020, we had total debt outstanding of $1.3 billion."", ""Leverage Ratios: Our leverage ratios exceeded the covenant thresholds for our senior secured credit facilities as of December 31, 2020. We have obtained waivers from our lenders to permit us to exceed these covenants.""]","{
   ""risk_score"": 50,
   ""risk_level"": ""medium"",
   ""key_signals"": [

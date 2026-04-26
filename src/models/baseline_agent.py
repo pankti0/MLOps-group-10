@@ -37,7 +37,7 @@ _CSV_COLUMNS = [
 
 def _score_to_label(score: float) -> int:
     """Convert a 0-100 risk score to a binary label (1 = high risk)."""
-    return 1 if score >= 50 else 0
+    return 1 if score >= 70 else 0
 
 
 class BaselineAgent:
