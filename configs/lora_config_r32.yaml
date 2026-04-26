@@ -29,6 +29,9 @@ training:
   eval_steps: 50
   save_steps: 100
   load_best_model_at_end: true
+# Required for EarlyStoppingCallback:
+  metric_for_best_model: eval_loss
+  greater_is_better: false
 # early_stopping_patience: 2  # (Optional) Add to train_lora.py for early stopping
 
 quantization:
