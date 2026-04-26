@@ -225,8 +225,9 @@ def train(
         save_steps=training_config.get("save_steps", 100),
         eval_strategy="steps",
         save_strategy="steps",
-        # load_best_model_at_end=True crashes with PEFT adapter checkpoints
-        load_best_model_at_end=False,
+        load_best_model_at_end=True,
+        metric_for_best_model=training_config.get("metric_for_best_model", "eval_loss"),
+        greater_is_better=training_config.get("greater_is_better", False),
         report_to="wandb",
         run_name=training_config.get("run_name", "lora-sft"),
         dataloader_num_workers=0,
