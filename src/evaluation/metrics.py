@@ -45,7 +45,7 @@ _DEFAULT_COLOR = "#9467bd"
 def compute_classification_metrics(
     labels: np.ndarray,
     predicted_scores: np.ndarray,
-    threshold: float = 50.0,
+    threshold: float = 70.0,
 ) -> dict:
     """Compute a standard suite of binary classification metrics.
 
@@ -54,7 +54,7 @@ def compute_classification_metrics(
         predicted_scores: Continuous risk scores in [0, 100] where higher
             values indicate higher predicted risk.
         threshold: Score threshold above which a prediction is classified
-            as high risk (label=1). Defaults to 50.0.
+            as high risk (label=1). Defaults to 70.0.
 
     Returns:
         Dictionary with keys:
