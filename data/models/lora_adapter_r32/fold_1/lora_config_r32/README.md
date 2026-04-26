@@ -30,7 +30,7 @@ print(output["generated_text"])
 
 ## Training procedure
 
-[<img src="https://raw.githubusercontent.com/wandb/assets/main/wandb-github-badge-28.svg" alt="Visualize in Weights & Biases" width="150" height="24"/>](https://wandb.ai/pankti0-singapore-university-of-technology-and-design/credit-risk-detection/runs/3l6yqi2e) 
+[<img src="https://raw.githubusercontent.com/wandb/assets/main/wandb-github-badge-28.svg" alt="Visualize in Weights & Biases" width="150" height="24"/>](https://wandb.ai/pankti0-singapore-university-of-technology-and-design/credit-risk-detection/runs/1ins11gy) 
 
 
 
