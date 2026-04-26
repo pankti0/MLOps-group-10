@@ -1,0 +1,102 @@
+ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
+AAL,American Airlines,45.0,0,medium,"[""Total debt was $27.8 billion as of December 31, 2020."", ""Leverage ratios exceeded covenant thresholds due to the impact of the COVID-19 pandemic.""]","[""Total Debt: $27.8 billion."", ""Leverage ratios exceeded covenant thresholds.""]","{
+  ""risk_score"": 45,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Total debt was $27.8 billion as of December 31, 2020."",
+    ""Leverage ratios exceeded covenant thresholds due to the impact of the COVID-19 pandemic.""
+  ],
+  ""citations"": [
+    ""Total Debt: $27.8 billion."",
+    ""Leverage ratios exceeded covenant thresholds.""
+  ],
+  ""reasoning"": ""American Airlines (AAL) reported total debt of $27.8 billion as of December 31, 2020. Additionally, leverage ratios exceeded covenant thresholds due to the impact of the COVID-19 pandemic. These factors contribute to a medium level of credit risk.""
+}",baseline
+TMUS,T-Mobile US,30.0,0,low,"[""Total debt as of December 31, 2020 was $41.5 billion, a decrease from $42.1 billion as of December 31, 2019."", ""Leverage ratios are within industry norms and have been decreasing over the past five years."", ""Debt maturity schedule is well-balanced with no significant maturities until 2024.""]","[""Total Debt: $41.5 billion as of December 31, 2020, compared to $42.1 billion as of December 31, 2019."", ""Our leverage ratios, as measured by total debt to EBITDA and total debt to capitalization, have been decreasing over the past five years."", ""Our debt maturity schedule is well-balanced, with no significant maturities until 2024.""]","{
+  ""risk_score"": 30,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Total debt as of December 31, 2020 was $41.5 billion, a decrease from $42.1 billion as of December 31, 2019."",
+    ""Leverage ratios are within industry norms and have been decreasing over the past five years."",
+    ""Debt maturity schedule is well-balanced with no significant maturities until 2024.""
+  ],
+  ""citations"": [
+    ""Total Debt: $41.5 billion as of December 31, 2020, compared to $42.1 billion as of December 31, 2019."",
+    ""Our leverage ratios, as measured by total debt to EBITDA and total debt to capitalization, have been decreasing over the past five years."",
+    ""Our debt maturity schedule is well-balanced, with no significant maturities until 2024.""
+  ],
+  ""reasoning"": ""T-Mobile's debt levels are manageable with decreasing leverage ratios and a well-balanced debt maturity schedule. This indicates a low credit risk.""
+}",baseline
+ELV,Elevance Health,30.0,0,low,"[""Total debt as of December 31, 2021 was $11.5 billion, a decrease from $11.6 billion at December 31, 2020."", ""Leverage ratios are within industry norms."", ""Debt maturity schedule shows no significant maturities until 2025.""]","[""Total Debt: $11.5 billion (2021) vs. $11.6 billion (2020)"", ""Leverage ratios: X and Y ratios are within industry norms."", ""Debt Maturity Schedule: No significant maturities until 2025.""]","{
+  ""risk_score"": 30,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Total debt as of December 31, 2021 was $11.5 billion, a decrease from $11.6 billion at December 31, 2020."",
+    ""Leverage ratios are within industry norms."",
+    ""Debt maturity schedule shows no significant maturities until 2025.""
+  ],
+  ""citations"": [
+    ""Total Debt: $11.5 billion (2021) vs. $11.6 billion (2020)"",
+    ""Leverage ratios: X and Y ratios are within industry norms."",
+    ""Debt Maturity Schedule: No significant maturities until 2025.""
+  ],
+  ""reasoning"": ""Elevance Health's debt levels are manageable with a decreasing total debt, leverage ratios within industry norms, and a debt maturity schedule with no significant maturities until 2025.""
+}",baseline
+IP,International Paper,30.0,0,low,"[""Total debt as of December 31, 2020 was $11.5 billion, a decrease of $1.3 billion from December 31, 2019."", ""Leverage ratios are within industry norms."", ""Debt maturity schedule shows no significant debt maturities until 2024.""]","[""Total Debt: $11,511 million as of December 31, 2020, a decrease of $1,287 million from December 31, 2019."", ""Our leverage ratios are within the industry norms."", ""The following table sets forth the maturity schedule of our debt as of December 31, 2020:""]","{
+  ""risk_score"": 30,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Total debt as of December 31, 2020 was $11.5 billion, a decrease of $1.3 billion from December 31, 2019."",
+    ""Leverage ratios are within industry norms."",
+    ""Debt maturity schedule shows no significant debt maturities until 2024.""
+  ],
+  ""citations"": [
+    ""Total Debt: $11,511 million as of December 31, 2020, a decrease of $1,287 million from December 31, 2019."",
+    ""Our leverage ratios are within the industry norms."",
+    ""The following table sets forth the maturity schedule of our debt as of December 31, 2020:""
+  ],
+  ""reasoning"": ""IP's debt levels have decreased, leverage ratios are within industry norms, and the debt maturity schedule shows no significant debt maturities until 2024, indicating a low credit risk.""
+}",baseline
+FLUT,Flutter Entertainment,30.0,0,low,"[""Total debt as of year-end 2021 was \u20ac3.1 billion, a decrease from \u20ac3.3 billion in 2020."", ""Leverage ratios are within acceptable levels, with net debt to EBITDA at 2.5x and net debt to equity at 1.6x.""]","[""Total debt as of December 31, 2021 was \u20ac3,112.2 million (2020: \u20ac3,312.3 million)."", ""As at December 31, 2021, the Group's net debt to EBITDA ratio was 2.5x (2020: 2.6x) and net debt to equity was 1.6x (2020: 1.7x).""]","{
+  ""risk_score"": 30,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Total debt as of year-end 2021 was €3.1 billion, a decrease from €3.3 billion in 2020."",
+    ""Leverage ratios are within acceptable levels, with net debt to EBITDA at 2.5x and net debt to equity at 1.6x.""
+  ],
+  ""citations"": [
+    ""Total debt as of December 31, 2021 was €3,112.2 million (2020: €3,312.3 million)."",
+    ""As at December 31, 2021, the Group's net debt to EBITDA ratio was 2.5x (2020: 2.6x) and net debt to equity was 1.6x (2020: 1.7x).""
+  ],
+  ""reasoning"": ""Flutter Entertainment's debt levels have decreased, and leverage ratios remain within acceptable levels, indicating a low credit risk.""
+}",baseline
+TXN,Texas Instruments,30.0,0,low,"[""Total debt as of January 31, 2022, was $11.3 billion, a decrease of $1.1 billion from January 31, 2021."", ""As of January 31, 2022, our debt-to-equity ratio was 0.6x and our interest-bearing debt-to-EBITDA ratio was 1.8x."", ""Our debt maturity schedule shows no material debt maturities until 2025.""]","[""Total debt as of January 31, 2022, was $11.3 billion, a decrease of $1.1 billion from January 31, 2021."", ""As of January 31, 2022, our debt-to-equity ratio was 0.6x and our interest-bearing debt-to-EBITDA ratio was 1.8x."", ""Our debt maturity schedule shows no material debt maturities until 2025.""]","{
+  ""risk_score"": 30,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Total debt as of January 31, 2022, was $11.3 billion, a decrease of $1.1 billion from January 31, 2021."",
+    ""As of January 31, 2022, our debt-to-equity ratio was 0.6x and our interest-bearing debt-to-EBITDA ratio was 1.8x."",
+    ""Our debt maturity schedule shows no material debt maturities until 2025.""
+  ],
+  ""citations"": [
+    ""Total debt as of January 31, 2022, was $11.3 billion, a decrease of $1.1 billion from January 31, 2021."",
+    ""As of January 31, 2022, our debt-to-equity ratio was 0.6x and our interest-bearing debt-to-EBITDA ratio was 1.8x."",
+    ""Our debt maturity schedule shows no material debt maturities until 2025.""
+  ],
+  ""reasoning"": ""The company's debt levels are manageable with a low debt-to-equity ratio and interest-bearing debt-to-EBITDA ratio, and no material debt maturities until 2025.""
+}",baseline
+FNMA,Fannie Mae,30.0,0,low,"[""Total debt was $113.3 billion as of December 31, 2020, a decrease of $1.1 billion from December 31, 2019."", ""Leverage ratios are within regulatory requirements."", ""Debt maturity schedule is well-balanced with no significant maturities until 2025.""]","[""Total debt was $113.3 billion as of December 31, 2020, a decrease of $1.1 billion from December 31, 2019."", ""As of December 31, 2020, our debt-to-equity ratio was 1.8 to 1."", ""Our debt maturity schedule as of December 31, 2020, shows no debt maturing before 2025.""]","{
+  ""risk_score"": 30,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Total debt was $113.3 billion as of December 31, 2020, a decrease of $1.1 billion from December 31, 2019."",
+    ""Leverage ratios are within regulatory requirements."",
+    ""Debt maturity schedule is well-balanced with no significant maturities until 2025.""
+  ],
+  ""citations"": [
+    ""Total debt was $113.3 billion as of December 31, 2020, a decrease of $1.1 billion from December 31, 2019."",
+    ""As of December 31, 2020, our debt-to-equity ratio was 1.8 to 1."",
+    ""Our debt maturity schedule as of December 31, 2020, shows no debt maturing before 2025.""
+  ],
+  ""reasoning"": ""Fannie Mae's debt levels are manageable with a low debt-to-equity ratio and a well-balanced debt maturity schedule. The decrease in total debt from the previous year is also a positive sign.""
+}",baseline

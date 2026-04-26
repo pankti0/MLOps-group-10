@@ -1,0 +1,88 @@
+ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
+AMC,AMC Entertainment,50.0,1,medium,"[""Total debt as of December 31, 2020 was $5.4 billion, an increase from $4.9 billion at December 31, 2019."", ""Leverage ratios exceeded our debt covenants, but we have obtained waivers from our lenders."", ""Maturity schedule shows $1.5 billion of debt maturing in 2022 and $1.3 billion maturing in 2023.""]","[""Total Debt: As of December 31, 2020, total debt was $5.4 billion, an increase from $4.9 billion at December 31, 2019."", ""Leverage Ratios: Our leverage ratios exceeded our debt covenants as of December 31, 2020. We have obtained waivers from our lenders to allow us to remain in compliance with our debt covenants."", ""Debt Maturity Schedule: The following table sets forth the maturity schedule of our debt as of December 31, 2020:""]","{
+  ""risk_score"": 50,
+  ""risk_level"": ""medium"",
+  ""key_signals"": [
+    ""Total debt as of December 31, 2020 was $5.4 billion, an increase from $4.9 billion at December 31, 2019."",
+    ""Leverage ratios exceeded our debt covenants, but we have obtained waivers from our lenders."",
+    ""Maturity schedule shows $1.5 billion of debt maturing in 2022 and $1.3 billion maturing in 2023.""
+  ],
+  ""citations"": [
+    ""Total Debt: As of December 31, 2020, total debt was $5.4 billion, an increase from $4.9 billion at December 31, 2019."",
+    ""Leverage Ratios: Our leverage ratios exceeded our debt covenants as of December 31, 2020. We have obtained waivers from our lenders to allow us to remain in compliance with our debt covenants."",
+    ""Debt Maturity Schedule: The following table sets forth the maturity schedule of our debt as of December 31, 2020:""
+  ],
+  ""reasoning"": ""AMC Entertainment's debt levels have increased, and they have exceeded debt covenants, requiring waivers from lenders. The maturity schedule shows significant debt maturing in the next few years. These factors contribute to a medium credit risk.""
+}",baseline
+AVGO,Broadcom,30.0,0,low,"[""Total debt as of FY2021 was $31.2 billion, a 12.3% increase from FY2020."", ""Leverage ratios (Debt-to-EBITDA and Debt-to-Equity) are within industry norms.""]","[""Total Debt: $31,186 million as of December 26, 2021, an increase of $3.4 billion, or 12.3%, from $27,742 million as of December 27, 2020."", ""Our Debt-to-EBITDA ratio was 2.5x as of December 26, 2021, and our Debt-to-Equity ratio was 1.3x as of the same date."", ""Our debt maturity schedule is well-balanced, with no material debt maturing before 2024.""]","{
+  ""risk_score"": 30,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Total debt as of FY2021 was $31.2 billion, a 12.3% increase from FY2020."",
+    ""Leverage ratios (Debt-to-EBITDA and Debt-to-Equity) are within industry norms.""
+  ],
+  ""citations"": [
+    ""Total Debt: $31,186 million as of December 26, 2021, an increase of $3.4 billion, or 12.3%, from $27,742 million as of December 27, 2020."",
+    ""Our Debt-to-EBITDA ratio was 2.5x as of December 26, 2021, and our Debt-to-Equity ratio was 1.3x as of the same date."",
+    ""Our debt maturity schedule is well-balanced, with no material debt maturing before 2024.""
+  ],
+  ""reasoning"": ""Broadcom's debt levels have increased but remain manageable, with leverage ratios within industry norms and a well-balanced debt maturity schedule.""
+}",baseline
+CI,Cigna Group,30.0,0,low,"[""Total debt as of December 31, 2020 was $31.5 billion, a decrease of $1.1 billion from December 31, 2019."", ""Leverage ratios are within industry norms."", ""Debt maturity schedule shows no significant maturities until 2024.""]","[""Total Debt: $31,513 million as of December 31, 2020, a decrease of $1,096 million from December 31, 2019."", ""Our leverage ratios are within the industry norms."", ""The following table sets forth the maturity schedule of our debt as of December 31, 2020:""]","{
+  ""risk_score"": 30,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Total debt as of December 31, 2020 was $31.5 billion, a decrease of $1.1 billion from December 31, 2019."",
+    ""Leverage ratios are within industry norms."",
+    ""Debt maturity schedule shows no significant maturities until 2024.""
+  ],
+  ""citations"": [
+    ""Total Debt: $31,513 million as of December 31, 2020, a decrease of $1,096 million from December 31, 2019."",
+    ""Our leverage ratios are within the industry norms."",
+    ""The following table sets forth the maturity schedule of our debt as of December 31, 2020:""
+  ],
+  ""reasoning"": ""Cigna's debt levels show a decrease in total debt, leverage ratios within industry norms, and a manageable debt maturity schedule, indicating a low credit risk.""
+}",baseline
+CNC,Centene,30.0,0,low,"[""Total debt as of December 31, 2020 was $31.8 billion, an increase of $1.9 billion from December 31, 2019."", ""Leverage ratios: Debt to total capitalization was 38.3% and debt to EBITDA was 3.8x as of December 31, 2020."", ""Debt maturity schedule: Approximately 72.2% of our debt is scheduled to mature in the next 5 years.""]","[""Total debt as of December 31, 2020 was $31,815 million, an increase of $1,935 million from December 31, 2019."", ""As of December 31, 2020, our debt to total capitalization ratio was 38.3% and our debt to EBITDA ratio was 3.8x."", ""As of December 31, 2020, approximately 72.2% of our debt is scheduled to mature within the next 5 years.""]","{
+  ""risk_score"": 30,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Total debt as of December 31, 2020 was $31.8 billion, an increase of $1.9 billion from December 31, 2019."",
+    ""Leverage ratios: Debt to total capitalization was 38.3% and debt to EBITDA was 3.8x as of December 31, 2020."",
+    ""Debt maturity schedule: Approximately 72.2% of our debt is scheduled to mature in the next 5 years.""
+  ],
+  ""citations"": [
+    ""Total debt as of December 31, 2020 was $31,815 million, an increase of $1,935 million from December 31, 2019."",
+    ""As of December 31, 2020, our debt to total capitalization ratio was 38.3% and our debt to EBITDA ratio was 3.8x."",
+    ""As of December 31, 2020, approximately 72.2% of our debt is scheduled to mature within the next 5 years.""
+  ],
+  ""reasoning"": ""Centene's debt levels have increased, but leverage ratios remain within industry norms and maturity schedule is manageable.""
+}",baseline
+DELL,Dell Technologies,30.0,0,low,"[""Total debt as of FY2021 was $48.3 billion, a decrease from $50.8 billion in FY2020."", ""Leverage ratios (total debt to EBITDA and net debt to EBITDA) were 2.4x and 1.9x, respectively, which are within industry norms.""]","[""Dell Technologies Inc. and its subsidiaries (the Company)... Debt as of FY2021 was $48.3 billion, a decrease from $50.8 billion in FY2020."", ""As of FY2021, our total leverage ratios, as defined in our credit agreements, were 2.4x and 1.9x, respectively, compared to 2.5x and 2.0x, respectively, in FY2020.""]","{
+  ""risk_score"": 30,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Total debt as of FY2021 was $48.3 billion, a decrease from $50.8 billion in FY2020."",
+    ""Leverage ratios (total debt to EBITDA and net debt to EBITDA) were 2.4x and 1.9x, respectively, which are within industry norms.""
+  ],
+  ""citations"": [
+    ""Dell Technologies Inc. and its subsidiaries (the Company)... Debt as of FY2021 was $48.3 billion, a decrease from $50.8 billion in FY2020."",
+    ""As of FY2021, our total leverage ratios, as defined in our credit agreements, were 2.4x and 1.9x, respectively, compared to 2.5x and 2.0x, respectively, in FY2020.""
+  ],
+  ""reasoning"": ""Dell Technologies' debt levels have decreased, and leverage ratios remain within industry norms, indicating a manageable debt burden.""
+}",baseline
+HD,Home Depot,30.0,0,low,"[""Total debt as of January 29, 2022 was $32.1 billion, a decrease of $1.1 billion from January 31, 2021."", ""Leverage ratios, including total debt to total assets and total debt to EBITDA, were within our target ranges."", ""The weighted-average maturity of our debt was approximately 7.5 years as of January 29, 2022.""]","[""Total Debt: $32.1 billion, a decrease of $1.1 billion from January 31, 2021."", ""Our leverage ratios, including total debt to total assets and total debt to EBITDA, were within our target ranges."", ""The weighted-average maturity of our debt was approximately 7.5 years as of January 29, 2022.""]","{
+  ""risk_score"": 30,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Total debt as of January 29, 2022 was $32.1 billion, a decrease of $1.1 billion from January 31, 2021."",
+    ""Leverage ratios, including total debt to total assets and total debt to EBITDA, were within our target ranges."",
+    ""The weighted-average maturity of our debt was approximately 7.5 years as of January 29, 2022.""
+  ],
+  ""citations"": [
+    ""Total Debt: $32.1 billion, a decrease of $1.1 billion from January 31, 2021."",
+    ""Our leverage ratios, including total debt to total assets and total debt to EBITDA, were within our target ranges."",
+    ""The weighted-average maturity of our debt was approximately 7.5 years as of January 29, 2022.""
+  ],
+  ""reasoning"": ""Home Depot's debt levels remain manageable with a decrease in total debt, leverage ratios within target ranges, and a long-term debt maturity schedule.""
+}",baseline

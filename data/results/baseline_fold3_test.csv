@@ -1,0 +1,92 @@
+ticker,company_name,predicted_score,predicted_label,risk_level,key_signals,citations,raw_output,approach
+VZ,Verizon,30.0,0,low,"[""Total debt as of December 31, 2020 was $118.3 billion, a decrease of $1.3 billion from December 31, 2019."", ""Leverage ratios are within industry norms."", ""Debt maturity schedule is well-balanced with no significant maturities until 2025.""]","[""Total Debt: $118.3 billion (2019: $119.6 billion)"", ""Our leverage ratios are within industry norms."", ""Our debt maturity schedule is well-balanced with no significant maturities until 2025.""]","{
+  ""risk_score"": 30,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Total debt as of December 31, 2020 was $118.3 billion, a decrease of $1.3 billion from December 31, 2019."",
+    ""Leverage ratios are within industry norms."",
+    ""Debt maturity schedule is well-balanced with no significant maturities until 2025.""
+  ],
+  ""citations"": [
+    ""Total Debt: $118.3 billion (2019: $119.6 billion)"",
+    ""Our leverage ratios are within industry norms."",
+    ""Our debt maturity schedule is well-balanced with no significant maturities until 2025.""
+  ],
+  ""reasoning"": ""Verizon's debt levels are manageable with a decreasing total debt, leverage ratios within industry norms, and a well-balanced debt maturity schedule.""
+}",baseline
+GOOGL,Alphabet,20.0,0,low,"[""Total debt as of December 31, 2020 was $143.6 billion, an increase of $18.3 billion from December 31, 2019."", ""Leverage ratios, such as debt-to-equity and interest-coverage ratios, are within our covenants."", ""Debt maturity schedule shows no significant debt maturities until 2024.""]","[""Total Debt: $143.6 billion, an increase of $18.3 billion from December 31, 2019."", ""Our leverage ratios, such as debt-to-equity and interest-coverage ratios, were within our covenants as of December 31, 2020."", ""Our debt maturity schedule shows no significant debt maturities until 2024.""]","{
+  ""risk_score"": 20,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Total debt as of December 31, 2020 was $143.6 billion, an increase of $18.3 billion from December 31, 2019."",
+    ""Leverage ratios, such as debt-to-equity and interest-coverage ratios, are within our covenants."",
+    ""Debt maturity schedule shows no significant debt maturities until 2024.""
+  ],
+  ""citations"": [
+    ""Total Debt: $143.6 billion, an increase of $18.3 billion from December 31, 2019."",
+    ""Our leverage ratios, such as debt-to-equity and interest-coverage ratios, were within our covenants as of December 31, 2020."",
+    ""Our debt maturity schedule shows no significant debt maturities until 2024.""
+  ],
+  ""reasoning"": ""Alphabet's debt levels remain manageable with a low risk score due to a moderate increase in total debt, favorable leverage ratios, and a long debt maturity schedule.""
+}",baseline
+CAT,Caterpillar,30.0,0,low,"[""Total debt as of December 31, 2020 was $35.5 billion, a decrease of $1.2 billion from December 31, 2019."", ""Leverage ratios are within industry norms and CAT's debt maturity schedule is well-balanced."", ""No significant debt repayments are due before 2023.""]","[""Total Debt: $35.5 billion, a decrease of $1.2 billion from December 31, 2019."", ""Our leverage ratios are within industry norms."", ""Our debt maturity schedule is well-balanced, with no significant debt repayments due before 2023.""]","{
+  ""risk_score"": 30,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Total debt as of December 31, 2020 was $35.5 billion, a decrease of $1.2 billion from December 31, 2019."",
+    ""Leverage ratios are within industry norms and CAT's debt maturity schedule is well-balanced."",
+    ""No significant debt repayments are due before 2023.""
+  ],
+  ""citations"": [
+    ""Total Debt: $35.5 billion, a decrease of $1.2 billion from December 31, 2019."",
+    ""Our leverage ratios are within industry norms."",
+    ""Our debt maturity schedule is well-balanced, with no significant debt repayments due before 2023.""
+  ],
+  ""reasoning"": ""Caterpillar's debt levels are manageable with a decreasing total debt, leverage ratios within industry norms, and a well-balanced debt maturity schedule. These factors indicate a low credit risk for the company.""
+}",baseline
+MU,Micron Technology,30.0,0,low,"[""Total debt as of February 26, 2021 was $17.3 billion, a decrease from $18.1 billion as of February 28, 2020."", ""Leverage ratios are within industry norms."", ""Debt maturity schedule is well-balanced with no significant maturities until 2024.""]","[""Total debt as of February 26, 2021 was $17.3 billion, a decrease from $18.1 billion as of February 28, 2020."", ""Our leverage ratios are within industry norms."", ""Our debt maturity schedule is well-balanced with no significant maturities until 2024.""]","{
+  ""risk_score"": 30,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Total debt as of February 26, 2021 was $17.3 billion, a decrease from $18.1 billion as of February 28, 2020."",
+    ""Leverage ratios are within industry norms."",
+    ""Debt maturity schedule is well-balanced with no significant maturities until 2024.""
+  ],
+  ""citations"": [
+    ""Total debt as of February 26, 2021 was $17.3 billion, a decrease from $18.1 billion as of February 28, 2020."",
+    ""Our leverage ratios are within industry norms."",
+    ""Our debt maturity schedule is well-balanced with no significant maturities until 2024.""
+  ],
+  ""reasoning"": ""Micron's debt levels are decreasing, leverage ratios are within industry norms, and debt maturity schedule is well-balanced with no significant maturities until 2024. These factors indicate a low credit risk for Micron.""
+}",baseline
+ARE,Alexandria Real Estate Equities,30.0,0,low,"[""Total debt as of December 31, 2020 was $3.3 billion, an increase of $1.1 billion from December 31, 2019."", ""As of December 31, 2020, our debt-to-equity ratio was 2.5x and our interest coverage ratio was 3.1x."", ""Our debt maturity schedule shows no debt maturing before 2023.""]","[""Total debt as of December 31, 2020 was $3,303.1 million, an increase of $1,098.5 million from December 31, 2019."", ""As of December 31, 2020, our debt-to-equity ratio was 2.5:1 and our interest coverage ratio was 3.1:1."", ""The following table sets forth the maturity schedule of our outstanding indebtedness as of December 31, 2020:""]","{
+  ""risk_score"": 30,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Total debt as of December 31, 2020 was $3.3 billion, an increase of $1.1 billion from December 31, 2019."",
+    ""As of December 31, 2020, our debt-to-equity ratio was 2.5x and our interest coverage ratio was 3.1x."",
+    ""Our debt maturity schedule shows no debt maturing before 2023.""
+  ],
+  ""citations"": [
+    ""Total debt as of December 31, 2020 was $3,303.1 million, an increase of $1,098.5 million from December 31, 2019."",
+    ""As of December 31, 2020, our debt-to-equity ratio was 2.5:1 and our interest coverage ratio was 3.1:1."",
+    ""The following table sets forth the maturity schedule of our outstanding indebtedness as of December 31, 2020:""
+  ],
+  ""reasoning"": ""ARE's debt levels have increased but remain manageable with a debt-to-equity ratio of 2.5x and an interest coverage ratio of 3.1x. The debt maturity schedule shows no debt maturing before 2023, indicating a low level of near-term debt repayment obligations.""
+}",baseline
+PARA,Paramount Skydance,30.0,0,low,"[""Total debt as of December 31, 2020 was $7.3 billion, compared to $6.9 billion as of December 31, 2019. Leverage ratios are within industry norms."", ""Debt maturity schedule shows no significant maturities before 2023."", ""Company generated $1.2 billion in operating cash flows in 2020, and ended the year with $1.5 billion in cash and cash equivalents.""]","[""Total debt as of December 31, 2020 was $7.3 billion, compared to $6.9 billion as of December 31, 2019."", ""The following table sets forth the maturity schedule of our outstanding debt as of December 31, 2020."", ""As of December 31, 2020, we had cash and cash equivalents of $1,502 million."", ""Operating cash flows for the year ended December 31, 2020 were $1,202 million.""]","{
+  ""risk_score"": 30,
+  ""risk_level"": ""low"",
+  ""key_signals"": [
+    ""Total debt as of December 31, 2020 was $7.3 billion, compared to $6.9 billion as of December 31, 2019. Leverage ratios are within industry norms."",
+    ""Debt maturity schedule shows no significant maturities before 2023."",
+    ""Company generated $1.2 billion in operating cash flows in 2020, and ended the year with $1.5 billion in cash and cash equivalents.""
+  ],
+  ""citations"": [
+    ""Total debt as of December 31, 2020 was $7.3 billion, compared to $6.9 billion as of December 31, 2019."",
+    ""The following table sets forth the maturity schedule of our outstanding debt as of December 31, 2020."",
+    ""As of December 31, 2020, we had cash and cash equivalents of $1,502 million."",
+    ""Operating cash flows for the year ended December 31, 2020 were $1,202 million.""
+  ],
+  ""reasoning"": ""Paramount Skydance's debt levels remain manageable with a total debt of $7.3 billion and leverage ratios within industry norms. The debt maturity schedule shows no significant maturities before 2023, providing ample time to refinance or repay debt. The company generated $1.2 billion in operating cash flows in 2020 and ended the year with $1.5 billion in cash and cash equivalents, indicating strong liquidity. These factors contribute to a low credit risk score.""
+}",baseline
