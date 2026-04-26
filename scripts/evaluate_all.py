@@ -55,9 +55,9 @@ def run_full_evaluation(results_dir, labels_path, sections_dir):
     return {}
 
 def main():
-        approaches = [
+    approaches = [
             "baseline", "rag", "lora_r32", "rag_lora_r32"
-        ]
+    ]
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger("evaluate_all")
     args = parse_args()
